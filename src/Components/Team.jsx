@@ -69,8 +69,8 @@ const Team = () => {
         "/images/team/polaroids/priyanka-1.jpg",
         "/images/team/polaroids/priyanka-2.jpg"
       ],
-      colorFrom: "#8666A5",
-      colorTo: "#b39ddb",
+      colorFrom: "#8a6aa9",
+      colorTo: "#c9b3d8",
       funFact: "Can spot a trending hashtag from 10 miles away"
     },
     {
@@ -117,8 +117,8 @@ const Team = () => {
         "/images/team/polaroids/shrey-1.jpg",
         "/images/team/polaroids/shrey-2.jpg"
       ],
-      colorFrom: "#8666A5",
-      colorTo: "#b39ddb",
+      colorFrom: "#8a6aa9",
+      colorTo: "#c9b3d8",
       funFact: "Can make anything go viral (except the common cold)"
     },
     {
@@ -216,7 +216,7 @@ const Team = () => {
                       repeatType: "reverse"
                     }}
                   >
-                    <div className="w-full h-3/4 bg-gradient-to-br from-purple-200 via-lavender-200 to-purple-100" style={{ background: 'linear-gradient(135deg, #e9d5ff, #ddd6fe, #f3e8ff)' }}></div>
+                    <div className="w-full h-3/4 bg-gradient-to-br from-[#e9d5ff] via-[#ddd6fe] to-[#f3e8ff]" style={{ background: 'linear-gradient(135deg, #e9d5ff, #ddd6fe, #f3e8ff)' }}></div>
                     <div className="h-1/4 flex items-center justify-center">
                       <span className="text-xs font-handwriting" style={{ color: '#6b4d7a' }}>Team Magic</span>
                     </div>
@@ -272,10 +272,10 @@ const Team = () => {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles className="w-5 h-5" style={{ color: '#8666A5' }} />
+              <Sparkles className="w-5 h-5" style={{ color: '#8a6aa9' }} />
             </motion.div>
             <span className="font-bold text-sm" style={{ color: '#6b4d7a' }}>Meet the Creative Powerhouse</span>
-            <Users className="w-5 h-5" style={{ color: '#b39ddb' }} />
+            <Users className="w-5 h-5" style={{ color: '#c9b3d8' }} />
           </motion.div>
           
           {/* Main Title */}
@@ -289,7 +289,7 @@ const Team = () => {
               <motion.span 
                 className="inline-block"
                 style={{ 
-                  background: 'linear-gradient(135deg, #8666A5, #b39ddb, #8666A5)', 
+                  background: 'linear-gradient(135deg, #8a6aa9, #c9b3d8, #8a6aa9)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundSize: '200% auto'
@@ -305,7 +305,7 @@ const Team = () => {
               <motion.span 
                 className="inline-block"
                 style={{ 
-                  background: 'linear-gradient(135deg, #6b4d7a, #8666A5, #b39ddb)', 
+                  background: 'linear-gradient(135deg, #6b4d7a, #8a6aa9, #c9b3d8)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundSize: '200% auto'
@@ -323,7 +323,7 @@ const Team = () => {
             <motion.div 
               className="h-1.5 rounded-full mx-auto"
               style={{ 
-                background: 'linear-gradient(90deg, #8666A5, #b39ddb, #8666A5)',
+                background: 'linear-gradient(90deg, #8a6aa9, #c9b3d8, #8a6aa9)',
                 backgroundSize: '200% auto'
               }}
               initial={{ width: 0 }}
@@ -350,8 +350,8 @@ const Team = () => {
               <motion.span 
                 className="inline-block font-black px-3 py-1 rounded-lg"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(134, 102, 165, 0.15), rgba(179, 157, 219, 0.15))',
-                  color: '#8666A5'
+                  background: 'linear-gradient(135deg, rgba(138, 106, 169, 0.15), rgba(201, 179, 216, 0.15))',
+                  color: '#8a6aa9'
                 }}
                 whileHover={{ scale: 1.1, y: -2 }}
               >
@@ -361,8 +361,8 @@ const Team = () => {
               <motion.span 
                 className="inline-block font-black px-3 py-1 rounded-lg"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(134, 102, 165, 0.15), rgba(179, 157, 219, 0.15))',
-                  color: '#8666A5'
+                  background: 'linear-gradient(135deg, rgba(138, 106, 169, 0.15), rgba(201, 179, 216, 0.15))',
+                  color: '#8a6aa9'
                 }}
                 whileHover={{ scale: 1.1, y: -2 }}
               >
@@ -372,7 +372,7 @@ const Team = () => {
               <motion.span 
                 className="inline-block font-black px-3 py-1 rounded-lg"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(134, 102, 165, 0.15), rgba(179, 157, 219, 0.15))',
+                  background: 'linear-gradient(135deg, rgba(138, 106, 169, 0.15), rgba(201, 179, 216, 0.15))',
                   color: '#6b4d7a'
                 }}
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -394,7 +394,7 @@ const Team = () => {
           >
             <div 
               className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl"
-              style={{ background: 'linear-gradient(135deg, #8666A5, #b39ddb)' }}
+              style={{ background: 'linear-gradient(135deg, #8a6aa9, #c9b3d8)' }}
             >
               <Camera className="w-8 h-8 text-white" />
             </div>
@@ -410,7 +410,7 @@ const Team = () => {
           >
             <div 
               className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl"
-              style={{ background: 'linear-gradient(135deg, #b39ddb, #8666A5)' }}
+              style={{ background: 'linear-gradient(135deg, #c9b3d8, #8a6aa9)' }}
             >
               <Star className="w-8 h-8 text-white fill-current" />
             </div>
@@ -419,7 +419,7 @@ const Team = () => {
           {/* Decorative Elements */}
           <motion.div
             className="absolute top-0 left-1/4 w-2 h-2 rounded-full"
-            style={{ background: '#8666A5' }}
+            style={{ background: '#8a6aa9' }}
             animate={{ 
               scale: [1, 1.5, 1],
               opacity: [0.5, 1, 0.5]
@@ -428,7 +428,7 @@ const Team = () => {
           />
           <motion.div
             className="absolute bottom-0 right-1/4 w-3 h-3 rounded-full"
-            style={{ background: '#b39ddb' }}
+            style={{ background: '#c9b3d8' }}
             animate={{ 
               scale: [1, 1.8, 1],
               opacity: [0.3, 0.8, 0.3]
@@ -714,14 +714,14 @@ const Team = () => {
             >
               <div className="flex items-center justify-center gap-4 mb-6">
                 <motion.div 
-                  className="h-px w-12 bg-gradient-to-r from-transparent to-purple-300"
+                  className="h-px w-12 bg-gradient-to-r from-transparent to-#b99cc8"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1.2, duration: 0.6 }}
                 />
-                <Sparkles className="w-6 h-6" style={{ color: '#8666A5' }} />
+                <Sparkles className="w-6 h-6" style={{ color: '#8a6aa9' }} />
                 <motion.div 
-                  className="h-px w-12 bg-gradient-to-l from-transparent to-purple-300"
+                  className="h-px w-12 bg-gradient-to-l from-transparent to-#b99cc8"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1.2, duration: 0.6 }}
@@ -747,7 +747,7 @@ const Team = () => {
               <motion.button
                 className="group relative px-8 py-4 rounded-xl font-semibold text-white overflow-hidden cursor-pointer"
                 style={{
-                  background: 'linear-gradient(135deg, #8666A5, #b39ddb)',
+                  background: 'linear-gradient(135deg, #8a6aa9, #c9b3d8)',
                   boxShadow: '0 4px 20px rgba(134, 102, 165, 0.3)'
                 }}
                 whileHover={{ 
@@ -792,8 +792,8 @@ const Team = () => {
               <motion.button
                 className="group px-8 py-4 rounded-xl font-semibold border-2 transition-all cursor-pointer"
                 style={{
-                  borderColor: '#8666A5',
-                  color: '#8666A5',
+                  borderColor: '#8a6aa9',
+                  color: '#8a6aa9',
                   background: 'white'
                 }}
                 whileHover={{ 
@@ -848,11 +848,11 @@ const Team = () => {
               transition={{ delay: 1.4 }}
             >
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#8666A5' }} />
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#8a6aa9' }} />
                 <span>50+ Happy Clients</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#b39ddb' }} />
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#c9b3d8' }} />
                 <span>24/7 Support</span>
               </div>
               {/* <div className="flex items-center gap-2"> */}

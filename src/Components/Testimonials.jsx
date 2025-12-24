@@ -33,7 +33,7 @@ const Testimonials = () => {
       platform: "Social Media",
       stats: "4x growth",
       color: "#8b5cf6",
-      gradient: "from-purple-500 to-purple-700"
+      gradient: "from-#f5f0f80 to-#7a5a99"
     },
     { 
       id: 2,
@@ -45,7 +45,7 @@ const Testimonials = () => {
       platform: "Events & Marketing",
       stats: "Outstanding reach",
       color: "#7c3aed",
-      gradient: "from-purple-600 to-purple-800"
+      gradient: "from-#8a6aa9 to-#6a4a89"
     },
     { 
       id: 3,
@@ -57,7 +57,7 @@ const Testimonials = () => {
       platform: "Digital Marketing",
       stats: "Results-driven",
       color: "#a855f7",
-      gradient: "from-purple-500 to-purple-700"
+      gradient: "from-#f5f0f80 to-#7a5a99"
     },
     { 
       id: 4,
@@ -69,7 +69,7 @@ const Testimonials = () => {
       platform: "Social Media",
       stats: "3x footfall",
       color: "#9333ea",
-      gradient: "from-purple-600 to-purple-800"
+      gradient: "from-#8a6aa9 to-#6a4a89"
     },
     { 
       id: 5,
@@ -81,7 +81,7 @@ const Testimonials = () => {
       platform: "Digital Marketing",
       stats: "Premium presence",
       color: "#8b5cf6",
-      gradient: "from-purple-500 to-purple-700"
+      gradient: "from-#f5f0f80 to-#7a5a99"
     },
     { 
       id: 6,
@@ -93,7 +93,7 @@ const Testimonials = () => {
       platform: "Digital Marketing",
       stats: "Sales up",
       color: "#7c3aed",
-      gradient: "from-purple-600 to-purple-800"
+      gradient: "from-#8a6aa9 to-#6a4a89"
     },
     { 
       id: 7,
@@ -105,7 +105,7 @@ const Testimonials = () => {
       platform: "Social Media",
       stats: "Engagement soared",
       color: "#a855f7",
-      gradient: "from-purple-500 to-purple-700"
+      gradient: "from-#f5f0f80 to-#7a5a99"
     }
   ];
 
@@ -185,8 +185,8 @@ const Testimonials = () => {
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-purple-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-200 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-#ebe2f0 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-#d5c4e0 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -198,13 +198,13 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-50 border border-purple-200 mb-6"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-#f5f0f8 border border-#d5c4e0 mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <Sparkles className="w-4 h-4 text-purple-600" />
-            <span className="text-purple-700 font-semibold text-sm tracking-wide">
+            <Sparkles className="w-4 h-4 text-#8a6aa9" />
+            <span className="text-#7a5a99 font-semibold text-sm tracking-wide">
               CLIENT SUCCESS STORIES
             </span>
           </motion.div>
@@ -216,7 +216,7 @@ const Testimonials = () => {
             transition={{ delay: 0.3 }}
           >
             What Our{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-#8a6aa9 to-#6a4a89 bg-clip-text text-transparent">
               Clients Say
             </span>
           </motion.h2>
@@ -235,21 +235,21 @@ const Testimonials = () => {
         <div className="relative max-w-5xl mx-auto mb-16">
           {/* Navigation Arrows */}
           <motion.button
-            className="absolute left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-purple-400 hover:shadow-xl transition-all group"
+            className="absolute left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-#9d7bb8 hover:shadow-xl transition-all group"
             onClick={handlePrev}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronLeft className="w-5 h-5 text-gray-700 group-hover:text-purple-600" />
+            <ChevronLeft className="w-5 h-5 text-gray-700 group-hover:text-#8a6aa9" />
           </motion.button>
 
           <motion.button
-            className="absolute right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-purple-400 hover:shadow-xl transition-all group"
+            className="absolute right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-#9d7bb8 hover:shadow-xl transition-all group"
             onClick={handleNext}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronRight className="w-5 h-5 text-gray-700 group-hover:text-purple-600" />
+            <ChevronRight className="w-5 h-5 text-gray-700 group-hover:text-#8a6aa9" />
           </motion.button>
 
           <AnimatePresence mode="wait" custom={direction}>
@@ -307,7 +307,7 @@ const Testimonials = () => {
                       {/* Stars */}
                       <div className="flex gap-1 mb-4">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-purple-500 fill-current" />
+                          <Star key={i} className="w-5 h-5 text-#f5f0f80 fill-current" />
                         ))}
                       </div>
 
@@ -352,7 +352,7 @@ const Testimonials = () => {
                 onClick={() => goToSlide(index)}
                 className={`h-2 rounded-full transition-all ${
                   index === activeIndex 
-                    ? 'w-8 bg-purple-600' 
+                    ? 'w-8 bg-#8a6aa9' 
                     : 'w-2 bg-gray-300 hover:bg-gray-400'
                 }`}
               />
@@ -372,7 +372,7 @@ const Testimonials = () => {
             return (
               <motion.div
                 key={testimonial.id}
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg hover:border-purple-200 transition-all cursor-pointer group"
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg hover:border-#d5c4e0 transition-all cursor-pointer group"
                 whileHover={{ y: -4 }}
                 onClick={() => goToSlide(index)}
               >
@@ -393,7 +393,7 @@ const Testimonials = () => {
                 <div className="flex items-center justify-between pt-3 border-t border-gray-100">
                   <div className="flex gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-purple-500 fill-current" />
+                      <Star key={i} className="w-3.5 h-3.5 text-#f5f0f80 fill-current" />
                     ))}
                   </div>
                   <Icon className="w-4 h-4" style={{ color: testimonial.color }} />
@@ -405,7 +405,7 @@ const Testimonials = () => {
 
         {/* CTA Section */}
         <motion.div 
-          className="text-center bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl p-10 border border-purple-200"
+          className="text-center bg-gradient-to-r from-#f5f0f8 to-#ebe2f0 rounded-2xl p-10 border border-#d5c4e0"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
@@ -419,7 +419,7 @@ const Testimonials = () => {
           
           <motion.button 
             onClick={() => scrollToSection('contact', 80)}
-            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-semibold text-base rounded-lg shadow-md hover:shadow-lg hover:shadow-purple-500/50 transition-all inline-flex items-center gap-2"
+            className="px-8 py-4 bg-gradient-to-r from-#8a6aa9 to-#6a4a89 text-white font-semibold text-base rounded-lg shadow-md hover:shadow-lg hover:shadow-#f5f0f80/50 transition-all inline-flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

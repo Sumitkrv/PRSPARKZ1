@@ -360,7 +360,7 @@ const ModernNavbar = () => {
             isScrolled ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-200/30 via-purple-100/30 to-purple-300/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#d5c4e0]/30 via-[#ebe2f0]/30 to-[#b99cc8]/30"></div>
           <div className="absolute inset-0 backdrop-blur-xl"></div>
         </div>
 
@@ -377,8 +377,8 @@ const ModernNavbar = () => {
               </div>
               {/* Floating particles - Enhanced */}
               <div className="hidden sm:block">
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-70 group-hover:animate-ping transition-all duration-300"></div>
-                <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-purple-300 rounded-full opacity-60 group-hover:animate-ping delay-150 transition-all duration-300"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#9d7bb8] rounded-full opacity-70 group-hover:animate-ping transition-all duration-300"></div>
+                <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-[#b99cc8] rounded-full opacity-60 group-hover:animate-ping delay-150 transition-all duration-300"></div>
               </div>
             </a>
 
@@ -396,40 +396,40 @@ const ModernNavbar = () => {
                       className="nav-item group relative px-4 xl:px-6 py-2.5 rounded-xl transition-all duration-300 flex items-center interactive hover:shadow-md"
                     >
                       <div className="flex items-center space-x-2 relative z-10">
-                        <span className="text-purple-600 text-base group-hover:text-purple-700 transition-colors duration-300 group-hover:scale-110 inline-block">
+                        <span className="text-[#8a6aa9] text-base group-hover:text-[#7a5a99] transition-colors duration-300 group-hover:scale-110 inline-block">
                           {item.icon}
                         </span>
-                        <span className="text-gray-800 font-semibold group-hover:text-purple-800 transition-all duration-300 tracking-wide text-sm xl:text-base">
+                        <span className="text-gray-800 font-semibold group-hover:text-[#6a4a89] transition-all duration-300 tracking-wide text-sm xl:text-base">
                           {item.label}
                         </span>
                       </div>
                       
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100/70 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full group-hover:w-3/4 transition-all duration-300"></div>
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#f5f0f8] to-[#ebe2f0]/70 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[#f5f0f8]0 to-[#8a6aa9] rounded-full group-hover:w-3/4 transition-all duration-300"></div>
                     </a>
                   ) : (
                     <Link
                       to={item.path}
                       className={`nav-item group relative px-4 xl:px-6 py-2.5 rounded-xl transition-all duration-300 flex items-center interactive hover:shadow-md ${
-                        isActive(item.path) ? 'bg-gradient-to-r from-purple-100 to-purple-50 shadow-sm' : ''
+                        isActive(item.path) ? 'bg-gradient-to-r from-#ebe2f0 to-[#f5f0f8] shadow-sm' : ''
                       }`}
                     >
                       <div className="flex items-center space-x-2 relative z-10">
                         <span className={`text-base transition-all duration-300 group-hover:scale-110 inline-block ${
-                          isActive(item.path) ? 'text-purple-700' : 'text-purple-600 group-hover:text-purple-700'
+                          isActive(item.path) ? 'text-[#7a5a99]' : 'text-[#8a6aa9] group-hover:text-[#7a5a99]'
                         }`}>
                           {item.icon}
                         </span>
                         <span className={`font-semibold transition-all duration-300 tracking-wide text-sm xl:text-base ${
-                          isActive(item.path) ? 'text-purple-800' : 'text-gray-800 group-hover:text-purple-800'
+                          isActive(item.path) ? 'text-[#6a4a89]' : 'text-gray-800 group-hover:text-[#6a4a89]'
                         }`}>
                           {item.label}
                         </span>
                       </div>
                       
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-50 to-purple-100/70 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#f5f0f8] to-[#ebe2f0]/70 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
                       
-                      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full transition-all duration-300 ${
+                      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#f5f0f8]0 to-[#8a6aa9] rounded-full transition-all duration-300 ${
                         isActive(item.path) ? 'w-3/4' : 'w-0 group-hover:w-3/4'
                       }`}></div>
                     </Link>
@@ -440,8 +440,8 @@ const ModernNavbar = () => {
 
             {/* Premium CTA Button - Hidden on mobile */}
             <div className="hidden lg:flex items-center">
-              <a href="#contact" onClick={(e) => handleNavSectionClick(e, 'contact')} className="group relative overflow-hidden px-6 xl:px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/40 interactive cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-purple-800 to-purple-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <a href="#contact" onClick={(e) => handleNavSectionClick(e, 'contact')} className="group relative overflow-hidden px-6 xl:px-8 py-3 rounded-xl bg-gradient-to-r from-[#8a6aa9] via-#7a5a99 to-#6a4a89 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-#f5f0f80/40 interactive cursor-pointer">
+                <div className="absolute inset-0 bg-gradient-to-r from-#7a5a99 via-#6a4a89 to-#5a3a79 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
                   <div className="absolute inset-0 bg-white animate-pulse"></div>
                 </div>
@@ -457,18 +457,18 @@ const ModernNavbar = () => {
             {/* Enhanced Mobile Menu Button */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden relative rounded-xl bg-purple-50/60 backdrop-blur-sm border border-purple-200/60 flex items-center justify-center group hover:bg-purple-100/60 transition-all duration-300 interactive shadow-sm w-11 h-11 min-w-[44px] min-h-[44px]`}
+              className={`lg:hidden relative rounded-xl bg-#f5f0f8/60 backdrop-blur-sm border border-[#d5c4e0] flex items-center justify-center group hover:bg-#ebe2f0/60 transition-all duration-300 interactive shadow-sm w-11 h-11 min-w-[44px] min-h-[44px]`}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
               <div className="relative w-5 h-5">
-                <span className={`absolute block h-0.5 w-5 bg-purple-600 rounded-full transition-all duration-300 ${
+                <span className={`absolute block h-0.5 w-5 bg-#8a6aa9 rounded-full transition-all duration-300 ${
                   isMenuOpen ? 'top-2 rotate-45' : 'top-1'
                 }`}></span>
-                <span className={`absolute block h-0.5 w-5 bg-purple-600 rounded-full top-2 transition-all duration-300 ${
+                <span className={`absolute block h-0.5 w-5 bg-#8a6aa9 rounded-full top-2 transition-all duration-300 ${
                   isMenuOpen ? 'opacity-0' : 'opacity-100'
                 }`}></span>
-                <span className={`absolute block h-0.5 w-5 bg-purple-600 rounded-full transition-all duration-300 ${
+                <span className={`absolute block h-0.5 w-5 bg-#8a6aa9 rounded-full transition-all duration-300 ${
                   isMenuOpen ? 'top-2 -rotate-45' : 'top-3'
                 }`}></span>
               </div>
@@ -480,7 +480,7 @@ const ModernNavbar = () => {
         <div className={`lg:hidden absolute top-full left-0 right-0 transition-all duration-400 z-40 ${
           isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}>
-          <div className="bg-white/97 backdrop-blur-2xl border-b border-purple-200/60 shadow-2xl shadow-purple-500/10 max-h-[80vh] overflow-y-auto">
+          <div className="bg-white/97 backdrop-blur-2xl border-b border-[#d5c4e0] shadow-2xl shadow-[#f5f0f8]/10 max-h-[80vh] overflow-y-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
               <div className="space-y-1.5">
                 {navItems.map((item) => (
@@ -493,17 +493,17 @@ const ModernNavbar = () => {
                           setIsMenuOpen(false);
                           setMobileOpenDropdown(null);
                         }}
-                        className="group flex items-center justify-between p-3.5 rounded-xl transition-all duration-300 interactive cursor-pointer hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100/60 hover:shadow-sm"
+                        className="group flex items-center justify-between p-3.5 rounded-xl transition-all duration-300 interactive cursor-pointer hover:bg-gradient-to-r hover:from-[#f5f0f8] hover:to-#ebe2f0/60 hover:shadow-sm"
                       >
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center group-hover:from-purple-500 group-hover:to-purple-600 transition-all duration-300 group-hover:scale-110">
-                            <span className="text-purple-600 group-hover:text-white text-lg font-bold transition-colors duration-300">{item.icon}</span>
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-#ebe2f0 to-#d5c4e0 flex items-center justify-center group-hover:from-[#f5f0f8]0 group-hover:to-[#8a6aa9] transition-all duration-300 group-hover:scale-110">
+                            <span className="text-[#8a6aa9] group-hover:text-white text-lg font-bold transition-colors duration-300">{item.icon}</span>
                           </div>
-                          <span className="text-gray-800 font-semibold group-hover:text-purple-800 text-base transition-colors duration-300">
+                          <span className="text-gray-800 font-semibold group-hover:text-[#6a4a89] text-base transition-colors duration-300">
                             {item.label}
                           </span>
                         </div>
-                        <svg className="w-4 h-4 text-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-#9d7bb8 opacity-0 group-hover:opacity-100 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </a>
@@ -515,30 +515,30 @@ const ModernNavbar = () => {
                           setMobileOpenDropdown(null);
                         }}
                         className={`group flex items-center justify-between p-3.5 rounded-xl transition-all duration-300 interactive hover:shadow-sm ${
-                          isActive(item.path) ? 'bg-gradient-to-r from-purple-100 to-purple-50 shadow-sm' : 'hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100/60'
+                          isActive(item.path) ? 'bg-gradient-to-r from-#ebe2f0 to-[#f5f0f8] shadow-sm' : 'hover:bg-gradient-to-r hover:from-[#f5f0f8] hover:to-#ebe2f0/60'
                         }`}
                       >
                         <div className="flex items-center space-x-3">
                           <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
                             isActive(item.path)
-                              ? 'bg-gradient-to-br from-purple-500 to-purple-600 scale-110'
-                              : 'bg-gradient-to-br from-purple-100 to-purple-200 group-hover:from-purple-500 group-hover:to-purple-600 group-hover:scale-110'
+                              ? 'bg-gradient-to-br from-[#f5f0f8]0 to-[#8a6aa9] scale-110'
+                              : 'bg-gradient-to-br from-#ebe2f0 to-#d5c4e0 group-hover:from-[#f5f0f8]0 group-hover:to-[#8a6aa9] group-hover:scale-110'
                           }`}>
                             <span className={`text-lg font-bold transition-colors duration-300 ${
                               isActive(item.path)
                                 ? 'text-white'
-                                : 'text-purple-600 group-hover:text-white'
+                                : 'text-[#8a6aa9] group-hover:text-white'
                             }`}>{item.icon}</span>
                           </div>
                           <span className={`font-semibold text-base transition-colors duration-300 ${
                             isActive(item.path)
-                              ? 'text-purple-800'
-                              : 'text-gray-800 group-hover:text-purple-800'
+                              ? 'text-[#6a4a89]'
+                              : 'text-gray-800 group-hover:text-[#6a4a89]'
                           }`}>
                             {item.label}
                           </span>
                         </div>
-                        <svg className={`w-4 h-4 text-purple-400 transition-all duration-300 ${
+                        <svg className={`w-4 h-4 text-#9d7bb8 transition-all duration-300 ${
                           isActive(item.path)
                             ? 'opacity-100'
                             : 'opacity-0 group-hover:opacity-100'
@@ -552,7 +552,7 @@ const ModernNavbar = () => {
               </div>
               
               {/* Mobile CTA Button */}
-              <div className="mt-5 pt-5 border-t border-purple-200/60">
+              <div className="mt-5 pt-5 border-t border-[#d5c4e0]">
                 <a 
                   href="#contact"
                   onClick={(e) => {
@@ -560,9 +560,9 @@ const ModernNavbar = () => {
                     setIsMenuOpen(false);
                     setMobileOpenDropdown(null);
                   }}
-                  className="w-full group relative overflow-hidden px-6 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/30 block interactive cursor-pointer"
+                  className="w-full group relative overflow-hidden px-6 py-4 rounded-xl bg-gradient-to-r from-[#8a6aa9] via-#7a5a99 to-#6a4a89 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-#f5f0f80/30 block interactive cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-purple-800 to-purple-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-#7a5a99 via-#6a4a89 to-#5a3a79 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10 text-white font-bold flex items-center justify-center space-x-2 text-base">
                     <span>Get Started</span>
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -587,9 +587,9 @@ const ModernNavbar = () => {
         <div className="relative">
           {/* Floating Icon Button - Circle */}
           <div className="relative group">
-            <div className="absolute -inset-3 bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 rounded-full opacity-20 blur-xl group-hover:opacity-50 transition-all duration-500 animate-pulse"></div>
-            <button className="relative w-14 h-14 bg-gradient-to-br from-white via-purple-50 to-white backdrop-blur-xl border-2 border-purple-400 rounded-full shadow-2xl flex items-center justify-center group-hover:scale-110 group-hover:border-purple-600 transition-all duration-500 group-hover:shadow-purple-500/50">
-              <Menu className="w-6 h-6 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" strokeWidth={2.5} />
+            <div className="absolute -inset-3 bg-gradient-to-br from-[#f5f0f8]0 via-#8a6aa9 to-#7a5a99 rounded-full opacity-20 blur-xl group-hover:opacity-50 transition-all duration-500 animate-pulse"></div>
+            <button className="relative w-14 h-14 bg-gradient-to-br from-white via-#f5f0f8 to-white backdrop-blur-xl border-2 border-#9d7bb8 rounded-full shadow-2xl flex items-center justify-center group-hover:scale-110 group-hover:border-#8a6aa9 transition-all duration-500 group-hover:shadow-#f5f0f80/50">
+              <Menu className="w-6 h-6 text-[#8a6aa9] group-hover:text-[#7a5a99] transition-colors duration-300" strokeWidth={2.5} />
             </button>
           </div>
 
@@ -604,15 +604,15 @@ const ModernNavbar = () => {
           }`}>
             <div className="relative">
               {/* Glow effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-#9d7bb8 via-#f5f0f80 to-[#8a6aa9] rounded-full opacity-20 blur-xl"></div>
               
               {/* Main menu container - Vertical */}
               <div className="relative space-y-3">
                 {[
-                  { label: 'Services', section: 'services', Icon: Briefcase, color: 'from-purple-500 to-purple-600' },
-                  { label: 'Why Us', section: 'why', Icon: Sparkles, color: 'from-purple-600 to-purple-700' },
-                  { label: 'Testimonials', section: 'testimonials', Icon: MessageCircle, color: 'from-purple-500 to-purple-700' },
-                  { label: 'Contact', section: 'contact', Icon: Mail, color: 'from-purple-600 to-purple-800' }
+                  { label: 'Services', section: 'services', Icon: Briefcase, color: 'from-[#f5f0f8]0 to-[#8a6aa9]' },
+                  { label: 'Why Us', section: 'why', Icon: Sparkles, color: 'from-[#8a6aa9] to-#7a5a99' },
+                  { label: 'Testimonials', section: 'testimonials', Icon: MessageCircle, color: 'from-[#f5f0f8]0 to-#7a5a99' },
+                  { label: 'Contact', section: 'contact', Icon: Mail, color: 'from-[#8a6aa9] to-#6a4a89' }
                 ].map((item, index) => {
                   const IconComponent = item.Icon;
                   return (
@@ -623,29 +623,29 @@ const ModernNavbar = () => {
                         className="group relative flex items-center cursor-pointer"
                       >
                         {/* Circular icon button */}
-                        <div className={`relative w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-125 transition-all duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-purple-500/50 z-10`}>
+                        <div className={`relative w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-125 transition-all duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-#f5f0f80/50 z-10`}>
                           <IconComponent className="w-5 h-5 text-white" strokeWidth={2.5} />
                           <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           
                           {/* Outer ring on hover */}
-                          <div className="absolute -inset-1 rounded-full border-2 border-purple-400/50 opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <div className="absolute -inset-1 rounded-full border-2 border-#9d7bb8/50 opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-110 transition-all duration-300"></div>
                         </div>
                         
                         {/* Label tooltip - appears on hover with circle background */}
                         <div className="absolute left-14 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-2 transition-all duration-300 pointer-events-none z-20">
                           <div className="relative">
-                            <div className="bg-white/95 backdrop-blur-xl rounded-full px-5 py-2.5 shadow-xl border border-purple-200">
+                            <div className="bg-white/95 backdrop-blur-xl rounded-full px-5 py-2.5 shadow-xl border border-[#d5c4e0]">
                               <span className="text-gray-900 font-semibold text-sm whitespace-nowrap">
                                 {item.label}
                               </span>
                             </div>
                             {/* Triangle pointer */}
-                            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-2 h-2 bg-white/95 border-l border-b border-purple-200 rotate-45"></div>
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-2 h-2 bg-white/95 border-l border-b border-[#d5c4e0] rotate-45"></div>
                           </div>
                         </div>
                         
                         {/* Ripple effect */}
-                        <div className="absolute inset-0 rounded-full bg-purple-500/20 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        <div className="absolute inset-0 rounded-full bg-[#f5f0f8]/20 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                       </a>
                     </div>
                   );

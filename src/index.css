@@ -41,12 +41,12 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #8666A5;
+    background: #8a6aa9;
     border-radius: 3px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #7354a3;
+    background: #7a5a99;
   }
 }
 
@@ -61,7 +61,7 @@
     position: fixed;
     width: 12px;
     height: 12px;
-    background: rgba(134, 102, 165, 0.8);
+    background: rgba(138, 106, 169, 0.8);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
@@ -72,8 +72,8 @@
   .cursor-hover {
     width: 24px;
     height: 24px;
-    background: rgba(134, 102, 165, 0.6);
-    border: 2px solid rgba(134, 102, 165, 0.8);
+    background: rgba(138, 106, 169, 0.6);
+    border: 2px solid rgba(138, 106, 169, 0.8);
   }
   
   /* Interactive elements */
@@ -87,7 +87,7 @@
   
   /* Focus styles for accessibility */
   .interactive:focus {
-    outline: 2px solid rgba(134, 102, 165, 0.6);
+    outline: 2px solid rgba(138, 106, 169, 0.6);
     outline-offset: 2px;
   }
   
