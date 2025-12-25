@@ -61,7 +61,7 @@ const ContactForm = () => {
           {
             featureType: "all",
             elementType: "labels.text.fill",
-            stylers: [{ color: "#7c3aed" }]
+            stylers: [{ color: "#8a6aa9" }]
           },
           {
             featureType: "all",
@@ -106,7 +106,7 @@ const ContactForm = () => {
         icon: {
           path: window.google.maps.SymbolPath.CIRCLE,
           scale: 12,
-          fillColor: "#7C3AED",
+          fillColor: "#8a6aa9",
           fillOpacity: 1,
           strokeColor: "#ffffff",
           strokeWeight: 4
@@ -116,7 +116,7 @@ const ContactForm = () => {
       const infoWindow = new window.google.maps.InfoWindow({
         content: `
           <div style="padding: 15px; font-family: 'Montserrat', sans-serif; max-width: 280px;">
-            <h3 style="color: #7C3AED; font-size: 16px; font-weight: 700; margin: 0 0 10px 0;">PRSparkz</h3>
+            <h3 style="color: #8a6aa9; font-size: 16px; font-weight: 700; margin: 0 0 10px 0;">PRSparkz</h3>
             <p style="margin: 0 0 8px 0; color: #374151; font-size: 14px; line-height: 1.5;">
               402, RG Trade Tower<br/>
               Netaji Subhash Palace<br/>
@@ -127,7 +127,7 @@ const ContactForm = () => {
               <p style="margin: 4px 0; color: #6b7280; font-size: 13px;">📧 ${companyInfo.email}</p>
             </div>
             <a href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8" target="_blank" rel="noopener noreferrer" 
-               style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #7C3AED; color: white; 
+               style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #8a6aa9; color: white; 
                text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
               Get Directions
             </a>
@@ -306,17 +306,17 @@ const ContactForm = () => {
   return (
     <section 
       id="contact" 
-      className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white py-16 px-4 md:px-8"
+      className="min-h-screen bg-gradient-to-br from-white via-[#f5f0f8] to-white py-16 px-4 md:px-8"
       style={{ fontFamily: "'Montserrat', sans-serif" }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-800 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] flex items-center justify-center">
               <MessageSquare className="text-white" size={24} />
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-700 to-purple-900 bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] bg-clip-text text-transparent">
               Contact Us
             </h2>
           </div>
@@ -325,62 +325,28 @@ const ContactForm = () => {
           </p>
         </div>
 
-        {/* Tabs Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex rounded-2xl bg-white p-2 border border-purple-100 shadow-sm">
-            <button
-              onClick={() => setActiveTab("form")}
-              className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                activeTab === "form" 
-                  ? "bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg" 
-                  : "text-gray-600 hover:text-purple-700"
-              }`}
-            >
-              Send Message
-            </button>
-            <button
-              onClick={() => setActiveTab("map")}
-              className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                activeTab === "map" 
-                  ? "bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg" 
-                  : "text-gray-600 hover:text-purple-700"
-              }`}
-            >
-              Visit Us
-            </button>
-            <button
-              onClick={() => setActiveTab("info")}
-              className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                activeTab === "info" 
-                  ? "bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg" 
-                  : "text-gray-600 hover:text-purple-700"
-              }`}
-            >
-              Contact Info
-            </button>
-          </div>
-        </div>
+        {/* Tabs Navigation - Removed as only one tab remains */}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Contact Information */}
           <div className="lg:col-span-1 space-y-8">
             {/* Contact Cards */}
-            <div className="bg-white rounded-2xl border border-purple-100 shadow-lg p-8">
+            <div className="bg-white rounded-2xl border border-[#ebe2f0] shadow-lg p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Building className="text-purple-600" size={24} />
+                <Building className="text-[#8a6aa9]" size={24} />
                 Contact Information
               </h3>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-purple-50 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-purple-600" size={20} />
+                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-[#8a6aa9]" size={20} />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Email Address</h4>
                     <a 
                       href={`mailto:${companyInfo.email}`}
-                      className="text-purple-700 hover:text-purple-800 transition-colors font-medium"
+                      className="text-[#8a6aa9] hover:text-[#7a5a99] transition-colors font-medium"
                     >
                       {companyInfo.email}
                     </a>
@@ -388,15 +354,15 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-purple-50 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-purple-600" size={20} />
+                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
+                    <Phone className="text-[#8a6aa9]" size={20} />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Phone Number</h4>
                     <a 
                       href={`tel:${companyInfo.phone}`}
-                      className="text-purple-700 hover:text-purple-800 transition-colors font-medium"
+                      className="text-[#8a6aa9] hover:text-[#7a5a99] transition-colors font-medium"
                     >
                       {companyInfo.phone}
                     </a>
@@ -404,9 +370,9 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-purple-50 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-purple-600" size={20} />
+                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
+                    <MapPin className="text-[#8a6aa9]" size={20} />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Office Address</h4>
@@ -415,7 +381,7 @@ const ContactForm = () => {
                       href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-purple-700 hover:text-purple-800 mt-2 inline-flex items-center gap-1"
+                      className="text-sm text-[#8a6aa9] hover:text-[#7a5a99] mt-2 inline-flex items-center gap-1"
                     >
                       <ExternalLink size={14} />
                       View on map
@@ -434,7 +400,7 @@ const ContactForm = () => {
                     href={companyInfo.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
                     aria-label="Follow us on LinkedIn"
                   >
                     <Linkedin size={20} />
@@ -443,7 +409,7 @@ const ContactForm = () => {
                     href={companyInfo.social.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
                     aria-label="Follow us on Twitter"
                   >
                     <Twitter size={20} />
@@ -452,7 +418,7 @@ const ContactForm = () => {
                     href={companyInfo.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
                     aria-label="Follow us on Instagram"
                   >
                     <Instagram size={20} />
@@ -466,9 +432,8 @@ const ContactForm = () => {
 
           {/* Right Column - Main Content */}
           <div className="lg:col-span-2">
-            {/* Contact Form Tab */}
-            {activeTab === "form" && (
-              <div className="bg-white rounded-2xl border border-purple-100 shadow-xl overflow-hidden">
+            {/* Contact Form */}
+            <div className="bg-white rounded-2xl border border-[#ebe2f0] shadow-xl overflow-hidden">
                 {isSubmitted ? (
                   <div className="text-center py-16 px-8">
                     <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-emerald-600 animate-success-pulse">
@@ -497,7 +462,7 @@ const ContactForm = () => {
                     </div>
                     <button
                       onClick={resetForm}
-                      className="px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                      className="px-8 py-3 bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                     >
                       Send Another Message
                     </button>
@@ -516,7 +481,7 @@ const ContactForm = () => {
                             Your Name *
                           </label>
                           <div className="relative">
-                            <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600" />
+                            <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
                             <input
                               type="text"
                               name="name"
@@ -525,8 +490,8 @@ const ContactForm = () => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.name ? 'border-red-300 focus:border-red-500' : 'border-purple-200 focus:border-purple-600'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-purple-100 transition-all`}
+                                formErrors.name ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
+                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
                               placeholder="John Doe"
                               disabled={isSubmitting}
                             />
@@ -543,7 +508,7 @@ const ContactForm = () => {
                             Email Address *
                           </label>
                           <div className="relative">
-                            <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600" />
+                            <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
                             <input
                               type="email"
                               name="email"
@@ -552,8 +517,8 @@ const ContactForm = () => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.email ? 'border-red-300 focus:border-red-500' : 'border-purple-200 focus:border-purple-600'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-purple-100 transition-all`}
+                                formErrors.email ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
+                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
                               placeholder="john@example.com"
                               disabled={isSubmitting}
                             />
@@ -572,7 +537,7 @@ const ContactForm = () => {
                             Phone Number <span className="text-gray-500 font-normal">(optional)</span>
                           </label>
                           <div className="relative">
-                            <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600" />
+                            <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
                             <input
                               type="tel"
                               name="phone"
@@ -580,8 +545,8 @@ const ContactForm = () => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.phone ? 'border-red-300 focus:border-red-500' : 'border-purple-200 focus:border-purple-600'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-purple-100 transition-all`}
+                                formErrors.phone ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
+                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
                               placeholder="+91 12345 67890"
                               disabled={isSubmitting}
                             />
@@ -598,12 +563,12 @@ const ContactForm = () => {
                             Subject *
                           </label>
                           <div className="relative">
-                            <FileText size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600" />
+                            <FileText size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
                             <select
                               name="subject"
                               value={formData.subject}
                               onChange={handleChange}
-                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-purple-200 text-gray-900 bg-white focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all appearance-none cursor-pointer"
+                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-[#e2d4ed] text-gray-900 bg-white focus:outline-none focus:border-[#8a6aa9] focus:ring-2 focus:ring-[#f5f0f8] transition-all appearance-none cursor-pointer"
                               disabled={isSubmitting}
                             >
                               {contactSubjects.map((option) => (
@@ -613,7 +578,7 @@ const ContactForm = () => {
                               ))}
                             </select>
                             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                              <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 text-[#8a6aa9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                               </svg>
                             </div>
@@ -633,7 +598,7 @@ const ContactForm = () => {
                           </span>
                         </div>
                         <div className="relative">
-                          <FileText size={18} className="absolute left-4 top-4 text-purple-600" />
+                          <FileText size={18} className="absolute left-4 top-4 text-[#8a6aa9]" />
                           <textarea
                             name="message"
                             rows="5"
@@ -643,8 +608,8 @@ const ContactForm = () => {
                             onBlur={handleBlur}
                             maxLength={maxMessageLength}
                             className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                              formErrors.message ? 'border-red-300 focus:border-red-500' : 'border-purple-200 focus:border-purple-600'
-                            } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-purple-100 transition-all resize-none`}
+                              formErrors.message ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
+                            } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all resize-none`}
                             placeholder="Tell us about your project, timeline, and budget..."
                             disabled={isSubmitting}
                           />
@@ -670,7 +635,7 @@ const ContactForm = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-4 flex items-center justify-center gap-3 text-white font-bold rounded-xl text-lg transition-all duration-300 bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          className="w-full py-4 flex items-center justify-center gap-3 text-white font-bold rounded-xl text-lg transition-all duration-300 bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] hover:from-[#7a5a99] hover:to-[#6a4a89] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
                           {isSubmitting ? (
                             <>
@@ -686,166 +651,37 @@ const ContactForm = () => {
                         </button>
                         <p className="text-center text-sm text-gray-500 mt-4">
                           By submitting, you agree to our{' '}
-                          <a href="/privacy" className="text-purple-700 hover:underline font-medium">Privacy Policy</a>
+                          <a href="/privacy" className="text-[#8a6aa9] hover:underline font-medium">Privacy Policy</a>
                           {' '}and{' '}
-                          <a href="/terms" className="text-purple-700 hover:underline font-medium">Terms of Service</a>
+                          <a href="/terms" className="text-[#8a6aa9] hover:underline font-medium">Terms of Service</a>
                         </p>
                       </div>
                     </form>
                   </div>
                 )}
               </div>
-            )}
-
-            {/* Map Tab */}
-            {activeTab === "map" && (
-              <div className="bg-white rounded-2xl border border-purple-100 shadow-xl overflow-hidden">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-3">
-                    <MapPin className="text-purple-600" />
-                    Visit Our Office
-                  </h3>
-                  <p className="text-gray-600 mb-6">Find us at our Delhi headquarters in Pitampura</p>
-                  
-                  {/* Map Container */}
-                  <div className="relative rounded-xl overflow-hidden border border-gray-200 mb-6 shadow-md">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.5842894989845!2d77.12885!3d28.69820!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03c4f8ffffff%3A0x0!2sRG%20Trade%20Tower%2C%20Netaji%20Subhash%20Palace%2C%20Pitampura%2C%20Delhi%2C%20110034!5e0!3m2!1sen!2sin!4v1234567890"
-                      width="100%"
-                      height="450"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="PRSparkz Office Location"
-                      className="w-full h-96"
-                    ></iframe>
-                    
-                    {/* Map overlay with address and directions button */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="text-white">
-                          <h4 className="font-bold text-lg mb-1 flex items-center gap-2">
-                            <MapPin size={20} />
-                            PRSparkz Office
-                          </h4>
-                          <p className="text-sm text-white/90 leading-relaxed">
-                            402, RG Trade Tower, Netaji Subhash Palace<br/>
-                            Pitampura, Delhi, 110034
-                          </p>
-                        </div>
-                        <a 
-                          href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-white text-purple-700 rounded-lg font-semibold hover:bg-purple-50 transition-all hover:scale-105 shadow-lg"
-                        >
-                          <ExternalLink size={16} />
-                          Directions
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Removed Parking Information, Public Transport, and Meeting Protocol sections as requested */}
-                </div>
-              </div>
-            )}
-
-            {/* Contact Info Tab */}
-            {activeTab === "info" && (
-              <div className="bg-white rounded-2xl border border-purple-100 shadow-xl p-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-                    <div className="space-y-6">
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">Email Support</h4>
-                        <div className="space-y-2">
-                          <a href="mailto:Info@prsparkz.com" className="block p-3 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors">
-                            <div className="font-medium text-purple-700">Info@prsparkz.com</div>
-                            <div className="text-sm text-gray-600">General inquiries</div>
-                          </a>
-                          <a href="mailto:support@prsparkz.com" className="block p-3 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors">
-                            <div className="font-medium text-purple-700">support@prsparkz.com</div>
-                            <div className="text-sm text-gray-600">Technical support</div>
-                          </a>
-                          <a href="mailto:careers@prsparkz.com" className="block p-3 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors">
-                            <div className="font-medium text-purple-700">careers@prsparkz.com</div>
-                            <div className="text-sm text-gray-600">Job opportunities</div>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">Phone Numbers</h4>
-                        <div className="space-y-2">
-                          <div className="p-3 rounded-lg bg-purple-50">
-                            <div className="font-medium text-purple-700">+91 052-5684</div>
-                            <div className="text-sm text-gray-600">Main office line</div>
-                          </div>
-                          <div className="p-3 rounded-lg bg-purple-50">
-                            <div className="font-medium text-purple-700">+91 052-5685</div>
-                            <div className="text-sm text-gray-600">Support hotline</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Business Hours</h4>
-                    <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border border-purple-100 mb-6">
-                      <div className="space-y-3">
-                        <div className="flex justify-between py-2 border-b border-purple-100">
-                          <span className="text-gray-700">Monday - Thursday</span>
-                          <span className="font-medium text-gray-900">9:00 AM - 6:00 PM</span>
-                        </div>
-                        <div className="flex justify-between py-2 border-b border-purple-100">
-                          <span className="text-gray-700">Friday</span>
-                          <span className="font-medium text-gray-900">9:00 AM - 5:00 PM</span>
-                        </div>
-                        <div className="flex justify-between py-2">
-                          <span className="text-gray-700">Saturday - Sunday</span>
-                          <span className="font-medium text-gray-900">Closed</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
-                      <h4 className="font-semibold text-gray-900 mb-3">Emergency Contact</h4>
-                      <p className="text-sm text-gray-600 mb-3">For urgent matters outside business hours</p>
-                      <a href="tel:+911234567890" className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 rounded-lg font-medium hover:bg-red-100 transition-colors">
-                        <Phone size={16} />
-                        +91 123-456-7890
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
-        </div>
 
-        {/* Call to Action */}
+          {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl p-8 md:p-12 shadow-2xl">
+          <div className="bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] rounded-2xl p-8 md:p-12 shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Ready to Start Your Project?
             </h3>
-            <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-[#e2d4ed] mb-6 max-w-2xl mx-auto">
               Schedule a free consultation call with our experts to discuss your requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`mailto:${companyInfo.email}?subject=Schedule a Consultation`}
-                className="px-8 py-3 bg-white text-purple-700 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 bg-white text-[#8a6aa9] rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
               >
                 Schedule a Call
               </a>
               <a
                 href={`tel:${companyInfo.phone}`}
-                className="px-8 py-3 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-purple-700 transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-[#8a6aa9] transition-all duration-300 hover:scale-105"
               >
                 Call Now
               </a>

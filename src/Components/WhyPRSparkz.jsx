@@ -24,10 +24,10 @@ const WhyPRSparkz = () => {
   // Preload images
   useEffect(() => {
     const imageUrls = [
-      "/src/assets/why-features/1.jpg",
-      "/src/assets/why-features/2.jpg",
-      "/src/assets/why-features/3.jpg",
-      "/src/assets/why-features/4.jpg"
+      "/src/assets/why features /1.jpg",
+      "/src/assets/why features /2.jpg",
+      "/src/assets/why features /3.jpg",
+      "/src/assets/why features /4.jpg"
     ];
 
     const loadImage = (url) => {
@@ -99,7 +99,7 @@ const WhyPRSparkz = () => {
     {
       title: "Data-Driven Insights",
       description: "Real-time analytics and predictive intelligence for informed decisions that drive measurable results.",
-      image: '/src/assets/why features/1.jpg',
+      image: '/src/assets/why features /1.jpg',
       fallbackImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,8 +117,8 @@ const WhyPRSparkz = () => {
     {
       title: "Multi-Platform Strategy",
       description: "Seamless integration across all digital and traditional channels for maximum reach and impact.",
-      image: '/src/assets/why features/2.jpg',
-      fallbackImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w-800&auto=format&fit=crop",
+      image: '/src/assets/why features /2.jpg',
+      fallbackImage: "https://images.unsplash.com/photo-1611224923853-80b023f02711?w=800&auto=format&fit=crop",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -135,7 +135,7 @@ const WhyPRSparkz = () => {
     {
       title: "Creative Excellence",
       description: "Award-winning design and compelling storytelling that resonates with your target audience.",
-      image: '/src/assets/why features/3.jpg',
+      image: '/src/assets/why features /3.jpg',
       fallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,7 +153,7 @@ const WhyPRSparkz = () => {
     {
       title: "24/7 Support",
       description: "Continuous monitoring, optimization and dedicated support to ensure your campaigns succeed.",
-      image: '/src/assets/why features/4.jpg',
+      image: '/src/assets/why features /4.jpg',
       fallbackImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +185,7 @@ const WhyPRSparkz = () => {
     }, [src, loadedImages]);
 
     return (
-      <div className="relative">
+      <>
         {loading && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
         )}
@@ -201,7 +201,7 @@ const WhyPRSparkz = () => {
           loading="lazy"
           {...props}
         />
-      </div>
+      </>
     );
   };
 
@@ -295,8 +295,7 @@ const WhyPRSparkz = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
               className="relative group"
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <div 
                 className="bg-white rounded-2xl p-6 md:p-8 text-center transition-all duration-300 hover:shadow-2xl border border-gray-100"

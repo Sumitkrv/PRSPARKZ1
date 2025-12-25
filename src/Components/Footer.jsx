@@ -123,7 +123,9 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     className="flex items-center text-gray-600 hover:text-[#8a6aa9] transition-colors group"
                   >
                     <Home className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#8a6aa9] transition-colors" />
@@ -133,9 +135,6 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/about"
-                    onClick={() => {
-                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-                    }}
                     className="flex items-center text-gray-600 hover:text-[#8a6aa9] transition-colors group"
                   >
                     <Info className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#8a6aa9] transition-colors" />
@@ -145,9 +144,6 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/portfolio"
-                    onClick={() => {
-                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-                    }}
                     className="flex items-center text-gray-600 hover:text-[#8a6aa9] transition-colors group"
                   >
                     <FolderOpen className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#8a6aa9] transition-colors" />
@@ -262,7 +258,7 @@ const Footer = () => {
                     onKeyPress={(e) => e.key === 'Enter' && handleSubscribe()}
                     placeholder="Your email address"
                     disabled={isSubmitting}
-                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a6aa9] focus:border-transparent text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a6aa9] focus:border-transparent text-sm text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   />
                 </div>
                 <button

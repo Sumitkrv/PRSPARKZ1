@@ -36,11 +36,9 @@ const SparkzHero = () => {
           className="absolute top-0 left-0 w-full h-full object-cover"
           style={{ minHeight: '100%', minWidth: '100%' }}
         >
-          <source src="/Digital Marketing Services - Promo Video.mp4" type="video/mp4" />
+          <source src="/Marketing_Company_Hero_Video_Generated.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Overlay to make text more readable */}
-        <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

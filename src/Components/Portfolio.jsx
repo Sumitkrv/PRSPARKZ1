@@ -81,7 +81,9 @@ const Portfolio = () => {
   const smoothY = useSpring(y, { stiffness: mobile ? 50 : 100, damping: mobile ? 20 : 30 });
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
+  // Scroll to top on component mount
   useEffect(() => {
+    window.scrollTo(0, 0);
     setIsVisible(true);
   }, []);
 

@@ -44,7 +44,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Events & Marketing",
       stats: "Outstanding reach",
-      color: "#7c3aed",
+      color: "#8a6aa9",
       gradient: "from-[#8a6aa9] to-[#6a4a89]"
     },
     { 
@@ -92,7 +92,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Digital Marketing",
       stats: "Sales up",
-      color: "#7c3aed",
+      color: "#8a6aa9",
       gradient: "from-[#8a6aa9] to-[#6a4a89]"
     },
     { 
