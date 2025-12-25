@@ -714,14 +714,14 @@ const Team = () => {
             >
               <div className="flex items-center justify-center gap-4 mb-6">
                 <motion.div 
-                  className="h-px w-12 bg-gradient-to-r from-transparent to-#b99cc8"
+                  className="h-px w-12 bg-gradient-to-r from-transparent to-[#b99cc8]"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1.2, duration: 0.6 }}
                 />
                 <Sparkles className="w-6 h-6" style={{ color: '#8a6aa9' }} />
                 <motion.div 
-                  className="h-px w-12 bg-gradient-to-l from-transparent to-#b99cc8"
+                  className="h-px w-12 bg-gradient-to-l from-transparent to-[#b99cc8]"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1.2, duration: 0.6 }}

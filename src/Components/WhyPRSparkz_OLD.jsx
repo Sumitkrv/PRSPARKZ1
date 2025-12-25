@@ -135,22 +135,22 @@ const WhyPRSparkz = () => {
     <section
       id="why-pr-sparkz"
       ref={sectionRef}
-      className="pb-16 md:pb-24 bg-gradient-to-br from-gray-50 via-#f5f0f8 to-#ebe2f0 relative overflow-hidden"
+      className="pb-16 md:pb-24 bg-gradient-to-br from-gray-50 via-[#f5f0f8] to-[#ebe2f0] relative overflow-hidden"
       style={{ paddingTop: 'max(140px, calc(100px + 3rem))', fontFamily: "'Montserrat', sans-serif" }}
       aria-label="Why Choose PR Sparkz"
     >
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-2 md:left-10 w-16 h-16 md:w-32 md:h-32 bg-#d5c4e0 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
-        <div className="absolute top-32 right-2 md:right-20 w-12 h-12 md:w-24 md:h-24 bg-#b99cc8 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-float-delayed"></div>
-        <div className="absolute bottom-40 left-1/4 w-16 h-16 md:w-28 md:h-28 bg-#d5c4e0 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-20 h-20 md:w-16 md:h-16 bg-#b99cc8 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+        <div className="absolute top-10 left-2 md:left-10 w-16 h-16 md:w-32 md:h-32 bg-[#d5c4e0] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+        <div className="absolute top-32 right-2 md:right-20 w-12 h-12 md:w-24 md:h-24 bg-[#b99cc8] rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-float-delayed"></div>
+        <div className="absolute bottom-40 left-1/4 w-16 h-16 md:w-28 md:h-28 bg-[#d5c4e0] rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-20 h-20 md:w-16 md:h-16 bg-[#b99cc8] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
 
         {/* Floating particles */}
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-#b99cc8 rounded-full opacity-20"
+            className="absolute w-2 h-2 bg-[#b99cc8] rounded-full opacity-20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -183,7 +183,7 @@ const WhyPRSparkz = () => {
           {/* Interactive Statistics with Images */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20 items-center">
             {/* Image Showcase */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-64 md:h-80 bg-gradient-to-br from-#ebe2f0 to-#f5f0f8">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-64 md:h-80 bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
               <img
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 src={stats[activeStat].image}
@@ -197,7 +197,7 @@ const WhyPRSparkz = () => {
               />
               {/* Coming Soon Fallback */}
               <div 
-                className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-#f5f0f8"
+                className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
                 style={{ display: 'none' }}
               >
                 <div className="text-center px-6">
@@ -313,7 +313,7 @@ const WhyPRSparkz = () => {
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = '#f3f4f6'}
               >
                 {/* Feature Image */}
-                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-#ebe2f0 to-#f5f0f8">
+                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
                   <img
                     src={feature.image}
                     alt={feature.title}
@@ -327,7 +327,7 @@ const WhyPRSparkz = () => {
                   />
                   {/* Coming Soon Fallback */}
                   <div 
-                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-#f5f0f8"
+                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
                     style={{ display: 'none' }}
                   >
                     <svg 
@@ -424,7 +424,7 @@ const WhyPRSparkz = () => {
                 </div>
 
                 {/* Image */}
-                <div className="relative min-h-64 lg:min-h-full bg-gradient-to-br from-#ebe2f0 to-#f5f0f8">
+                <div className="relative min-h-64 lg:min-h-full bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
                   <img
                     src="/images/why/cta-image.jpg"
                     alt="Professional Consultation"
@@ -437,7 +437,7 @@ const WhyPRSparkz = () => {
                   />
                   {/* Coming Soon Fallback */}
                   <div 
-                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-#f5f0f8"
+                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
                     style={{ display: 'none' }}
                   >
                     <svg 
@@ -461,7 +461,7 @@ const WhyPRSparkz = () => {
                       Coming Soon
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-l from-white/10 to-#8a6aa9/10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-white/10 to-[#8a6aa9]/10"></div>
                 </div>
               </div>
             </div>

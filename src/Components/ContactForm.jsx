@@ -37,7 +37,7 @@ const ContactForm = () => {
   const companyInfo = {
     email: "Info@prsparkz.com",
     phone: "+91 052-5684",
-    address: "123 Tech Street, Bangalore, Karnataka 560001, India",
+    address: "402, RG Trade Tower, Netaji Subhash Palace, Pitampura, Delhi, 110034",
     workingHours: "Monday - Friday: 9:00 AM - 6:00 PM",
     social: {
       linkedin: "https://linkedin.com/company/prsparkz",
@@ -50,48 +50,87 @@ const ContactForm = () => {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.google && mapRef.current) {
       const map = new window.google.maps.Map(mapRef.current, {
-        center: { lat: 12.9716, lng: 77.5946 }, // Bangalore coordinates
-        zoom: 14,
+        center: { lat: 28.6982, lng: 77.1314 }, // Pitampura, Delhi coordinates
+        zoom: 16,
         styles: [
+          {
+            featureType: "all",
+            elementType: "geometry",
+            stylers: [{ color: "#f5f5f5" }]
+          },
           {
             featureType: "all",
             elementType: "labels.text.fill",
             stylers: [{ color: "#7c3aed" }]
           },
           {
+            featureType: "all",
+            elementType: "labels.text.stroke",
+            stylers: [{ color: "#ffffff" }]
+          },
+          {
             featureType: "poi",
             elementType: "all",
             stylers: [{ visibility: "off" }]
+          },
+          {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [{ color: "#ffffff" }]
+          },
+          {
+            featureType: "road",
+            elementType: "geometry.stroke",
+            stylers: [{ color: "#e5e7eb" }]
+          },
+          {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [{ color: "#ddd6fe" }]
           }
         ],
         mapTypeControl: false,
-        streetViewControl: false,
+        streetViewControl: true,
         fullscreenControl: true,
-        zoomControl: true
+        zoomControl: true,
+        zoomControlOptions: {
+          position: window.google.maps.ControlPosition.RIGHT_CENTER
+        }
       });
 
       const marker = new window.google.maps.Marker({
-        position: { lat: 12.9716, lng: 77.5946 },
+        position: { lat: 28.6982, lng: 77.1314 },
         map: map,
-        title: "PRSparkz Office",
+        title: "PRSparkz Office - RG Trade Tower",
+        animation: window.google.maps.Animation.DROP,
         icon: {
-          url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="15" fill="#7C3AED" fill-opacity="0.2"/>
-              <circle cx="20" cy="20" r="8" fill="#7C3AED"/>
-              <circle cx="20" cy="20" r="4" fill="white"/>
-            </svg>
-          `)}`,
-          scaledSize: new window.google.maps.Size(40, 40)
+          path: window.google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: "#7C3AED",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 4
         }
       });
 
       const infoWindow = new window.google.maps.InfoWindow({
         content: `
-          <div style="padding: 10px; font-family: 'Montserrat', sans-serif;">
-            <strong style="color: #7C3AED;">PRSparkz Office</strong><br/>
-            ${companyInfo.address}<br/>
-            📞 ${companyInfo.phone}
+          <div style="padding: 15px; font-family: 'Montserrat', sans-serif; max-width: 280px;">
+            <h3 style="color: #7C3AED; font-size: 16px; font-weight: 700; margin: 0 0 10px 0;">PRSparkz</h3>
+            <p style="margin: 0 0 8px 0; color: #374151; font-size: 14px; line-height: 1.5;">
+              402, RG Trade Tower<br/>
+              Netaji Subhash Palace<br/>
+              Pitampura, Delhi, 110034
+            </p>
+            <div style="border-top: 1px solid #e5e7eb; padding-top: 8px; margin-top: 8px;">
+              <p style="margin: 4px 0; color: #6b7280; font-size: 13px;">📞 ${companyInfo.phone}</p>
+              <p style="margin: 4px 0; color: #6b7280; font-size: 13px;">📧 ${companyInfo.email}</p>
+            </div>
+            <a href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8" target="_blank" rel="noopener noreferrer" 
+               style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #7C3AED; color: white; 
+               text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
+              Get Directions
+            </a>
           </div>
         `
       });
@@ -99,6 +138,11 @@ const ContactForm = () => {
       marker.addListener("click", () => {
         infoWindow.open(map, marker);
       });
+      
+      // Open info window by default
+      setTimeout(() => {
+        infoWindow.open(map, marker);
+      }, 500);
     }
   }, []);
 
@@ -367,13 +411,15 @@ const ContactForm = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Office Address</h4>
                     <p className="text-gray-700">{companyInfo.address}</p>
-                    <button 
-                      onClick={() => setActiveTab("map")}
+                    <a 
+                      href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm text-purple-700 hover:text-purple-800 mt-2 inline-flex items-center gap-1"
                     >
-                      <Map size={14} />
+                      <ExternalLink size={14} />
                       View on map
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -659,30 +705,44 @@ const ContactForm = () => {
                     <MapPin className="text-purple-600" />
                     Visit Our Office
                   </h3>
-                  <p className="text-gray-600 mb-6">Find us at our Bangalore headquarters</p>
+                  <p className="text-gray-600 mb-6">Find us at our Delhi headquarters in Pitampura</p>
                   
                   {/* Map Container */}
-                  <div className="relative rounded-xl overflow-hidden border border-gray-200 mb-6">
-                    <div 
-                      ref={mapRef}
-                      className="w-full h-96 bg-gradient-to-br from-purple-50 to-blue-50"
-                    >
-                      {/* Fallback if Google Maps doesn't load */}
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center">
-                          <MapPin className="w-16 h-16 text-purple-600 mx-auto mb-4" />
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">PRSparkz Office</h4>
-                          <p className="text-gray-600">{companyInfo.address}</p>
-                          <a 
-                            href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo.address)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg font-medium hover:shadow-lg transition-all"
-                          >
-                            <ExternalLink size={18} />
-                            Open in Google Maps
-                          </a>
+                  <div className="relative rounded-xl overflow-hidden border border-gray-200 mb-6 shadow-md">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.5842894989845!2d77.12885!3d28.69820!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03c4f8ffffff%3A0x0!2sRG%20Trade%20Tower%2C%20Netaji%20Subhash%20Palace%2C%20Pitampura%2C%20Delhi%2C%20110034!5e0!3m2!1sen!2sin!4v1234567890"
+                      width="100%"
+                      height="450"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="PRSparkz Office Location"
+                      className="w-full h-96"
+                    ></iframe>
+                    
+                    {/* Map overlay with address and directions button */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="text-white">
+                          <h4 className="font-bold text-lg mb-1 flex items-center gap-2">
+                            <MapPin size={20} />
+                            PRSparkz Office
+                          </h4>
+                          <p className="text-sm text-white/90 leading-relaxed">
+                            402, RG Trade Tower, Netaji Subhash Palace<br/>
+                            Pitampura, Delhi, 110034
+                          </p>
                         </div>
+                        <a 
+                          href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-white text-purple-700 rounded-lg font-semibold hover:bg-purple-50 transition-all hover:scale-105 shadow-lg"
+                        >
+                          <ExternalLink size={16} />
+                          Directions
+                        </a>
                       </div>
                     </div>
                   </div>

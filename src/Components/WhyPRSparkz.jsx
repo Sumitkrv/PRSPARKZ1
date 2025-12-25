@@ -557,7 +557,7 @@ const WhyPRSparkz = () => {
                 Book your <span className="font-semibold text-black">free strategy session</span> and discover how our proven methodologies can deliver measurable growth for your business.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="mb-8">
                 <motion.button
                   onClick={() => scrollToSection('contact', 80)}
                   className="group relative px-8 py-4 text-white font-semibold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
@@ -581,18 +581,6 @@ const WhyPRSparkz = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </motion.svg>
                   </span>
-                </motion.button>
-
-                <motion.button
-                  className="px-8 py-4 border-2 border-gray-300 text-black font-semibold rounded-xl transition-all hover:border-[#8a6aa9] hover:bg-[#8a6aa9]/5"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.2 }}
-                  onClick={() => scrollToSection('portfolio', 80)}
-                >
-                  View Case Studies
                 </motion.button>
               </div>
 

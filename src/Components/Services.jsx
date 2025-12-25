@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Monitor, Palette, Package, Target, PenTool, Share2, Newspaper, Calendar, Sparkles, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import img1 from "../assets/services /1.jpg";
-import img2 from "../assets/services /2.jpg";
-import img3 from "../assets/services /3.jpg";
-import img4 from "../assets/services /4.jpg";
-import img5 from "../assets/services /5.jpg";
-import img6 from "../assets/services /6.jpg";
-import img7 from "../assets/services /7.jpg";
-import img8 from "../assets/services /8.jpg";
 
 const Services = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -30,7 +22,7 @@ const Services = () => {
       description:
         "Crafting stunning websites tailored to your brand's needs with creativity and user experience.",
       Icon: Monitor,
-      image: img1,
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
     },
     {
       id: 2,
@@ -38,7 +30,7 @@ const Services = () => {
       description:
         "Creating logos that resonate with your audience and represent your brand identity perfectly.",
       Icon: Palette,
-      image: img2,
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
     },
     {
       id: 3,
@@ -46,7 +38,7 @@ const Services = () => {
       description:
         "Innovative solutions that marry form with function. From concept to prototype.",
       Icon: Package,
-      image: img3,
+      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80",
     },
     {
       id: 4,
@@ -54,7 +46,7 @@ const Services = () => {
       description:
         "Comprehensive strategies that define your unique market position and audience connections.",
       Icon: Target,
-      image: img4,
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     },
     {
       id: 5,
@@ -62,7 +54,7 @@ const Services = () => {
       description:
         "Engaging content across all platforms that tells your story and converts.",
       Icon: PenTool,
-      image: img5,
+      image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80",
     },
     {
       id: 6,
@@ -70,7 +62,7 @@ const Services = () => {
       description:
         "Strategic management that builds community and drives engagement effectively.",
       Icon: Share2,
-      image: img6,
+      image: "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=80",
     },
     {
       id: 7,
@@ -78,7 +70,7 @@ const Services = () => {
       description:
         "Building strong media relationships to secure valuable coverage and visibility.",
       Icon: Newspaper,
-      image: img7,
+      image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=80",
     },
     {
       id: 8,
@@ -86,7 +78,7 @@ const Services = () => {
       description:
         "Creating memorable experiences that generate buzz and strengthen relationships.",
       Icon: Calendar,
-      image: img8,
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
     },
   ];
 
@@ -199,10 +191,6 @@ const Services = () => {
                 {/* Animated Border */}
                 <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-ping opacity-0 group-hover:opacity-100"></div>
               </a>
-              
-              <p className="text-sm text-gray-500 mt-4">
-                ✨ Free consultation • No commitments required
-              </p>
             </div>
           </div>
         </div>
@@ -237,35 +225,8 @@ const ServiceCard = ({ service, index }) => {
         
         {/* Flip Container */}
         <div className={`absolute inset-3 md:inset-4 transition-transform duration-700 ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
-          {/* Front Side - Icon & Text */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white via-[#f5f0f8]/50 to-[#ebe2f0]/30 border border-[#d5c4e0] flex flex-col items-center justify-center p-4 md:p-6 group-hover:border-[#b99cc8] group-hover:shadow-xl transition-all duration-500 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
-            {/* Icon with Glow */}
-            <div className="mb-2 md:mb-3 flex-shrink-0 text-[#8a6aa9] relative">
-              <div className="absolute inset-0 bg-[#8a6aa9]/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <Icon className="w-8 h-8 md:w-10 md:h-10 relative z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
-            </div>
-            
-            {/* Title */}
-            <h3 className="bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] text-transparent bg-clip-text font-bold text-center text-xs md:text-sm mb-2 tracking-wide leading-tight">
-              {service.title}
-            </h3>
-            
-            {/* Description */}
-            <p className="text-gray-700 text-[10px] md:text-xs text-center leading-snug transition-colors duration-500 line-clamp-4">
-              {service.description}
-            </p>
-
-            {/* Hover Indicator */}
-            <div className="absolute bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="flex items-center gap-1 text-[#8a6aa9] text-[10px] font-semibold">
-                <span>Hover to view</span>
-                <ArrowRight className="w-3 h-3 animate-pulse" />
-              </div>
-            </div>
-          </div>
-
-          {/* Back Side - Image */}
-          <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8a6aa9] shadow-2xl [transform:rotateY(180deg)]" style={{ backfaceVisibility: 'hidden' }}>
+          {/* Front Side - Image */}
+          <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8a6aa9] shadow-2xl" style={{ backfaceVisibility: 'hidden' }}>
             {!imageLoaded && (
               <div className="absolute inset-0 bg-gradient-to-br from-[#d5c4e0] to-[#b99cc8] flex items-center justify-center">
                 <div className="w-8 h-8 border-4 border-[#8a6aa9] border-t-transparent rounded-full animate-spin"></div>
@@ -284,10 +245,29 @@ const ServiceCard = ({ service, index }) => {
                 </h3>
                 <div className="flex items-center justify-center gap-1 text-white/80 text-xs">
                   <Sparkles className="w-3 h-3" />
-                  <span>Explore More</span>
+                  <span>Hover for details</span>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Back Side - Icon & Text */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white via-[#f5f0f8]/50 to-[#ebe2f0]/30 border border-[#d5c4e0] flex flex-col items-center justify-center p-4 md:p-6 group-hover:border-[#b99cc8] group-hover:shadow-xl transition-all duration-500 overflow-hidden [transform:rotateY(180deg)]" style={{ backfaceVisibility: 'hidden' }}>
+            {/* Icon with Glow */}
+            <div className="mb-2 md:mb-3 flex-shrink-0 text-[#8a6aa9] relative">
+              <div className="absolute inset-0 bg-[#8a6aa9]/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <Icon className="w-8 h-8 md:w-10 md:h-10 relative z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+            </div>
+            
+            {/* Title */}
+            <h3 className="bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] text-transparent bg-clip-text font-bold text-center text-xs md:text-sm mb-2 tracking-wide leading-tight">
+              {service.title}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-gray-700 text-[10px] md:text-xs text-center leading-snug transition-colors duration-500 line-clamp-4">
+              {service.description}
+            </p>
           </div>
         </div>
 
