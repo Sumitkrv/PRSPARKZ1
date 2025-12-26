@@ -102,34 +102,36 @@ const AboutUs = () => {
   const features = [
     {
       icon: Brain,
-      title: "Strategic Thinking",
-      description: "Data-driven strategies that transform your brand's positioning and market presence.",
-      stat: "250+",
-      label: "Campaigns"
+      title: "We Serve, Not Just Sell",
+      description: "Your success is our success. We don't disappear after signing—we stay invested in your growth every step of the way.",
+      stat: "98%",
+      label: "Client Retention"
     },
     {
       icon: Lightbulb,
-      title: "Creative Excellence",
-      description: "Award-winning creative solutions that capture attention and drive engagement.",
-      stat: "98%",
-      label: "Success Rate"
+      title: "Honest Work, Real Results",
+      description: "No fluff, no fake promises. Just practical strategies that work, backed by data and driven by your actual business goals.",
+      stat: "100%",
+      label: "Transparency"
     },
     {
       icon: Rocket,
-      title: "Rapid Growth",
-      description: "Accelerated brand development with measurable results and sustainable impact.",
+      title: "Built for Your Growth",
+      description: "We adapt as you evolve. Whether you're starting small or scaling big, we grow alongside your journey with strategies that scale.",
       stat: "3x",
       label: "Avg Growth"
     }
   ];
 
   const services = [
-    { icon: Target, name: "Brand Strategy" },
-    { icon: Sparkles, name: "PR Campaigns" },
-    { icon: Users, name: "Influencer Marketing" },
-    { icon: TrendingUp, name: "Digital Marketing" },
-    { icon: Award, name: "Event Management" },
-    { icon: Star, name: "Content Creation" }
+    { icon: Target, name: "Digital Marketing" },
+    { icon: Sparkles, name: "Social Media" },
+    { icon: Users, name: "Influencer & Celebrity" },
+    { icon: TrendingUp, name: "PR Campaigns" },
+    { icon: Award, name: "Web & App Dev" },
+    { icon: Star, name: "On-Ground Events" },
+    { icon: Lightbulb, name: "Brand Strategy" },
+    { icon: Megaphone, name: "Content Creation" }
   ];
 
   const stats = [
@@ -255,7 +257,7 @@ const AboutUs = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 relative">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 relative">
             <span className="bg-gradient-to-r from-gray-900 via-[#8a6aa9] to-gray-900 bg-clip-text text-transparent">
               ABOUT PR SPARKZ
             </span>
@@ -265,83 +267,32 @@ const AboutUs = () => {
             />
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We don't just build brands—we create <span className="text-[#8a6aa9] font-semibold">movements</span>. 
-            Every campaign is crafted to make your brand unforgettable.
-          </p>
+          {/* Intro Tagline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              <span className="text-gray-900">Transforming Businesses Into </span>
+              <span className="bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] bg-clip-text text-transparent">
+                Industry Leaders
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              We partner with ambitious brands to create powerful market presence through strategic PR, 
+              innovative marketing, and measurable results that drive real business growth.
+            </p>
+          </motion.div>
         </motion.div>
 
-        {/* Featured In - Marquee */}
-        <motion.div
-          className="mb-20 overflow-hidden"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-        >
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#e2d4ed] bg-white/60 backdrop-blur supports-backdrop-blur:backdrop-blur-md shadow-sm">
-              <Sparkles className="w-4 h-4 text-[#8a6aa9]" />
-              <span className="text-sm font-semibold text-gray-700">As Featured In</span>
-            </div>
-          </div>
-          
-          {/* Marquee Container */}
-          <div className="relative">
-            <div className="flex gap-6 animate-marquee hover:pause-marquee">
-              {/* First Set */}
-              {[
-                "Forbes",
-                "Vogue",
-                "Times Now",
-                "TechCrunch",
-                "YourStory",
-                "Mint",
-                "Economic Times",
-                "Business Insider"
-              ].map((brand, i) => (
-                <div key={i} className="group flex-shrink-0">
-                  <div className="relative rounded-full px-6 py-3 text-center border border-[#e2d4ed] bg-white/70 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md min-w-[140px]">
-                    <span className="text-sm font-semibold bg-gradient-to-r from-gray-800 to-[#8a6aa9] bg-clip-text text-transparent whitespace-nowrap">
-                      {brand}
-                    </span>
-                    <div className="absolute inset-0 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'linear-gradient(90deg, rgba(168,85,247,0.15), rgba(236,72,153,0.12), rgba(168,85,247,0.15))' }} />
-                  </div>
-                </div>
-              ))}
-              {/* Duplicate Set for Seamless Loop */}
-              {[
-                "Forbes",
-                "Vogue",
-                "Times Now",
-                "TechCrunch",
-                "YourStory",
-                "Mint",
-                "Economic Times",
-                "Business Insider"
-              ].map((brand, i) => (
-                <div key={`dup-${i}`} className="group flex-shrink-0">
-                  <div className="relative rounded-full px-6 py-3 text-center border border-[#e2d4ed] bg-white/70 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md min-w-[140px]">
-                    <span className="text-sm font-semibold bg-gradient-to-r from-gray-800 to-[#8a6aa9] bg-clip-text text-transparent whitespace-nowrap">
-                      {brand}
-                    </span>
-                    <div className="absolute inset-0 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'linear-gradient(90deg, rgba(138,106,169,0.15), rgba(185,156,200,0.12), rgba(138,106,169,0.15))' }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Fade Edges */}
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
-          </div>
-        </motion.div>
-
-        {/* Founder Spotlight */}
+        {/* Founder Spotlight - Moved Up for Credibility */}
         <motion.div
           className="mb-24"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl border border-[#e2d4ed] overflow-hidden shadow-xl">
             {/* Glassmorphism Glow Effect */}
@@ -398,14 +349,17 @@ const AboutUs = () => {
                 </div>
 
                 <div className="space-y-4 text-gray-700 leading-relaxed mb-8">
-                  <p className="text-lg">
-                    "Every brand has a story waiting to be told. My mission is to amplify those stories 
-                    and turn them into powerful narratives that resonate across every platform."
+                  <p className="text-lg font-medium text-[#6a4a89]">
+                    "Building PR Sparkz on one belief: every great business deserves to be seen, valued, and trusted."
                   </p>
                   
                   <p>
                     With over a decade of experience in PR and brand building, Priyanka has helped 
-                    hundreds of startups and established brands find their voice and dominate their markets.
+                    hundreds of businesses transform their vision into powerful market presence—with strategic thinking, authentic engagement, and measurable impact.
+                  </p>
+                  
+                  <p className="font-semibold text-gray-900">
+                    Your growth is our mission.
                   </p>
                 </div>
 
@@ -428,25 +382,33 @@ const AboutUs = () => {
             </div>
           </div>
         </motion.div>
-        {/* Core Features */}
+
+        {/* Core Values - What Makes Us Different */}
         <div className="mb-24">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
+            <div className="inline-block mb-4">
+              <div className="flex items-center gap-3 px-6 py-3 rounded-full border border-[#e2d4ed] bg-white/80 backdrop-blur-sm">
+                <div className="w-2 h-2 rounded-full bg-[#8a6aa9] animate-pulse"></div>
+                <span className="text-sm font-semibold text-[#8a6aa9] tracking-wider uppercase">Our Approach</span>
+              </div>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-gray-900 via-[#8a6aa9] to-gray-900 bg-clip-text text-transparent">
-                What Sets Us Apart
+                What Makes Us Different
               </span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Three pillars of excellence that drive exceptional results
+              Honest work, real partnerships, sustainable growth
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -516,15 +478,15 @@ const AboutUs = () => {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-gray-900 to-[#8a6aa9] bg-clip-text text-transparent">
-                Our Expertise
+                Everything You Need, Under One Roof
               </span>
             </h2>
             <p className="text-gray-600 text-lg">
-              Comprehensive solutions for modern brands
+              One team, one vision, zero miscommunication
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -644,10 +606,10 @@ const AboutUs = () => {
             <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-full bg-gradient-to-b from-[#cdb8dd] via-[#e2d4ed] to-transparent" />
 
             {[
-              { year: '2015', title: 'Founded PR Sparkz', desc: 'Launched with a vision to craft unforgettable brand stories.', Icon: Award, detail: 'Started in a small office with 2 people and big dreams' },
-              { year: '2019', title: '100+ Clients', desc: 'Crossed 100 successful brand partnerships and campaigns.', Icon: Users, detail: 'Achieved 95% client satisfaction and retention rate' },
-              { year: '2023', title: 'Global Expansion', desc: 'Scaled operations and impact across multiple regions.', Icon: Globe, detail: 'Opened offices in 3 countries, team grew to 50+ members' },
-              { year: '2025', title: 'Major Press', desc: 'Featured across top media and industry platforms.', Icon: Megaphone, detail: 'Recognized as Top 10 PR Agency by industry leaders' }
+              { year: '2015', title: 'Founded PR Sparkz', desc: 'Started with a simple belief: every great business deserves to be seen and valued.', Icon: Award, detail: '2 people, big dreams, and a commitment to honest work' },
+              { year: '2019', title: '100+ Happy Clients', desc: 'Built lasting partnerships with businesses who trusted us with their growth.', Icon: Users, detail: '98% retention because we grow with our clients' },
+              { year: '2023', title: 'Expanded Our Impact', desc: 'Scaled our team and services without compromising our core values.', Icon: Globe, detail: 'Grew to 50+ team members, still serving with the same heart' },
+              { year: '2025', title: 'Industry Recognition', desc: 'Featured across major platforms for our honest approach and real results.', Icon: Megaphone, detail: 'Recognized for doing what we said we would do - and doing it well' }
             ].map((item, i) => {
               const [isHovered, setIsHovered] = useState(false);
               return (

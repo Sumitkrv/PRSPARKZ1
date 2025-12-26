@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { 
   Star, 
   ChevronLeft, 
@@ -21,6 +21,16 @@ const Testimonials = () => {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
 
   const testimonials = [
     { 
@@ -189,7 +199,10 @@ const Testimonials = () => {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#d5c4e0] rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <motion.div 
+        className="container mx-auto px-4 sm:px-6 relative z-10"
+        style={{ y, opacity, scale }}
+      >
         {/* Header */}
         <motion.div 
           className="text-center mb-16"
@@ -427,7 +440,7 @@ const Testimonials = () => {
             <Zap className="w-5 h-5" />
           </motion.button>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

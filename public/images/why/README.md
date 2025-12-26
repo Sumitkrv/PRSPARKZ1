@@ -2,22 +2,25 @@
 
 ## Add your images here
 
-### Statistics Images (3 files):
+### Statistics Images (4 files):
 Place large hero-style images for the statistics section:
 - **stat-1.jpg** - Growth in Engagement (+127%)
 - **stat-2.jpg** - Brand Consistency (+89%)
 - **stat-3.jpg** - Faster Execution (3x)
+- **stat-4.jpg** - Active Support (24/7)
 
 **Recommended specs**: 800x600px, under 500KB
 
-### Feature Images (4 files):
-Place feature highlight images:
-- **feature-1.jpg** - Data-Driven Insights
-- **feature-2.jpg** - Multi-Platform Strategy
-- **feature-3.jpg** - Creative Excellence
-- **feature-4.jpg** - 24/7 Support
+### Feature Images (6 files):
+Place feature highlight images for "What Makes Us Different":
+- **feature-1.jpg** - We Serve, Not Just Sell
+- **feature-2.jpg** - Expert Minds, One Shared Vision
+- **feature-3.jpg** - No Fake Promises, Only Real Talk
+- **feature-4.jpg** - Everything You Need, Under One Roof
+- **feature-5.jpg** - We Highlight What Makes You Great
+- **feature-6.jpg** - Built to Grow With You
 
-**Recommended specs**: 400x300px, under 300KB
+**Recommended specs**: 600x400px, under 400KB
 
 ### CTA Image (1 file):
 Place consultation/team image:
@@ -30,4 +33,4 @@ Place consultation/team image:
 - **Quality**: High resolution, web-optimized
 - **Style**: Professional, business-related imagery
 
-**Note**: If an image is not found, a beautiful "Coming Soon" placeholder will be displayed with gradient backgrounds.
+**Note**: If an image is not found, a beautiful placeholder will be displayed with gradient backgrounds.

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const SparkzHero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -11,12 +13,24 @@ const SparkzHero = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const videoTransform = scrollY * 0.5;
+  const contentTransform = scrollY * 0.3;
+  const opacity = Math.max(0, 1 - scrollY / 500);
+
   return (
     <>
       <section
@@ -26,8 +40,15 @@ const SparkzHero = () => {
           fontFamily: "'Montserrat', sans-serif"
         }}
       >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden" style={{zIndex: 0}}>
+      {/* Video Background with Parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0 overflow-hidden" 
+        style={{
+          zIndex: 0,
+          transform: `translateY(${videoTransform}px)`,
+          willChange: 'transform'
+        }}
+      >
         <video
           autoPlay
           loop
@@ -39,9 +60,16 @@ const SparkzHero = () => {
           <source src="/Marketing_Company_Hero_Video_Generated.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <motion.div 
+        className="container mx-auto px-6 relative z-10"
+        style={{
+          transform: `translateY(${contentTransform}px)`,
+          opacity: opacity,
+          willChange: 'transform, opacity'
+        }}
+      >
         <div className={`text-center max-w-4xl mx-auto transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -99,7 +127,7 @@ const SparkzHero = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       </section>
       {/* Custom animation for star spin */}

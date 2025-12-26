@@ -18,67 +18,67 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      title: "WEB DESIGN",
+      title: "CAMPAIGN STRATEGY & PLANNING",
       description:
-        "Crafting stunning websites tailored to your brand's needs with creativity and user experience.",
-      Icon: Monitor,
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-    },
-    {
-      id: 2,
-      title: "LOGO DESIGN",
-      description:
-        "Creating logos that resonate with your audience and represent your brand identity perfectly.",
-      Icon: Palette,
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
-    },
-    {
-      id: 3,
-      title: "PRODUCT DESIGN",
-      description:
-        "Innovative solutions that marry form with function. From concept to prototype.",
-      Icon: Package,
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80",
-    },
-    {
-      id: 4,
-      title: "BRAND STRATEGY",
-      description:
-        "Comprehensive strategies that define your unique market position and audience connections.",
+        "High-impact campaign strategies designed to reach the right audience at the right time. From planning to execution, every move is intentional and result-focused.",
       Icon: Target,
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     },
     {
-      id: 5,
-      title: "CONTENT CREATION",
+      id: 2,
+      title: "DIGITAL PERFORMANCE ENGINE",
       description:
-        "Engaging content across all platforms that tells your story and converts.",
-      Icon: PenTool,
-      image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80",
+        "Data-driven marketing built for real, scalable growth. We optimize every stage of your funnel to drive conversions and ROI. Clear strategy. Measurable results.",
+      Icon: Monitor,
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
     },
     {
-      id: 6,
-      title: "SOCIAL MEDIA",
+      id: 3,
+      title: "SOCIAL MEDIA POWERHUB",
       description:
-        "Strategic management that builds community and drives engagement effectively.",
+        "Engaging, relatable content that builds a strong and consistent brand voice. We focus on real engagement, not vanity numbers. Human, active, and trusted.",
       Icon: Share2,
       image: "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=800&q=80",
     },
     {
-      id: 7,
-      title: "MEDIA RELATIONS",
+      id: 4,
+      title: "INFLUENCE & CELEBRITY CONNECT",
       description:
-        "Building strong media relationships to secure valuable coverage and visibility.",
-      Icon: Newspaper,
-      image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=80",
+        "Strategic collaborations with influencers and celebrities who truly fit your brand. Chosen for authenticity, relevance, and impact. Visibility, trust, and authority — amplified.",
+      Icon: Star,
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+    },
+    {
+      id: 5,
+      title: "BRAND IDENTITY LAB",
+      description:
+        "Premium brand visuals crafted to stand out and stay memorable. From logos to full identity systems, everything is built with clarity and personality. No templates — only thoughtful design.",
+      Icon: Palette,
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+    },
+    {
+      id: 6,
+      title: "WEB & APP EXPERIENCE STUDIO",
+      description:
+        "Fast, clean, user-friendly websites and apps built to perform. Designed for smooth experiences, trust, and conversions. Your digital presence, future-ready.",
+      Icon: PenTool,
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+    },
+    {
+      id: 7,
+      title: "ON-GROUND ACTIVATION FORCE",
+      description:
+        "Offline events and activations that bring your brand to life. Designed to build trust, engagement, and real-world impact. Memorable experiences that connect.",
+      Icon: Calendar,
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
     },
     {
       id: 8,
-      title: "EVENT MANAGEMENT",
+      title: "AI GROWTH SOLUTIONS",
       description:
-        "Creating memorable experiences that generate buzz and strengthen relationships.",
-      Icon: Calendar,
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+        "Smart automation that saves time and boosts efficiency. AI-powered systems that streamline workflows and scale growth. Work smarter. Grow faster.",
+      Icon: Sparkles,
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     },
   ];
 
@@ -175,7 +175,7 @@ const Services = () => {
             
             <div className="relative">
               <p className="text-gray-900 text-xl font-semibold mb-6">
-                Ready to transform your brand's narrative?
+                Ready to Write Your Success Story?
               </p>
               
               <a
@@ -185,7 +185,7 @@ const Services = () => {
                 {/* Button Shine Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 
-                <span className="relative z-10">Get Started Today</span>
+                <span className="relative z-10">Start Your Journey Today</span>
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 
                 {/* Animated Border */}
@@ -240,10 +240,10 @@ const ServiceCard = ({ service, index }) => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#6a4a89]/90 via-[#8a6aa9]/50 to-transparent flex items-end justify-center p-4">
               <div className="text-center">
-                <h3 className="text-white font-bold text-sm md:text-base drop-shadow-lg mb-1">
+                <h3 className="text-white font-bold text-xs md:text-sm drop-shadow-lg mb-1 leading-tight">
                   {service.title}
                 </h3>
-                <div className="flex items-center justify-center gap-1 text-white/80 text-xs">
+                <div className="flex items-center justify-center gap-1 text-white/80 text-[10px]">
                   <Sparkles className="w-3 h-3" />
                   <span>Hover for details</span>
                 </div>
@@ -252,20 +252,20 @@ const ServiceCard = ({ service, index }) => {
           </div>
 
           {/* Back Side - Icon & Text */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white via-[#f5f0f8]/50 to-[#ebe2f0]/30 border border-[#d5c4e0] flex flex-col items-center justify-center p-4 md:p-6 group-hover:border-[#b99cc8] group-hover:shadow-xl transition-all duration-500 overflow-hidden [transform:rotateY(180deg)]" style={{ backfaceVisibility: 'hidden' }}>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white via-[#f5f0f8]/50 to-[#ebe2f0]/30 border border-[#d5c4e0] flex flex-col items-center justify-center p-5 md:p-7 group-hover:border-[#b99cc8] group-hover:shadow-xl transition-all duration-500 overflow-hidden [transform:rotateY(180deg)]" style={{ backfaceVisibility: 'hidden' }}>
             {/* Icon with Glow */}
-            <div className="mb-2 md:mb-3 flex-shrink-0 text-[#8a6aa9] relative">
+            <div className="mb-2 flex-shrink-0 text-[#8a6aa9] relative">
               <div className="absolute inset-0 bg-[#8a6aa9]/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <Icon className="w-8 h-8 md:w-10 md:h-10 relative z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+              <Icon className="w-7 h-7 md:w-9 md:h-9 relative z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
             </div>
             
             {/* Title */}
-            <h3 className="bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] text-transparent bg-clip-text font-bold text-center text-xs md:text-sm mb-2 tracking-wide leading-tight">
+            <h3 className="bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] text-transparent bg-clip-text font-bold text-center text-[10px] md:text-xs mb-1.5 tracking-wide leading-tight">
               {service.title}
             </h3>
             
             {/* Description */}
-            <p className="text-gray-700 text-[10px] md:text-xs text-center leading-snug transition-colors duration-500 line-clamp-4">
+            <p className="text-gray-700 text-[9px] md:text-[10px] text-center leading-relaxed transition-colors duration-500 line-clamp-6 md:line-clamp-5">
               {service.description}
             </p>
           </div>

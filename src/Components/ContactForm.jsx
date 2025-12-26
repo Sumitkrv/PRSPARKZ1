@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { 
   User, Mail, FileText, CheckCircle, Phone, Send, 
-  Loader2, AlertCircle, MapPin, Clock, ExternalLink,
+  Loader2, AlertCircle, Clock,
   MessageSquare, Building, Map,
   Linkedin, Twitter, Instagram
 } from "lucide-react";
@@ -20,6 +21,17 @@ const ContactForm = () => {
   const [submitError, setSubmitError] = useState(false);
   const [activeTab, setActiveTab] = useState("form");
   const mapRef = useRef(null);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 1]);
 
   const WEB3FORMS_ACCESS_KEY = "0525684b-fa9d-4611-91c2-06119bbb2ea1";
 
@@ -306,10 +318,17 @@ const ContactForm = () => {
   return (
     <section 
       id="contact" 
+      ref={containerRef}
       className="min-h-screen bg-gradient-to-br from-white via-[#f5f0f8] to-white py-16 px-4 md:px-8"
       style={{ fontFamily: "'Montserrat', sans-serif" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <motion.div 
+        className="max-w-7xl mx-auto"
+        style={{ y, opacity }}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
@@ -369,27 +388,6 @@ const ContactForm = () => {
                     <p className="text-sm text-gray-500 mt-1">Mon-Fri, 9AM-6PM IST</p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-[#8a6aa9]" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Office Address</h4>
-                    <p className="text-gray-700">{companyInfo.address}</p>
-                    <a 
-                      href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-[#8a6aa9] hover:text-[#7a5a99] mt-2 inline-flex items-center gap-1"
-                    >
-                      <ExternalLink size={14} />
-                      View on map
-                    </a>
-                  </div>
-                </div>
-
-                {/* Working Hours section removed as requested */}
               </div>
 
               {/* Social Links */}
@@ -688,7 +686,7 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Custom CSS for animations */}
       <style jsx>{`

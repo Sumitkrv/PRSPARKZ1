@@ -183,7 +183,7 @@ const WhyPRSparkz = () => {
           {/* Interactive Statistics with Images */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20 items-center">
             {/* Image Showcase */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-64 md:h-80 bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-64 md:h-80 bg-gradient-to-br from-[#ebe2f0] to-[#f5f0f8]">
               <img
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 src={stats[activeStat].image}
@@ -197,7 +197,7 @@ const WhyPRSparkz = () => {
               />
               {/* Coming Soon Fallback */}
               <div 
-                className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#ebe2f0] via-purple-100 to-[#f5f0f8]"
                 style={{ display: 'none' }}
               >
                 <div className="text-center px-6">
@@ -313,7 +313,7 @@ const WhyPRSparkz = () => {
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = '#f3f4f6'}
               >
                 {/* Feature Image */}
-                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
+                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-[#ebe2f0] to-[#f5f0f8]">
                   <img
                     src={feature.image}
                     alt={feature.title}
@@ -327,7 +327,7 @@ const WhyPRSparkz = () => {
                   />
                   {/* Coming Soon Fallback */}
                   <div 
-                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#ebe2f0] via-purple-100 to-[#f5f0f8]"
                     style={{ display: 'none' }}
                   >
                     <svg 
@@ -414,17 +414,25 @@ const WhyPRSparkz = () => {
                       </svg>
                     </button>
 
-                    <div className="flex items-center text-gray-500 text-sm">
-                      {/* <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg> */}
-               
+                    <div className="flex items-center gap-6 mt-6">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-5 h-5 mr-2" style={{ color: '#8666A5' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>No commitment required</span>
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-5 h-5 mr-2" style={{ color: '#8666A5' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>30-minute strategy call</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Image */}
-                <div className="relative min-h-64 lg:min-h-full bg-gradient-to-br from-#ebe2f0 to-[#f5f0f8]">
+                <div className="relative min-h-64 lg:min-h-full bg-gradient-to-br from-[#ebe2f0] to-[#f5f0f8]">
                   <img
                     src="/images/why/cta-image.jpg"
                     alt="Professional Consultation"
@@ -437,7 +445,7 @@ const WhyPRSparkz = () => {
                   />
                   {/* Coming Soon Fallback */}
                   <div 
-                    className="absolute inset-0 flex-col items-center justify-center bg-gradient-to-br from-#ebe2f0 via-lavender-100 to-[#f5f0f8]"
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#ebe2f0] via-purple-100 to-[#f5f0f8]"
                     style={{ display: 'none' }}
                   >
                     <svg 

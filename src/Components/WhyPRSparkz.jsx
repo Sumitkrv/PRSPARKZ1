@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import React, { useRef, useMemo } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { scrollToSection } from '../utils/navigation.js';
 
 const WhyPRSparkz = () => {
   const containerRef = useRef(null);
-  const heroRef = useRef(null);
-  const featuresRef = useRef(null);
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [loadedImages, setLoadedImages] = useState({});
   
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
-  const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,41 +16,12 @@ const WhyPRSparkz = () => {
   const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
-  // Preload images
-  useEffect(() => {
-    const imageUrls = [
-      "/src/assets/why features /1.jpg",
-      "/src/assets/why features /2.jpg",
-      "/src/assets/why features /3.jpg",
-      "/src/assets/why features /4.jpg"
-    ];
-
-    const loadImage = (url) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = url;
-        img.onload = () => resolve(url);
-        img.onerror = reject;
-      });
-    };
-
-    Promise.allSettled(imageUrls.map(loadImage))
-      .then(results => {
-        const loaded = {};
-        results.forEach((result, index) => {
-          if (result.status === 'fulfilled') {
-            loaded[imageUrls[index]] = true;
-          }
-        });
-        setLoadedImages(loaded);
-      });
-  }, []);
-
   const stats = useMemo(() => [
     {
       number: "127%",
       label: "Growth in Engagement",
       description: "Strategic approach delivers measurable results",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -66,6 +32,7 @@ const WhyPRSparkz = () => {
       number: "89%",
       label: "Brand Consistency",
       description: "Unified messaging across all channels",
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop&q=80",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -76,6 +43,7 @@ const WhyPRSparkz = () => {
       number: "3x",
       label: "Faster Execution",
       description: "AI-powered campaign delivery",
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop&q=80",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -86,6 +54,7 @@ const WhyPRSparkz = () => {
       number: "24/7",
       label: "Active Support",
       description: "Round-the-clock monitoring & optimization",
+      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop&q=80",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" strokeWidth={2} />
@@ -97,113 +66,36 @@ const WhyPRSparkz = () => {
 
   const features = useMemo(() => [
     {
-      title: "Data-Driven Insights",
-      description: "Real-time analytics and predictive intelligence for informed decisions that drive measurable results.",
-      image: '/src/assets/why features /1.jpg',
-      fallbackImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-      color: "#8a6aa9",
-      details: [
-        "Real-time campaign analytics",
-        "Predictive performance modeling",
-        "Competitor intelligence reports",
-        "ROI tracking dashboards"
-      ]
+      number: "01",
+      title: "We Serve, Not Just Sell",
+      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop&q=80"
     },
     {
-      title: "Multi-Platform Strategy",
-      description: "Seamless integration across all digital and traditional channels for maximum reach and impact.",
-      image: '/src/assets/why features /2.jpg',
-      fallbackImage: "https://images.unsplash.com/photo-1611224923853-80b023f02711?w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
-      color: "#6366f1",
-      details: [
-        "Cross-platform campaign synchronization",
-        "Unified brand messaging",
-        "Channel performance optimization",
-        "Integrated analytics dashboard"
-      ]
+      number: "02",
+      title: "Expert Minds, One Shared Vision",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=80"
     },
     {
-      title: "Creative Excellence",
-      description: "Award-winning design and compelling storytelling that resonates with your target audience.",
-      image: '/src/assets/why features /3.jpg',
-      fallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-      color: "#10b981",
-      details: [
-        "Brand storytelling workshops",
-        "Visual identity development",
-        "Content creation strategy",
-        "Campaign creative direction"
-      ]
+      number: "03",
+      title: "No Fake Promises, Only Real Talk",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&q=80"
     },
     {
-      title: "24/7 Support",
-      description: "Continuous monitoring, optimization and dedicated support to ensure your campaigns succeed.",
-      image: '/src/assets/why features /4.jpg',
-      fallbackImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ),
-      color: "#f59e0b",
-      details: [
-        "Dedicated account management",
-        "24/7 campaign monitoring",
-        "Rapid response optimization",
-        "Quarterly strategy reviews"
-      ]
+      number: "04",
+      title: "Everything You Need, Under One Roof",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80"
+    },
+    {
+      number: "05",
+      title: "We Highlight What Makes You Great",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&q=80"
+    },
+    {
+      number: "06",
+      title: "Built to Grow With You",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop&q=80"
     }
   ], []);
-
-  const handleFeatureHover = useCallback((index) => {
-    setActiveFeature(index);
-  }, []);
-
-  const ImageWithFallback = ({ src, fallback, alt, className, ...props }) => {
-    const [imgSrc, setImgSrc] = useState(loadedImages[src] ? src : fallback);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-      if (loadedImages[src]) {
-        setImgSrc(src);
-      }
-    }, [src, loadedImages]);
-
-    return (
-      <>
-        {loading && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
-        )}
-        <img
-          src={imgSrc}
-          alt={alt}
-          className={`${className} ${loading ? 'opacity-0' : 'opacity-100'}`}
-          onLoad={() => setLoading(false)}
-          onError={() => {
-            setImgSrc(fallback);
-            setLoading(false);
-          }}
-          loading="lazy"
-          {...props}
-        />
-      </>
-    );
-  };
 
   return (
     <section
@@ -217,19 +109,76 @@ const WhyPRSparkz = () => {
       }}
       aria-label="Why Choose PR Sparkz"
     >
-      {/* Background Elements */}
+      {/* Background Elements - Animated Gradient Orbs */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-96 -z-10"
+        className="absolute top-0 left-0 w-full h-96 -z-10 overflow-hidden"
         style={{ y }}
       >
-        <div className="absolute top-0 left-1/4 w-64 h-64 opacity-0" />
-        <div className="absolute top-0 right-1/4 w-96 h-96 opacity-0" />
+        <motion.div 
+          className="absolute top-20 left-1/4 w-64 h-64 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(138, 106, 169, 0.15) 0%, rgba(138, 106, 169, 0.05) 50%, transparent 100%)'
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 50, 0],
+            y: [0, 30, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(138, 106, 169, 0.1) 0%, rgba(138, 106, 169, 0.03) 50%, transparent 100%)'
+          }}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            x: [0, -30, 0],
+            y: [0, 50, 0]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        {/* Floating sparkles */}
+        <motion.div
+          className="absolute top-40 left-1/2 w-2 h-2 rounded-full bg-[#8a6aa9]"
+          animate={{
+            y: [-20, 20],
+            opacity: [0.3, 0.8, 0.3],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-32 right-1/3 w-3 h-3 rounded-full bg-[#8a6aa9]"
+          animate={{
+            y: [20, -20],
+            opacity: [0.2, 0.6, 0.2],
+            scale: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
       </motion.div>
 
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
         <motion.div
-          ref={heroRef}
           style={{ opacity, scale }}
           className="text-center max-w-4xl mx-auto"
         >
@@ -277,6 +226,33 @@ const WhyPRSparkz = () => {
             <span className="font-semibold text-black">data-driven, AI-powered strategies</span>{" "}
             that spark visibility, growth, and engagement—because your brand's success is ours.
           </motion.p>
+
+          {/* Decorative elements below hero text */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex items-center justify-center gap-8 mt-8 flex-wrap"
+          >
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-5 h-5 text-[#8a6aa9]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">Trusted by 100+ brands</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-5 h-5 text-[#8a6aa9]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-sm font-medium">4.9/5 rating</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-5 h-5 text-[#8a6aa9]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">Award-winning agency</span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -298,21 +274,50 @@ const WhyPRSparkz = () => {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <div 
-                className="bg-white rounded-2xl p-6 md:p-8 text-center transition-all duration-300 hover:shadow-2xl border border-gray-100"
+                className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl border border-gray-100"
                 role="region"
                 aria-label={`Statistic: ${stat.label}`}
               >
-                <div className="flex flex-col items-center">
-                  <div className="mb-3 text-[#8a6aa9]">{stat.icon}</div>
-                  <h3 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#8a6aa9' }}>
-                    +{stat.number}
-                  </h3>
-                  <p className="text-base md:text-lg font-semibold text-black mb-2">
-                    {stat.label}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    {stat.description}
-                  </p>
+                {/* Image Banner */}
+                <div className="relative h-40 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+                  <img
+                    src={stat.image}
+                    alt={stat.label}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      const fallback = e.target.nextSibling;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback */}
+                  <div 
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                    style={{ display: 'none' }}
+                  >
+                    <div className="text-5xl font-bold text-[#8a6aa9] opacity-20">+{stat.number}</div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  
+                  {/* Stat badge on image */}
+                  <div className="absolute bottom-3 left-3">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-lg">
+                      <span className="text-2xl font-bold text-[#8a6aa9]">+{stat.number}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 md:p-8 text-center">
+                  <div className="flex flex-col items-center">
+                    <p className="text-base md:text-lg font-bold text-black mb-2">
+                      {stat.label}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {stat.description}
+                    </p>
+                  </div>
                 </div>
                 
                 {/* Animated underline */}
@@ -328,178 +333,413 @@ const WhyPRSparkz = () => {
         </motion.div>
       </div>
 
-      {/* Features Grid */}
-      <div ref={featuresRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 md:mb-32">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-            Our Winning <span className="text-[#8a6aa9]">Methodology</span>
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            A proven framework that delivers exceptional results across all digital channels
-          </p>
-        </div>
-
-        {/* Feature Navigation Dots */}
-        <div className="flex justify-center gap-3 mb-8">
-          {features.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setActiveFeature(index);
-              }}
-              onMouseEnter={() => handleFeatureHover(index)}
-              className="focus:outline-none focus:ring-2 focus:ring-[#8a6aa9] focus:ring-offset-2 rounded-full"
-              aria-label={`View feature ${index + 1}: ${features[index].title}`}
-              aria-pressed={activeFeature === index}
-            >
-              <motion.div
-                className={`w-3 h-3 rounded-full ${
-                  activeFeature === index 
-                    ? 'bg-[#8a6aa9]' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                animate={{
-                  scale: activeFeature === index ? 1.2 : 1,
-                }}
-                transition={{ duration: 0.2 }}
-              />
-            </button>
-          ))}
-        </div>
-
+      {/* What Makes Us Different Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 md:mb-32">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={featuresInView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+          className="text-center mb-16"
         >
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 ${
-                activeFeature === index 
-                  ? 'ring-2 ring-[#8a6aa9] ring-offset-2' 
-                  : 'hover:ring-1 hover:ring-gray-200'
-              }`}
-              style={{ 
-                minHeight: '350px',
-                boxShadow: activeFeature === index 
-                  ? '0 20px 40px rgba(138, 106, 169, 0.15)' 
-                  : '0 10px 30px rgba(0, 0, 0, 0.05)'
-              }}
-              onMouseEnter={() => handleFeatureHover(index)}
-              onFocus={() => handleFeatureHover(index)}
-              tabIndex={0}
-              role="article"
-              aria-label={`Feature: ${feature.title}`}
-            >
-              {/* Image Background */}
-              <div className="absolute inset-0">
-                <ImageWithFallback
-                  src={feature.image}
-                  fallback={feature.fallbackImage}
-                  alt={feature.title}
-                  className="w-full h-full object-cover transition-all duration-700"
-                  style={{
-                    transform: activeFeature === index ? 'scale(1.1)' : 'scale(1)',
-                  }}
-                />
-                <div 
-                  className="absolute inset-0 transition-all duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, rgba(0,0,0,0.8) 0%, ${feature.color}40 100%)`,
-                    opacity: activeFeature === index ? 0.9 : 0.7
-                  }}
-                />
-              </div>
-
-              {/* Content */}
-              <div className="relative h-full p-6 md:p-8 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-start justify-between mb-4">
-                    <motion.div
-                      className="text-white"
-                      animate={{ 
-                        scale: activeFeature === index ? 1.2 : 1,
-                        rotate: activeFeature === index ? [0, 360] : 0
-                      }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {feature.icon}
-                    </motion.div>
-                    
-                    <div className="text-5xl md:text-6xl font-bold opacity-10 text-white">
-                      0{index + 1}
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                    {feature.title}
-                  </h3>
-
-                  <AnimatePresence mode="wait">
-                    {activeFeature === index && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <ul className="space-y-2 mb-4">
-                          {feature.details.map((detail, idx) => (
-                            <motion.li
-                              key={idx}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: idx * 0.1 }}
-                              className="flex items-center text-white/90 text-sm md:text-base"
-                            >
-                              <svg className="w-4 h-4 mr-2 text-[#8a6aa9]" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                              {detail}
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <p className="text-white/80 text-base leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-
-                {/* Animated underline */}
-                <motion.div
-                  className="h-0.5 bg-gradient-to-r from-transparent via-white to-transparent rounded-full mt-4"
-                  initial={{ width: '60px' }}
-                  animate={{ 
-                    width: activeFeature === index ? '120px' : '60px'
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-
-              {/* Hover indicator */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
+            What Makes Us{" "}
+            <span className="relative inline-block">
+              <span style={{ color: '#8a6aa9' }}>Different</span>
               <motion.div
-                className="absolute bottom-4 right-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: activeFeature === index ? 1 : 0.5 }}
-              >
-                <div className="flex items-center gap-1 text-white/60 text-sm">
-                  <span>Learn more</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
+                className="absolute bottom-0 left-0 right-0 h-3 -z-10"
+                style={{ backgroundColor: 'rgba(138, 106, 169, 0.15)' }}
+                initial={{ width: 0 }}
+                animate={isInView ? { width: '100%' } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </span>
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto">
+            More than an agency — we're your growth partner
+          </p>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* 1. We Serve, Not Just Sell */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[0].image}
+                alt={features[0].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* Fallback */}
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[0].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[0].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                We Serve, Not Just Sell
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>We don't treat your brand like a transaction — we treat it like a partnership.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>Your goals become our mission.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>We show up, stay involved, and care deeply about your growth.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+
+          {/* 2. Expert Minds, One Shared Vision */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[1].image}
+                alt={features[1].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* Fallback */}
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[1].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[1].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                Expert Minds, One Shared Vision
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>Our team of specialists brings strategy, creativity, design, web, and influencer expertise under one umbrella.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>They don't work in silos — they collaborate to create one powerful, aligned direction for your brand.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>You get the benefit of multiple experts without managing multiple teams.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+
+          {/* 3. No Fake Promises only Real talk */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[2].image}
+                alt={features[2].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[2].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[2].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                No Fake Promises, Only Real Talk
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>We avoid vanity metrics and marketing drama.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>Everything we deliver is practical, trackable, and directly tied to your business goals.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>You don't get stories — you get progress.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+
+          {/* 4. Everything You Need, Under One Roof */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[3].image}
+                alt={features[3].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[3].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[3].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                Everything You Need, Under One Roof
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>Digital marketing, social media, influencers and celebrity marketing, web and app development and designing, On-Ground Marketing— it's all here.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>No juggling between agencies. No miscommunication.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>Just one team focused on your success.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+
+          {/* 5. We Highlight What Makes You Great */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[4].image}
+                alt={features[4].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[4].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[4].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                We Highlight What Makes You Great
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>Your talent, your story, and your uniqueness are the real spark.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>We make sure your audience sees what makes you special — clearly, confidently, and consistently.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>You shine. We amplify.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+
+          {/* 6. Built to Grow With You */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#8a6aa9]/30 transition-all duration-300 hover:shadow-xl"
+            whileHover={{ y: -8 }}
+          >
+            {/* Image Header */}
+            <div className="relative h-56 bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5 overflow-hidden">
+              <img
+                src={features[5].image}
+                alt={features[5].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#8a6aa9]/10 to-[#6b5489]/5"
+                style={{ display: 'none' }}
+              >
+                <div className="text-6xl font-bold text-[#8a6aa9] opacity-20">{features[5].number}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Number badge */}
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-xl">
+                  <span className="text-xl font-bold text-[#8a6aa9]">{features[5].number}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                Built to Grow With You
+              </h3>
+              <div className="space-y-3 text-gray-600 leading-relaxed">
+                <p>We don't disappear after launch.</p>
+                <ul className="space-y-2 ml-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>As your business evolves, we adapt strategies, refine messaging, and scale efforts with you.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#8a6aa9] mt-1">•</span>
+                    <span>Whether you're starting small or expanding big, we grow alongside your journey.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a6aa9] to-[#6b5489] opacity-0 group-hover:opacity-100 transition-opacity"
+              initial={{ scaleX: 0 }}
+              whileHover={{ scaleX: 1 }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* CTA Section */}
@@ -622,7 +862,15 @@ const WhyPRSparkz = () => {
             </div>
 
             {/* Stats Side */}
-            <div className="relative p-8 md:p-12 lg:p-16 flex items-center justify-center bg-gradient-to-br from-[#8a6aa9]/5 to-transparent">
+            <div className="relative p-8 md:p-12 lg:p-16 flex items-center justify-center bg-gradient-to-br from-[#8a6aa9]/5 to-transparent overflow-hidden">
+              {/* Grid pattern overlay */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238a6aa9' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                  backgroundSize: '60px 60px'
+                }} />
+              </div>
+              
               {/* Decorative circles */}
               <div className="absolute inset-0 overflow-hidden">
                 <motion.div
