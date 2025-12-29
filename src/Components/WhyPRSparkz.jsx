@@ -49,18 +49,6 @@ const WhyPRSparkz = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       )
-    },
-    {
-      number: "24/7",
-      label: "Active Support",
-      description: "Round-the-clock monitoring & optimization",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop&q=80",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="9" strokeWidth={2} />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" />
-        </svg>
-      )
     }
   ], []);
 
@@ -262,7 +250,7 @@ const WhyPRSparkz = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 justify-items-center"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -793,7 +781,7 @@ const WhyPRSparkz = () => {
               </h3>
               
               <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
-                Book your <span className="font-semibold text-black">free strategy session</span> and discover how our proven methodologies can deliver measurable growth for your business.
+                Book your <span className="font-semibold text-black">strategy session</span> and discover how our proven methodologies can deliver measurable growth for your business.
               </p>
 
               <div className="mb-8">

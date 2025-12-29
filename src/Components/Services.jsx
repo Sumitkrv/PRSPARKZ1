@@ -238,7 +238,7 @@ const ServiceCard = ({ service, index }) => {
               className="w-full h-full object-cover"
               onLoad={() => setImageLoaded(true)}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#6a4a89]/90 via-[#8a6aa9]/50 to-transparent flex items-end justify-center p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#6a4a89]/90 via-[#8a6aa9]/50 to-transparent flex items-center justify-center p-4">
               <div className="text-center">
                 <h3 className="text-white font-bold text-xs md:text-sm drop-shadow-lg mb-1 leading-tight">
                   {service.title}

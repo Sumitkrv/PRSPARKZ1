@@ -331,7 +331,7 @@ const ModernNavbar = () => {
   const navItems = [
     { label: 'Home', path: '/', icon: '◉', isSection: false },
     { label: 'Services', path: '#services', icon: '◎', isSection: true },
-    { label: 'Portfolio', path: '/portfolio', icon: '◆', isSection: false },
+    // { label: 'Portfolio', path: '/portfolio', icon: '◆', isSection: false }, // Temporarily hidden
     { label: 'About', path: '/about', icon: '◈', isSection: false },
     { label: 'Contact', path: '#contact', icon: '◐', isSection: true }
   ];
@@ -609,26 +609,33 @@ const ModernNavbar = () => {
               {/* Main menu container - Vertical */}
               <div className="relative space-y-3">
                 {[
-                  { label: 'Services', section: 'services', Icon: Briefcase, color: 'from-[#f5f0f8] to-[#8a6aa9]' },
-                  { label: 'Why Us', section: 'why', Icon: Sparkles, color: 'from-[#8a6aa9] to-[#7a5a99]' },
-                  { label: 'Testimonials', section: 'testimonials', Icon: MessageCircle, color: 'from-[#f5f0f8] to-[#7a5a99]' },
+                  { label: 'Services', section: 'services', Icon: Briefcase, color: 'from-[#8a6aa9] to-[#7a5a99]' },
+                  { label: 'Why Us', section: 'why-pr-sparkz', Icon: Sparkles, color: 'from-[#9d7bb8] to-[#8a6aa9]' },
+                  { label: 'Testimonials', section: 'testimonials', Icon: MessageCircle, color: 'from-[#7a5a99] to-[#6a4a89]' },
                   { label: 'Contact', section: 'contact', Icon: Mail, color: 'from-[#8a6aa9] to-[#6a4a89]' }
                 ].map((item, index) => {
                   const IconComponent = item.Icon;
                   return (
                     <div key={item.label} style={{ animationDelay: `${index * 50}ms` }} className="animate-[float-in_0.3s_ease-out_forwards]">
-                      <a
-                        href={`#${item.section}`}
-                        onClick={(e) => handleNavSectionClick(e, item.section)}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (location.pathname === '/') {
+                            scrollToSection(item.section, 80);
+                          } else {
+                            navigate('/');
+                            setTimeout(() => scrollToSection(item.section, 80), 100);
+                          }
+                        }}
                         className="group relative flex items-center cursor-pointer"
                       >
                         {/* Circular icon button */}
-                        <div className={`relative w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-125 transition-all duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-[#f5f0f8]/50 z-10`}>
+                        <div className={`relative w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-125 transition-all duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-[#8a6aa9]/50 z-10`}>
                           <IconComponent className="w-5 h-5 text-white" strokeWidth={2.5} />
                           <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           
                           {/* Outer ring on hover */}
-                          <div className="absolute -inset-1 rounded-full border-2 border-[#9d7bb8]/50 opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-110 transition-all duration-300"></div>
+                          <div className="absolute -inset-1 rounded-full border-2 border-[#8a6aa9]/60 opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-110 transition-all duration-300"></div>
                         </div>
                         
                         {/* Label tooltip - appears on hover with circle background */}
@@ -645,8 +652,8 @@ const ModernNavbar = () => {
                         </div>
                         
                         {/* Ripple effect */}
-                        <div className="absolute inset-0 rounded-full bg-[#f5f0f8]/20 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                      </a>
+                        <div className="absolute inset-0 rounded-full bg-[#8a6aa9]/20 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                      </button>
                     </div>
                   );
                 })}

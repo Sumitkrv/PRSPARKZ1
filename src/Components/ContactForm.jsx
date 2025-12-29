@@ -48,7 +48,7 @@ const ContactForm = () => {
   // Company information
   const companyInfo = {
     email: "Info@prsparkz.com",
-    phone: "+91 052-5684",
+    phone: "+91 910525684",
     address: "402, RG Trade Tower, Netaji Subhash Palace, Pitampura, Delhi, 110034",
     workingHours: "Monday - Friday: 9:00 AM - 6:00 PM",
     social: {
@@ -490,7 +490,7 @@ const ContactForm = () => {
                               className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
                                 formErrors.name ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
                               } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
-                              placeholder="John Doe"
+                              placeholder="Rahul Sharma"
                               disabled={isSubmitting}
                             />
                           </div>
@@ -517,7 +517,7 @@ const ContactForm = () => {
                               className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
                                 formErrors.email ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
                               } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
-                              placeholder="john@example.com"
+                              placeholder="rahul.sharma@example.com"
                               disabled={isSubmitting}
                             />
                           </div>

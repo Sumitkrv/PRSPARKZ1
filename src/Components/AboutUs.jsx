@@ -174,7 +174,7 @@ const AboutUs = () => {
       id="about" 
       ref={sectionRef}
       className="min-h-screen bg-white text-gray-900 relative overflow-hidden"
-      style={{ paddingTop: 'clamp(7rem, 20vw, 10rem)', paddingBottom: '5rem' }}
+      style={{ paddingTop: 'clamp(5rem, 15vw, 10rem)', paddingBottom: 'clamp(3rem, 8vw, 5rem)' }}
     >
       {/* Animated Background */}
       <div ref={containerRef} className="absolute inset-0 overflow-hidden">
@@ -257,7 +257,7 @@ const AboutUs = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 relative">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 sm:mb-10 md:mb-12 relative px-4">
             <span className="bg-gradient-to-r from-gray-900 via-[#8a6aa9] to-gray-900 bg-clip-text text-transparent">
               ABOUT PR SPARKZ
             </span>
@@ -272,15 +272,15 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-20"
+            className="text-center mb-12 sm:mb-16 md:mb-20 px-4"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
               <span className="text-gray-900">Transforming Businesses Into </span>
               <span className="bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] bg-clip-text text-transparent">
                 Industry Leaders
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
               We partner with ambitious brands to create powerful market presence through strategic PR, 
               innovative marketing, and measurable results that drive real business growth.
             </p>
@@ -299,12 +299,12 @@ const AboutUs = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-[#b99cc8]/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-[#f5f0f8]/50 via-white/30 to-[#ebe2f0]/30"></div>
             
-            <div className="grid lg:grid-cols-2 gap-12 p-8 md:p-16 relative">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 p-6 sm:p-8 md:p-12 lg:p-16 relative">
               {/* Left: Image */}
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8a6aa9] to-[#b99cc8] rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
                 
-                <div className="relative aspect-square max-w-md mx-auto rounded-2xl overflow-hidden border-2 border-[#cdb8dd] group-hover:border-[#b99cc8] transition-all duration-500 shadow-xl">
+                <div className="relative aspect-square max-w-sm sm:max-w-md mx-auto rounded-2xl overflow-hidden border-2 border-[#cdb8dd] group-hover:border-[#b99cc8] transition-all duration-500 shadow-xl">
                   <img 
                     src="/PR-FD.jpeg"
                     alt="Priyanka Khandelwal - Founder"
@@ -335,8 +335,8 @@ const AboutUs = () => {
 
               {/* Right: Content */}
               <div className="flex flex-col justify-center">
-                <div className="mb-6">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                <div className="mb-4 sm:mb-6">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3">
                     <span className="bg-gradient-to-r from-gray-900 to-[#8a6aa9] bg-clip-text text-transparent">
                       Priyanka Khandelwal
                     </span>
@@ -407,7 +407,7 @@ const AboutUs = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4">
 
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -486,7 +486,7 @@ const AboutUs = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 px-4">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -522,7 +522,7 @@ const AboutUs = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl border border-[#e2d4ed] p-12 overflow-hidden shadow-xl">
+          <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-[#e2d4ed] p-6 sm:p-8 md:p-12 overflow-hidden shadow-xl mx-4">
             {/* Glassmorphism Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#f5f0f8]/60 via-white/40 to-[#ebe2f0]/50"></div>
             {/* Background Glow */}
@@ -560,7 +560,7 @@ const AboutUs = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 px-4">
             {[
               { icon: Award, label: 'Top 10 PR Agency', year: '2024' },
               { icon: Star, label: '5-Star Rated', year: '500+ Reviews' },
@@ -583,115 +583,6 @@ const AboutUs = () => {
                     <p className="text-xs text-[#8a6aa9] font-medium">{award.year}</p>
                   </div>
                 </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Milestones Timeline */}
-        <motion.div
-          className="mb-24"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.75 }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-extrabold">
-              <span className="bg-gradient-to-r from-gray-900 to-[#8a6aa9] bg-clip-text text-transparent">Our Milestones</span>
-            </h3>
-            <p className="text-gray-600 mt-2">A journey of consistent excellence and growth</p>
-          </div>
-          <div className="relative max-w-4xl mx-auto">
-            {/* Line */}
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-full bg-gradient-to-b from-[#cdb8dd] via-[#e2d4ed] to-transparent" />
-
-            {[
-              { year: '2015', title: 'Founded PR Sparkz', desc: 'Started with a simple belief: every great business deserves to be seen and valued.', Icon: Award, detail: '2 people, big dreams, and a commitment to honest work' },
-              { year: '2019', title: '100+ Happy Clients', desc: 'Built lasting partnerships with businesses who trusted us with their growth.', Icon: Users, detail: '98% retention because we grow with our clients' },
-              { year: '2023', title: 'Expanded Our Impact', desc: 'Scaled our team and services without compromising our core values.', Icon: Globe, detail: 'Grew to 50+ team members, still serving with the same heart' },
-              { year: '2025', title: 'Industry Recognition', desc: 'Featured across major platforms for our honest approach and real results.', Icon: Megaphone, detail: 'Recognized for doing what we said we would do - and doing it well' }
-            ].map((item, i) => {
-              const [isHovered, setIsHovered] = useState(false);
-              return (
-                <div 
-                  key={i} 
-                  className={`relative grid md:grid-cols-2 items-center gap-6 md:gap-10 mb-10 ${i % 2 ? 'md:text-left' : 'md:text-right'}`}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  {/* Connector Dot - Animated on hover */}
-                  <motion.div 
-                    className="absolute left-1/2 -translate-x-1/2 rounded-full bg-[#8a6aa9] border-2 border-white shadow" 
-                    style={{ top: '1.75rem' }}
-                    animate={{ 
-                      width: isHovered ? '16px' : '12px',
-                      height: isHovered ? '16px' : '12px',
-                      boxShadow: isHovered ? '0 0 20px rgba(138, 106, 169, 0.5)' : '0 1px 3px rgba(0,0,0,0.1)'
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-
-                  {/* Card */}
-                  <div className={`${i % 2 ? 'md:col-start-2' : ''}`}>
-                    <motion.div 
-                      className="relative bg-white/70 backdrop-blur-md border border-[#e2d4ed] rounded-2xl p-6 shadow-md overflow-hidden"
-                      animate={{
-                        y: isHovered ? -8 : 0,
-                        scale: isHovered ? 1.02 : 1,
-                        boxShadow: isHovered ? '0 20px 40px rgba(138, 106, 169, 0.15)' : '0 4px 6px rgba(0,0,0,0.1)'
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {/* Glassmorphism background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#f5f0f8]/60 via-white/40 to-[#ebe2f0]/50"></div>
-                      
-                      {/* Hover gradient */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-[#b99cc8]/10 to-transparent"
-                        animate={{ opacity: isHovered ? 1 : 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      
-                      <div className="relative flex items-start gap-4">
-                        <motion.div 
-                          className="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#ebe2f0] to-white border border-[#e2d4ed] flex items-center justify-center"
-                          animate={{ rotate: isHovered ? 360 : 0 }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <item.Icon className="w-6 h-6 text-[#7a5a99]" />
-                        </motion.div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3">
-                            <span className="text-sm font-bold text-[#8a6aa9]">{item.year}</span>
-                            <span className="w-1 h-1 rounded-full bg-[#cdb8dd]"></span>
-                            <h4 className="text-lg font-extrabold text-gray-900">{item.title}</h4>
-                          </div>
-                          <p className="text-gray-600 mt-2">{item.desc}</p>
-                          
-                          {/* Extra detail on hover */}
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ 
-                              height: isHovered ? 'auto' : 0,
-                              opacity: isHovered ? 1 : 0,
-                              marginTop: isHovered ? 8 : 0
-                            }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="flex items-center gap-2 text-sm text-[#8a6aa9] font-medium pt-2 border-t border-[#e2d4ed]">
-                              <Sparkles className="w-4 h-4" />
-                              <span>{item.detail}</span>
-                            </div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Spacer on the other side for layout balance */}
-                  <div className={`${i % 2 ? '' : 'md:col-start-2'} hidden md:block`} />
-                </div>
               );
             })}
           </div>

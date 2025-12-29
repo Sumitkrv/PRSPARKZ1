@@ -99,20 +99,14 @@ const Footer = () => {
                   <span className="ml-3">Info@prsparkz.com</span>
                 </a>
                 <a 
-                  href="tel:+910525684" 
+                  href="tel:+91910525684" 
                   className="flex items-center text-sm text-gray-600 hover:text-[#8a6aa9] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-[#f5f0f8] transition-colors">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span className="ml-3">+91 0525684</span>
+                  <span className="ml-3">+91 910525684</span>
                 </a>
-                <div className="flex items-start text-sm text-gray-600 group">
-                  <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <span className="ml-3">Bangalore, Karnataka, India</span>
-                </div>
               </div>
             </div>
 
@@ -141,7 +135,7 @@ const Footer = () => {
                     <span className="text-sm">About Us</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/portfolio"
                     className="flex items-center text-gray-600 hover:text-[#8a6aa9] transition-colors group"
@@ -149,7 +143,7 @@ const Footer = () => {
                     <FolderOpen className="w-4 h-4 mr-3 text-gray-400 group-hover:text-[#8a6aa9] transition-colors" />
                     <span className="text-sm">Portfolio</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <button
                     onClick={(e) => {
