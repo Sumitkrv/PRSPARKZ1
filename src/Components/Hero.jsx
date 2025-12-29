@@ -144,13 +144,16 @@ const SparkzHero = () => {
           height: 100%;
           overflow: hidden;
           z-index: 0;
+          background: #000;
         }
         
         .hero-video {
           position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100vw;
+          height: 100vh;
           object-fit: cover;
           object-position: center;
         }
@@ -213,6 +216,12 @@ const SparkzHero = () => {
             padding-top: 5rem;
           }
           
+          .hero-video {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+          }
+          
           .cta-button {
             padding: 1rem 1.5rem;
           }
@@ -222,6 +231,11 @@ const SparkzHero = () => {
         @media (max-width: 896px) and (orientation: landscape) {
           .hero-section {
             padding-top: 4.5rem;
+          }
+          
+          .hero-video {
+            width: 100vw;
+            height: 100vh;
           }
         }
         
@@ -241,18 +255,10 @@ const SparkzHero = () => {
             padding: 1rem 2rem;
           }
         }
-        
-        /* Ultra-wide screens */
-        @media (min-aspect-ratio: 21/9) {
-          .hero-video {
-            height: 100%;
-            width: auto;
-            min-width: 100%;
-          }
-        }
       `}</style>
     </>
   );
 };
 
 export default SparkzHero;
+      
