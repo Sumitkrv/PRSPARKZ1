@@ -19,11 +19,27 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
-  const [activeTab, setActiveTab] = useState("form");
-  const mapRef = useRef(null);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   
+  // Purple Color Palette
+  const theme = {
+    wisteria: "#E8D5FF",        // Lightest purple
+    lavender: "#D4BDFF",
+    orchid: "#C19EFF",
+    mauve: "#AD85FF",
+    amethyst: "#9A6FFF",
+    plum: "#8659D9",
+    aubergine: "#7343C0",
+    violet: "#5E2FA8",
+    midnightPurple: "#4A1F8F",  // Darkest purple
+    headerGradient1: "#5B3A8F",
+    headerGradient2: "#6B4FA0",
+    headerGradient3: "#7B5FB5",
+    metallicText: "#1a1a1a",
+    metallicBorder: "#C0C0C0"
+  };
+
   // Parallax scroll effect
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -57,106 +73,6 @@ const ContactForm = () => {
       instagram: "https://instagram.com/prsparkz"
     }
   };
-
-  // Initialize Google Map
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.google && mapRef.current) {
-      const map = new window.google.maps.Map(mapRef.current, {
-        center: { lat: 28.6982, lng: 77.1314 }, // Pitampura, Delhi coordinates
-        zoom: 16,
-        styles: [
-          {
-            featureType: "all",
-            elementType: "geometry",
-            stylers: [{ color: "#f5f5f5" }]
-          },
-          {
-            featureType: "all",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#8a6aa9" }]
-          },
-          {
-            featureType: "all",
-            elementType: "labels.text.stroke",
-            stylers: [{ color: "#ffffff" }]
-          },
-          {
-            featureType: "poi",
-            elementType: "all",
-            stylers: [{ visibility: "off" }]
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#ffffff" }]
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#e5e7eb" }]
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#ddd6fe" }]
-          }
-        ],
-        mapTypeControl: false,
-        streetViewControl: true,
-        fullscreenControl: true,
-        zoomControl: true,
-        zoomControlOptions: {
-          position: window.google.maps.ControlPosition.RIGHT_CENTER
-        }
-      });
-
-      const marker = new window.google.maps.Marker({
-        position: { lat: 28.6982, lng: 77.1314 },
-        map: map,
-        title: "PRSparkz Office - RG Trade Tower",
-        animation: window.google.maps.Animation.DROP,
-        icon: {
-          path: window.google.maps.SymbolPath.CIRCLE,
-          scale: 12,
-          fillColor: "#8a6aa9",
-          fillOpacity: 1,
-          strokeColor: "#ffffff",
-          strokeWeight: 4
-        }
-      });
-
-      const infoWindow = new window.google.maps.InfoWindow({
-        content: `
-          <div style="padding: 15px; font-family: 'Montserrat', sans-serif; max-width: 280px;">
-            <h3 style="color: #8a6aa9; font-size: 16px; font-weight: 700; margin: 0 0 10px 0;">PRSparkz</h3>
-            <p style="margin: 0 0 8px 0; color: #374151; font-size: 14px; line-height: 1.5;">
-              402, RG Trade Tower<br/>
-              Netaji Subhash Palace<br/>
-              Pitampura, Delhi, 110034
-            </p>
-            <div style="border-top: 1px solid #e5e7eb; padding-top: 8px; margin-top: 8px;">
-              <p style="margin: 4px 0; color: #6b7280; font-size: 13px;">📞 ${companyInfo.phone}</p>
-              <p style="margin: 4px 0; color: #6b7280; font-size: 13px;">📧 ${companyInfo.email}</p>
-            </div>
-            <a href="https://maps.app.goo.gl/LKfkW8qaD2GmUEVX8" target="_blank" rel="noopener noreferrer" 
-               style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #8a6aa9; color: white; 
-               text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
-              Get Directions
-            </a>
-          </div>
-        `
-      });
-
-      marker.addListener("click", () => {
-        infoWindow.open(map, marker);
-      });
-      
-      // Open info window by default
-      setTimeout(() => {
-        infoWindow.open(map, marker);
-      }, 500);
-    }
-  }, []);
 
   // Validation functions
   const validateForm = () => {
@@ -288,39 +204,15 @@ const ContactForm = () => {
   const messageLength = formData.message.length;
   const maxMessageLength = 1000;
 
-  // Quick reply templates
-  const quickReplies = [
-    {
-      text: "I'd like to discuss a project",
-      subject: "Project Proposal",
-      message: "Hello, I'm interested in discussing a potential project. Could we schedule a call?"
-    },
-    {
-      text: "Need technical support",
-      subject: "Support",
-      message: "I need assistance with your services. Can you help me resolve this issue?"
-    },
-    {
-      text: "Partnership inquiry",
-      subject: "Partnership",
-      message: "I'd like to explore partnership opportunities between our companies."
-    }
-  ];
-
-  const applyQuickReply = (reply) => {
-    setFormData(prev => ({
-      ...prev,
-      subject: reply.subject,
-      message: reply.message
-    }));
-  };
-
   return (
     <section 
       id="contact" 
       ref={containerRef}
-      className="min-h-screen bg-gradient-to-br from-white via-[#f5f0f8] to-white py-16 px-4 md:px-8"
-      style={{ fontFamily: "'Montserrat', sans-serif" }}
+      className="min-h-screen py-16 px-4 md:px-8"
+      style={{ 
+        fontFamily: "'Montserrat', sans-serif",
+        background: `linear-gradient(135deg, white, ${theme.wisteria})`
+      }}
     >
       <motion.div 
         className="max-w-7xl mx-auto"
@@ -332,73 +224,91 @@ const ContactForm = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center"
+                 style={{ 
+                   background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
+                 }}>
               <MessageSquare className="text-white" size={24} />
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r bg-clip-text text-transparent"
+                style={{ 
+                  backgroundImage: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
+                }}>
               Contact Us
             </h2>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: theme.metallicText, opacity: 0.8 }}>
             Let's start a conversation about your next big project
           </p>
         </div>
-
-        {/* Tabs Navigation - Removed as only one tab remains */}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Contact Information */}
           <div className="lg:col-span-1 space-y-8">
             {/* Contact Cards */}
-            <div className="bg-white rounded-2xl border border-[#ebe2f0] shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Building className="text-[#8a6aa9]" size={24} />
+            <div className="rounded-2xl p-8"
+                 style={{ 
+                   background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                   border: `1px solid ${theme.metallicBorder}`
+                 }}>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3"
+                  style={{ color: theme.metallicText }}>
+                <Building size={24} style={{ color: theme.amethyst }} />
                 Contact Information
               </h3>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-[#8a6aa9]" size={20} />
+                <div className="flex items-start gap-4 p-4 rounded-xl transition-colors hover:bg-white/50">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                       style={{ background: theme.wisteria }}>
+                    <Mail size={20} style={{ color: theme.amethyst }} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email Address</h4>
+                    <h4 className="font-semibold mb-1" style={{ color: theme.metallicText }}>Email Address</h4>
                     <a 
                       href={`mailto:${companyInfo.email}`}
-                      className="text-[#8a6aa9] hover:text-[#7a5a99] transition-colors font-medium"
+                      className="font-medium transition-colors"
+                      style={{ color: theme.amethyst }}
                     >
                       {companyInfo.email}
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">Response within 24 hours</p>
+                    <p className="text-sm mt-1" style={{ color: theme.metallicText, opacity: 0.6 }}>Response within 24 hours</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#f5f0f8] transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-[#ebe2f0] flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-[#8a6aa9]" size={20} />
+                <div className="flex items-start gap-4 p-4 rounded-xl transition-colors hover:bg-white/50">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                       style={{ background: theme.wisteria }}>
+                    <Phone size={20} style={{ color: theme.amethyst }} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Phone Number</h4>
+                    <h4 className="font-semibold mb-1" style={{ color: theme.metallicText }}>Phone Number</h4>
                     <a 
                       href={`tel:${companyInfo.phone}`}
-                      className="text-[#8a6aa9] hover:text-[#7a5a99] transition-colors font-medium"
+                      className="font-medium transition-colors"
+                      style={{ color: theme.amethyst }}
                     >
                       {companyInfo.phone}
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">Mon-Fri, 9AM-6PM IST</p>
+                    <p className="text-sm mt-1" style={{ color: theme.metallicText, opacity: 0.6 }}>Mon-Fri, 9AM-6PM IST</p>
                   </div>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="mt-8 pt-8 border-t border-gray-100">
-                <h4 className="font-semibold text-gray-900 mb-4">Follow Us</h4>
+              <div className="mt-8 pt-8" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
+                <h4 className="font-semibold mb-4" style={{ color: theme.metallicText }}>Follow Us</h4>
                 <div className="flex gap-4">
                   <a
                     href={companyInfo.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+                      color: theme.metallicText,
+                      border: `1px solid ${theme.metallicBorder}`
+                    }}
                     aria-label="Follow us on LinkedIn"
                   >
                     <Linkedin size={20} />
@@ -407,7 +317,12 @@ const ContactForm = () => {
                     href={companyInfo.social.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+                      color: theme.metallicText,
+                      border: `1px solid ${theme.metallicBorder}`
+                    }}
                     aria-label="Follow us on Twitter"
                   >
                     <Twitter size={20} />
@@ -416,7 +331,12 @@ const ContactForm = () => {
                     href={companyInfo.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-[#ebe2f0] hover:text-[#8a6aa9] transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+                      color: theme.metallicText,
+                      border: `1px solid ${theme.metallicBorder}`
+                    }}
                     aria-label="Follow us on Instagram"
                   >
                     <Instagram size={20} />
@@ -424,43 +344,55 @@ const ContactForm = () => {
                 </div>
               </div>
             </div>
-
-            {/* Quick Message Templates section removed as requested */}
           </div>
 
           {/* Right Column - Main Content */}
           <div className="lg:col-span-2">
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl border border-[#ebe2f0] shadow-xl overflow-hidden">
+            <div className="rounded-2xl overflow-hidden"
+                 style={{ 
+                   background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                   border: `1px solid ${theme.metallicBorder}`
+                 }}>
                 {isSubmitted ? (
                   <div className="text-center py-16 px-8">
-                    <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-emerald-600 animate-success-pulse">
+                    <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center rounded-full animate-success-pulse"
+                         style={{ 
+                           background: `linear-gradient(135deg, #10B981, #059669)`
+                         }}>
                       <CheckCircle size={48} className="text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-3">Success! 🎉</h3>
-                    <p className="text-gray-600 mb-4 max-w-md mx-auto">
+                    <h3 className="text-3xl font-bold mb-3" style={{ color: theme.metallicText }}>Success! 🎉</h3>
+                    <p className="mb-4 max-w-md mx-auto" style={{ color: theme.metallicText, opacity: 0.8 }}>
                       Your message has been sent successfully. We'll contact you within 24 hours.
                     </p>
-                    <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 max-w-md mx-auto mb-8">
-                      <h4 className="font-semibold text-gray-900 mb-2">What happens next?</h4>
-                      <ul className="text-left space-y-2 text-sm text-gray-600">
+                    <div className="rounded-xl p-6 max-w-md mx-auto mb-8"
+                         style={{ 
+                           background: `linear-gradient(135deg, ${theme.wisteria}/20, white)`
+                         }}>
+                      <h4 className="font-semibold mb-2" style={{ color: theme.metallicText }}>What happens next?</h4>
+                      <ul className="text-left space-y-2 text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>
                         <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          <div className="w-2 h-2 rounded-full" style={{ background: '#10B981' }}></div>
                           You'll receive a confirmation email
                         </li>
                         <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          <div className="w-2 h-2 rounded-full" style={{ background: '#10B981' }}></div>
                           Our team will review your inquiry
                         </li>
                         <li className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          <div className="w-2 h-2 rounded-full" style={{ background: '#10B981' }}></div>
                           We'll schedule a call if needed
                         </li>
                       </ul>
                     </div>
                     <button
                       onClick={resetForm}
-                      className="px-8 py-3 bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                      className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`,
+                        color: 'white'
+                      }}
                     >
                       Send Another Message
                     </button>
@@ -468,18 +400,19 @@ const ContactForm = () => {
                 ) : (
                   <div className="p-8">
                     <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Send us a message</h3>
-                      <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                      <h3 className="text-2xl font-bold mb-2" style={{ color: theme.metallicText }}>Send us a message</h3>
+                      <p style={{ color: theme.metallicText, opacity: 0.8 }}>Fill out the form below and we'll get back to you as soon as possible.</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
+                          <label className="block text-sm font-semibold mb-2" style={{ color: theme.metallicText }}>
                             Your Name *
                           </label>
                           <div className="relative">
-                            <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
+                            <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2" 
+                                  style={{ color: theme.amethyst }} />
                             <input
                               type="text"
                               name="name"
@@ -487,26 +420,30 @@ const ContactForm = () => {
                               value={formData.name}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.name ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
+                              className={`w-full pl-12 pr-4 py-3 rounded-xl border text-gray-900 bg-white focus:outline-none focus:ring-2 transition-all ${
+                                formErrors.name 
+                                  ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
+                                  : `border-[${theme.metallicBorder}] focus:border-[${theme.amethyst}] focus:ring-[${theme.amethyst}]/20`
+                              }`}
                               placeholder="Rahul Sharma"
                               disabled={isSubmitting}
+                              style={{ color: theme.metallicText }}
                             />
                           </div>
                           {formErrors.name && (
-                            <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                            <p className="mt-2 text-sm flex items-center gap-1" style={{ color: '#EF4444' }}>
                               <AlertCircle size={14} /> {formErrors.name}
                             </p>
                           )}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
+                          <label className="block text-sm font-semibold mb-2" style={{ color: theme.metallicText }}>
                             Email Address *
                           </label>
                           <div className="relative">
-                            <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
+                            <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2" 
+                                  style={{ color: theme.amethyst }} />
                             <input
                               type="email"
                               name="email"
@@ -514,15 +451,18 @@ const ContactForm = () => {
                               value={formData.email}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.email ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
+                              className={`w-full pl-12 pr-4 py-3 rounded-xl border text-gray-900 bg-white focus:outline-none focus:ring-2 transition-all ${
+                                formErrors.email 
+                                  ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
+                                  : `border-[${theme.metallicBorder}] focus:border-[${theme.amethyst}] focus:ring-[${theme.amethyst}]/20`
+                              }`}
                               placeholder="rahul.sharma@example.com"
                               disabled={isSubmitting}
+                              style={{ color: theme.metallicText }}
                             />
                           </div>
                           {formErrors.email && (
-                            <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                            <p className="mt-2 text-sm flex items-center gap-1" style={{ color: '#EF4444' }}>
                               <AlertCircle size={14} /> {formErrors.email}
                             </p>
                           )}
@@ -531,42 +471,51 @@ const ContactForm = () => {
 
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
-                            Phone Number <span className="text-gray-500 font-normal">(optional)</span>
+                          <label className="block text-sm font-semibold mb-2" style={{ color: theme.metallicText }}>
+                            Phone Number <span className="font-normal" style={{ color: theme.metallicText, opacity: 0.6 }}>(optional)</span>
                           </label>
                           <div className="relative">
-                            <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
+                            <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2" 
+                                  style={{ color: theme.amethyst }} />
                             <input
                               type="tel"
                               name="phone"
                               value={formData.phone}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                                formErrors.phone ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
-                              } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all`}
+                              className={`w-full pl-12 pr-4 py-3 rounded-xl border text-gray-900 bg-white focus:outline-none focus:ring-2 transition-all ${
+                                formErrors.phone 
+                                  ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
+                                  : `border-[${theme.metallicBorder}] focus:border-[${theme.amethyst}] focus:ring-[${theme.amethyst}]/20`
+                              }`}
                               placeholder="+91 12345 67890"
                               disabled={isSubmitting}
+                              style={{ color: theme.metallicText }}
                             />
                           </div>
                           {formErrors.phone && (
-                            <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                            <p className="mt-2 text-sm flex items-center gap-1" style={{ color: '#EF4444' }}>
                               <AlertCircle size={14} /> {formErrors.phone}
                             </p>
                           )}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
+                          <label className="block text-sm font-semibold mb-2" style={{ color: theme.metallicText }}>
                             Subject *
                           </label>
                           <div className="relative">
-                            <FileText size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a6aa9]" />
+                            <FileText size={18} className="absolute left-4 top-1/2 -translate-y-1/2" 
+                                      style={{ color: theme.amethyst }} />
                             <select
                               name="subject"
                               value={formData.subject}
                               onChange={handleChange}
-                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-[#e2d4ed] text-gray-900 bg-white focus:outline-none focus:border-[#8a6aa9] focus:ring-2 focus:ring-[#f5f0f8] transition-all appearance-none cursor-pointer"
+                              className="w-full pl-12 pr-4 py-3 rounded-xl border bg-white focus:outline-none focus:border-[#7B68EE] focus:ring-2 focus:ring-[#7B68EE]/20 transition-all appearance-none cursor-pointer"
+                              style={{ 
+                                borderColor: theme.metallicBorder,
+                                color: theme.metallicText 
+                              }}
                               disabled={isSubmitting}
                             >
                               {contactSubjects.map((option) => (
@@ -576,7 +525,8 @@ const ContactForm = () => {
                               ))}
                             </select>
                             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                              <svg className="w-4 h-4 text-[#8a6aa9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                   style={{ color: theme.amethyst }}>
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                               </svg>
                             </div>
@@ -586,7 +536,7 @@ const ContactForm = () => {
 
                       <div>
                         <div className="flex justify-between items-center mb-2">
-                          <label className="block text-sm font-semibold text-gray-900">
+                          <label className="block text-sm font-semibold" style={{ color: theme.metallicText }}>
                             Your Message *
                           </label>
                           <span className={`text-sm ${
@@ -596,7 +546,8 @@ const ContactForm = () => {
                           </span>
                         </div>
                         <div className="relative">
-                          <FileText size={18} className="absolute left-4 top-4 text-[#8a6aa9]" />
+                          <FileText size={18} className="absolute left-4 top-4" 
+                                    style={{ color: theme.amethyst }} />
                           <textarea
                             name="message"
                             rows="5"
@@ -605,26 +556,35 @@ const ContactForm = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             maxLength={maxMessageLength}
-                            className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-                              formErrors.message ? 'border-red-300 focus:border-red-500' : 'border-[#e2d4ed] focus:border-[#8a6aa9]'
-                            } text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f5f0f8] transition-all resize-none`}
+                            className={`w-full pl-12 pr-4 py-3 rounded-xl border bg-white focus:outline-none focus:ring-2 transition-all resize-none ${
+                              formErrors.message 
+                                ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
+                                : `border-[${theme.metallicBorder}] focus:border-[${theme.amethyst}] focus:ring-[${theme.amethyst}]/20`
+                            }`}
                             placeholder="Tell us about your project, timeline, and budget..."
                             disabled={isSubmitting}
+                            style={{ color: theme.metallicText }}
                           />
                         </div>
                         {formErrors.message && (
-                          <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                          <p className="mt-2 text-sm flex items-center gap-1" style={{ color: '#EF4444' }}>
                             <AlertCircle size={14} /> {formErrors.message}
                           </p>
                         )}
                       </div>
 
                       {submitError && (
-                        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 flex items-start gap-3 animate-shake">
-                          <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+                        <div className="p-4 rounded-xl flex items-start gap-3 animate-shake"
+                             style={{ 
+                               background: '#FEF2F2',
+                               border: '1px solid #FECACA'
+                             }}>
+                          <AlertCircle size={20} className="flex-shrink-0 mt-0.5" style={{ color: '#DC2626' }} />
                           <div>
-                            <p className="font-medium">Submission failed</p>
-                            <p className="text-sm mt-1">Please try again or contact us directly via email/phone.</p>
+                            <p className="font-medium" style={{ color: '#DC2626' }}>Submission failed</p>
+                            <p className="text-sm mt-1" style={{ color: '#DC2626', opacity: 0.8 }}>
+                              Please try again or contact us directly via email/phone.
+                            </p>
                           </div>
                         </div>
                       )}
@@ -633,7 +593,11 @@ const ContactForm = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-4 flex items-center justify-center gap-3 text-white font-bold rounded-xl text-lg transition-all duration-300 bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] hover:from-[#7a5a99] hover:to-[#6a4a89] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          className="w-full py-4 flex items-center justify-center gap-3 font-bold rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          style={{ 
+                            background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`,
+                            color: 'white'
+                          }}
                         >
                           {isSubmitting ? (
                             <>
@@ -647,11 +611,13 @@ const ContactForm = () => {
                             </>
                           )}
                         </button>
-                        <p className="text-center text-sm text-gray-500 mt-4">
+                        <p className="text-center text-sm mt-4" style={{ color: theme.metallicText, opacity: 0.6 }}>
                           By submitting, you agree to our{' '}
-                          <a href="/privacy" className="text-[#8a6aa9] hover:underline font-medium">Privacy Policy</a>
+                          <a href="/privacy" className="font-medium hover:underline"
+                             style={{ color: theme.amethyst }}>Privacy Policy</a>
                           {' '}and{' '}
-                          <a href="/terms" className="text-[#8a6aa9] hover:underline font-medium">Terms of Service</a>
+                          <a href="/terms" className="font-medium hover:underline"
+                             style={{ color: theme.amethyst }}>Terms of Service</a>
                         </p>
                       </div>
                     </form>
@@ -663,23 +629,34 @@ const ContactForm = () => {
 
           {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-[#8a6aa9] to-[#7a5a99] rounded-2xl p-8 md:p-12 shadow-2xl">
+          <div className="rounded-2xl p-8 md:p-12 shadow-2xl"
+               style={{ 
+                 background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
+               }}>
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Ready to Start Your Project?
             </h3>
-            <p className="text-[#e2d4ed] mb-6 max-w-2xl mx-auto">
+            <p className="mb-6 max-w-2xl mx-auto" style={{ color: theme.orchid }}>
               Schedule a free consultation call with our experts to discuss your requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`mailto:${companyInfo.email}?subject=Schedule a Consultation`}
-                className="px-8 py-3 bg-white text-[#8a6aa9] rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105"
+                style={{ 
+                  background: 'white',
+                  color: theme.amethyst
+                }}
               >
                 Schedule a Call
               </a>
               <a
                 href={`tel:${companyInfo.phone}`}
-                className="px-8 py-3 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-[#8a6aa9] transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105"
+                style={{ 
+                  border: '2px solid white',
+                  color: 'white'
+                }}
               >
                 Call Now
               </a>
@@ -709,13 +686,6 @@ const ContactForm = () => {
           animation: shake 0.5s ease-in-out;
         }
       `}</style>
-
-      {/* Load Google Maps API */}
-      <script
-        src={`https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places`}
-        async
-        defer
-      />
     </section>
   );
 };

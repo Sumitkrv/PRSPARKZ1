@@ -9,7 +9,6 @@ import {
   Users,
   Sparkles,
   TrendingUp,
-  Heart,
   Zap
 } from "lucide-react";
 import { scrollToSection } from '../utils/navigation.js';
@@ -22,6 +21,24 @@ const Testimonials = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   
+  // Purple Color Palette
+  const theme = {
+    wisteria: "#E8D5FF",        // Lightest purple
+    lavender: "#D4BDFF",
+    orchid: "#C19EFF",
+    mauve: "#AD85FF",
+    amethyst: "#9A6FFF",
+    plum: "#8659D9",
+    aubergine: "#7343C0",
+    violet: "#5E2FA8",
+    midnightPurple: "#4A1F8F",  // Darkest purple
+    headerGradient1: "#5B3A8F",
+    headerGradient2: "#6B4FA0",
+    headerGradient3: "#7B5FB5",
+    metallicText: "#1a1a1a",
+    metallicBorder: "#C0C0C0"
+  };
+
   // Parallax scroll effect
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -42,8 +59,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Social Media",
       stats: "4x growth",
-      color: "#8b5cf6",
-      gradient: "from-[#f5f0f8] to-[#7a5a99]"
+      gradient: "from-[#9A6FFF] to-[#8659D9]"
     },
     { 
       id: 2,
@@ -54,8 +70,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Events & Marketing",
       stats: "Outstanding reach",
-      color: "#8a6aa9",
-      gradient: "from-[#8a6aa9] to-[#6a4a89]"
+      gradient: "from-[#C19EFF] to-[#9A6FFF]"
     },
     { 
       id: 3,
@@ -66,8 +81,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Digital Marketing",
       stats: "Results-driven",
-      color: "#a855f7",
-      gradient: "from-[#f5f0f8] to-[#7a5a99]"
+      gradient: "from-[#D4BDFF] to-[#C19EFF]"
     },
     { 
       id: 4,
@@ -78,8 +92,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Social Media",
       stats: "3x footfall",
-      color: "#9333ea",
-      gradient: "from-[#8a6aa9] to-[#6a4a89]"
+      gradient: "from-[#AD85FF] to-[#9A6FFF]"
     },
     { 
       id: 5,
@@ -90,8 +103,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Digital Marketing",
       stats: "Premium presence",
-      color: "#8b5cf6",
-      gradient: "from-[#f5f0f8] to-[#7a5a99]"
+      gradient: "from-[#9A6FFF] to-[#8659D9]"
     },
     { 
       id: 6,
@@ -102,8 +114,7 @@ const Testimonials = () => {
       rating: 5,
       platform: "Digital Marketing",
       stats: "Sales up",
-      color: "#8a6aa9",
-      gradient: "from-[#8a6aa9] to-[#6a4a89]"
+      gradient: "from-[#C19EFF] to-[#9A6FFF]"
     },
     { 
       id: 7,
@@ -114,8 +125,62 @@ const Testimonials = () => {
       rating: 5,
       platform: "Social Media",
       stats: "Engagement soared",
-      color: "#a855f7",
-      gradient: "from-[#f5f0f8] to-[#7a5a99]"
+      gradient: "from-[#D4BDFF] to-[#C19EFF]"
+    },
+    { 
+      id: 8,
+      name: "Ananya Sharma", 
+      role: "Director",
+      company: "StyleHub Fashion",
+      text: "The creative direction and brand storytelling elevated our entire campaign. We saw a 250% increase in engagement and our best quarter yet.",
+      rating: 5,
+      platform: "Social Media",
+      stats: "250% engagement",
+      gradient: "from-[#AD85FF] to-[#9A6FFF]"
+    },
+    { 
+      id: 9,
+      name: "Rajesh Kumar", 
+      role: "Founder",
+      company: "TechFlow Solutions",
+      text: "Outstanding results in B2B lead generation. The targeted campaigns brought us qualified leads and our conversion rate doubled within 2 months.",
+      rating: 5,
+      platform: "Digital Marketing",
+      stats: "2x conversions",
+      gradient: "from-[#9A6FFF] to-[#8659D9]"
+    },
+    { 
+      id: 10,
+      name: "Priya Malhotra", 
+      role: "Owner",
+      company: "Bliss Spa & Wellness",
+      text: "The brand refresh was exactly what we needed. Our social presence grew tremendously and we're now fully booked weeks in advance.",
+      rating: 5,
+      platform: "Social Media",
+      stats: "Fully booked",
+      gradient: "from-[#C19EFF] to-[#9A6FFF]"
+    },
+    { 
+      id: 11,
+      name: "Kabir Mehta", 
+      role: "Co-founder",
+      company: "EcoNest Homes",
+      text: "From zero to hero in 90 days. Their strategic approach to content and community building transformed our brand's digital footprint completely.",
+      rating: 5,
+      platform: "Digital Marketing",
+      stats: "Zero to hero",
+      gradient: "from-[#D4BDFF] to-[#C19EFF]"
+    },
+    { 
+      id: 12,
+      name: "Meera Iyer", 
+      role: "CEO",
+      company: "Artisan Crafts Co.",
+      text: "The influencer collaborations and PR strategies opened doors we never thought possible. Our revenue grew 5x in just one quarter.",
+      rating: 5,
+      platform: "Events & Marketing",
+      stats: "5x revenue",
+      gradient: "from-[#AD85FF] to-[#9A6FFF]"
     }
   ];
 
@@ -125,7 +190,7 @@ const Testimonials = () => {
     const interval = setInterval(() => {
       setDirection(1);
       setActiveIndex(prev => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 8000);
     
     return () => clearInterval(interval);
   }, [isAutoPlaying, isHovered, testimonials.length]);
@@ -148,31 +213,6 @@ const Testimonials = () => {
     setIsAutoPlaying(false);
   };
 
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-      scale: 0.8
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.32, 0.72, 0, 1]
-      }
-    },
-    exit: (direction) => ({
-      x: direction > 0 ? -1000 : 1000,
-      opacity: 0,
-      scale: 0.8,
-      transition: {
-        duration: 0.4
-      }
-    })
-  };
-
   const getPlatformIcon = (platform) => {
     switch(platform) {
       case "Social Media": return MessageCircle;
@@ -182,21 +222,32 @@ const Testimonials = () => {
     }
   };
 
+  // Split testimonials into left, center, and right columns
+  const leftTestimonials = testimonials.filter((_, i) => i % 3 === 0);
+  const centerTestimonials = testimonials.filter((_, i) => i % 3 === 1);
+  const rightTestimonials = testimonials.filter((_, i) => i % 3 === 2);
+
+  // Duplicate arrays for infinite scroll effect
+  const duplicatedLeft = [...leftTestimonials, ...leftTestimonials];
+  const duplicatedRight = [...rightTestimonials, ...rightTestimonials];
+
   return (
     <section 
       id="testimonials" 
       ref={containerRef}
-      className="relative py-20 overflow-hidden bg-white"
+      className="relative py-20 overflow-hidden bg-gradient-to-b from-[#FAFAFA] to-white"
       style={{ 
         fontFamily: "'Montserrat', sans-serif"
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Subtle background pattern */}
+      {/* Subtle metallic background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-#ebe2f0 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#d5c4e0] rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl"
+             style={{ background: theme.orchid }} />
+        <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl"
+             style={{ background: theme.lavender }} />
       </div>
 
       <motion.div 
@@ -211,228 +262,388 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#f5f0f8] border border-[#d5c4e0] mb-6"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
+            style={{ 
+              background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+              border: `1px solid ${theme.metallicBorder}`
+            }}
           >
-            <Sparkles className="w-4 h-4 text-[#8a6aa9]" />
-            <span className="text-[#7a5a99] font-semibold text-sm tracking-wide">
+            <Sparkles className="w-4 h-4" style={{ color: theme.amethyst }} />
+            <span className="font-semibold text-sm tracking-wide"
+                  style={{ color: theme.metallicText }}>
               CLIENT SUCCESS STORIES
             </span>
           </motion.div>
 
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.3 }}
+            style={{ color: theme.metallicText }}
           >
             What Our{" "}
-            <span className="bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r bg-clip-text text-transparent"
+                  style={{ 
+                    backgroundImage: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
+                  }}>
               Clients Say
             </span>
           </motion.h2>
 
           <motion.p 
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-lg md:text-xl max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4 }}
+            style={{ color: theme.metallicText, opacity: 0.8 }}
           >
             Real results from real clients who trusted us with their brand
           </motion.p>
         </motion.div>
 
-        {/* Main Testimonial Card */}
-        <div className="relative max-w-5xl mx-auto mb-16">
-          {/* Navigation Arrows */}
-          <motion.button
-            className="absolute left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-[#9d7bb8] hover:shadow-xl transition-all group"
-            onClick={handlePrev}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ChevronLeft className="w-5 h-5 text-gray-700 group-hover:text-[#8a6aa9]" />
-          </motion.button>
-
-          <motion.button
-            className="absolute right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg hover:border-[#9d7bb8] hover:shadow-xl transition-all group"
-            onClick={handleNext}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ChevronRight className="w-5 h-5 text-gray-700 group-hover:text-[#8a6aa9]" />
-          </motion.button>
-
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={activeIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="relative"
-            >
-              <div className="bg-white rounded-2xl p-8 md:p-10 shadow-xl border border-gray-100">
-                {/* Top colored accent */}
-                <div 
-                  className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${testimonials[activeIndex].gradient}`}
-                />
-
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  {/* Avatar Section */}
-                  <motion.div 
-                    className="flex-shrink-0"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <div 
-                      className={`w-20 h-20 md:w-24 md:h-24 rounded-xl bg-gradient-to-br ${testimonials[activeIndex].gradient} flex items-center justify-center shadow-md relative`}
-                    >
-                      <span className="text-3xl md:text-4xl font-bold text-white">
-                        {testimonials[activeIndex].name.charAt(0)}
-                      </span>
-                      
-                      {/* Platform badge */}
-                      {(() => {
-                        const Icon = getPlatformIcon(testimonials[activeIndex].platform);
-                        return (
-                          <div 
-                            className="absolute -bottom-2 -right-2 w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-md border border-gray-100"
-                          >
-                            <Icon className="w-4 h-4" style={{ color: testimonials[activeIndex].color }} />
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  </motion.div>
-
-                  {/* Content */}
-                  <div className="flex-1">
+        {/* 3-Column Layout with Different Animations */}
+        <div className="max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* LEFT COLUMN - Infinite Scroll UP */}
+            <div className="relative h-[800px] overflow-hidden">
+              <motion.div 
+                className="space-y-6 absolute"
+                animate={{ 
+                  y: [0, -50 * leftTestimonials.length] 
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                {duplicatedLeft.map((testimonial, index) => {
+                  const Icon = getPlatformIcon(testimonial.platform);
+                  return (
                     <motion.div
+                      key={`left-${testimonial.id}-${index}`}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        duration: 0.6,
+                        ease: "easeOut"
+                      }}
+                      className="rounded-xl p-6 shadow-lg transition-all group relative"
+                      style={{ 
+                        background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                        border: `1px solid ${theme.metallicBorder}`
+                      }}
+                      whileHover={{ scale: 1.02, zIndex: 10 }}
+                    >
+                      <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
+                      
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-xl font-bold`}>
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div>
+                          <h4 className="font-bold" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
+                          <p className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.role}, {testimonial.company}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-current" style={{ color: theme.amethyst }} />
+                        ))}
+                      </div>
+                      
+                      <p className="mb-4 line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                        "{testimonial.text}"
+                      </p>
+                      
+                      <div className="flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4" style={{ color: theme.amethyst }} />
+                          <span className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
+                        </div>
+                        <div className={`px-3 py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold`}>
+                          {testimonial.stats}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+              {/* Gradient overlays for smooth fade */}
+              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+            </div>
+
+            {/* CENTER COLUMN - STABLE Feature Showcase */}
+            <div className="flex flex-col justify-center h-[800px]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="rounded-2xl p-8 shadow-xl relative"
+                style={{ 
+                  background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                  border: `1px solid ${theme.metallicBorder}`
+                }}
+              >
+                {/* Header Badge */}
+                <div className="flex items-center justify-center mb-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                       style={{ 
+                         background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
+                       }}>
+                    <Sparkles className="w-4 h-4 text-white" />
+                    <span className="text-white font-semibold text-sm">FEATURED CLIENT</span>
+                  </div>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                  >
+                    {/* Profile Section */}
+                    <motion.div 
+                      className="flex items-start gap-4 mb-6"
+                      initial={{ x: -30, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.2, duration: 0.5 }}
+                    >
+                      <motion.div 
+                        className={`w-20 h-20 rounded-xl bg-gradient-to-br ${testimonials[activeIndex].gradient} flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 15 }}
+                      >
+                        {testimonials[activeIndex].name.charAt(0)}
+                      </motion.div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-1" style={{ color: theme.metallicText }}>
+                          {testimonials[activeIndex].name}
+                        </h4>
+                        <p className="text-sm font-medium mb-1" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                          {testimonials[activeIndex].role}
+                        </p>
+                        <p className="text-xs" style={{ color: theme.metallicText, opacity: 0.6 }}>
+                          {testimonials[activeIndex].company}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Stars */}
+                    <motion.div 
+                      className="flex gap-1 mb-4"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      {/* Stars */}
-                      <div className="flex gap-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ delay: 0.4 + (i * 0.1), type: "spring", stiffness: 300 }}
+                        >
+                          <Star className="w-5 h-5 fill-current" style={{ color: theme.amethyst }} />
+                        </motion.div>
+                      ))}
+                    </motion.div>
+
+                    {/* Testimonial Text */}
+                    <motion.div 
+                      className={`p-5 rounded-xl mb-5`}
+                      style={{ 
+                        background: `linear-gradient(135deg, ${theme.wisteria}/20, white)`,
+                        borderLeft: `4px solid ${theme.amethyst}`
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.6 }}
+                    >
+                      <motion.p 
+                        className="text-base leading-relaxed italic"
+                        style={{ color: theme.metallicText }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7, duration: 0.8 }}
+                      >
+                        "{testimonials[activeIndex].text}"
+                      </motion.p>
+                    </motion.div>
+
+                    {/* Stats & Platform */}
+                    <motion.div 
+                      className="flex items-center justify-between p-4 rounded-xl"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${theme.wisteria}/10, white)`
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8, duration: 0.5 }}
+                    >
+                      <motion.div 
+                        className="flex items-center gap-2"
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.9, duration: 0.4 }}
+                      >
+                        {(() => {
+                          const Icon = getPlatformIcon(testimonials[activeIndex].platform);
+                          return <Icon className="w-5 h-5" style={{ color: theme.amethyst }} />;
+                        })()}
+                        <span className="text-sm font-medium" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                          {testimonials[activeIndex].platform}
+                        </span>
+                      </motion.div>
+                      <motion.div 
+                        className={`px-4 py-2 rounded-lg bg-gradient-to-r ${testimonials[activeIndex].gradient} text-white font-bold text-sm flex items-center gap-2`}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                      >
+                        <motion.div
+                          animate={{ y: [0, -3, 0] }}
+                          transition={{ delay: 1.2, duration: 1.5, repeat: Infinity }}
+                        >
+                          <TrendingUp className="w-4 h-4" />
+                        </motion.div>
+                        {testimonials[activeIndex].stats}
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Navigation Dots */}
+                <div className="flex justify-center gap-2 mt-6">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`h-2 rounded-full transition-all ${
+                        index === activeIndex 
+                          ? 'w-8' 
+                          : 'w-2'
+                      }`}
+                      style={{ 
+                        background: index === activeIndex 
+                          ? theme.amethyst 
+                          : theme.metallicBorder 
+                      }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* RIGHT COLUMN - Infinite Scroll DOWN */}
+            <div className="relative h-[800px] overflow-hidden">
+              <motion.div 
+                className="space-y-6 absolute"
+                animate={{ 
+                  y: [-50 * rightTestimonials.length, 0] 
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                {duplicatedRight.map((testimonial, index) => {
+                  const Icon = getPlatformIcon(testimonial.platform);
+                  return (
+                    <motion.div
+                      key={`right-${testimonial.id}-${index}`}
+                      initial={{ opacity: 0, y: -50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        duration: 0.6,
+                        ease: "easeOut"
+                      }}
+                      className="rounded-xl p-6 shadow-lg transition-all group relative"
+                      style={{ 
+                        background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                        border: `1px solid ${theme.metallicBorder}`
+                      }}
+                      whileHover={{ scale: 1.02, zIndex: 10 }}
+                    >
+                      <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
+                      
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-xl font-bold`}>
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div>
+                          <h4 className="font-bold" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
+                          <p className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.role}, {testimonial.company}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-1 mb-3">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-[#8a6aa9] fill-current" />
+                          <Star key={i} className="w-4 h-4 fill-current" style={{ color: theme.amethyst }} />
                         ))}
                       </div>
-
-                      {/* Quote */}
-                      <blockquote className="text-xl md:text-2xl font-normal text-gray-800 leading-relaxed mb-6">
-                        "{testimonials[activeIndex].text}"
-                      </blockquote>
-
-                      {/* Author Info */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-gray-100">
-                        <div>
-                          <h3 className="text-lg font-bold text-gray-900">
-                            {testimonials[activeIndex].name}
-                          </h3>
-                          <p className="text-gray-600 text-sm">
-                            {testimonials[activeIndex].role}, {testimonials[activeIndex].company}
-                          </p>
+                      
+                      <p className="mb-4 line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                        "{testimonial.text}"
+                      </p>
+                      
+                      <div className="flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4" style={{ color: theme.amethyst }} />
+                          <span className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
                         </div>
-
-                        {/* Stats Badge */}
-                        <div 
-                          className={`px-4 py-2 rounded-lg bg-gradient-to-r ${testimonials[activeIndex].gradient}`}
-                        >
-                          <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                            <TrendingUp className="w-4 h-4" />
-                            {testimonials[activeIndex].stats}
-                          </div>
+                        <div className={`px-3 py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold`}>
+                          {testimonial.stats}
                         </div>
                       </div>
                     </motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === activeIndex 
-                    ? 'w-8 bg-[#8a6aa9]' 
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+                  );
+                })}
+              </motion.div>
+              {/* Gradient overlays for smooth fade */}
+              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+            </div>
           </div>
         </div>
 
-        {/* Grid of Other Testimonials */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5 }}
-        >
-          {testimonials.slice(0, 3).map((testimonial, index) => {
-            const Icon = getPlatformIcon(testimonial.platform);
-            return (
-              <motion.div
-                key={testimonial.id}
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg hover:border-[#d5c4e0] transition-all cursor-pointer group"
-                whileHover={{ y: -4 }}
-                onClick={() => goToSlide(index)}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-lg font-bold`}>
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-xs text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                
-                <p className="text-gray-700 text-sm mb-4 line-clamp-3">
-                  "{testimonial.text}"
-                </p>
-                
-                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-[#8a6aa9] fill-current" />
-                    ))}
-                  </div>
-                  <Icon className="w-4 h-4" style={{ color: testimonial.color }} />
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
         {/* CTA Section */}
         <motion.div 
-          className="text-center bg-gradient-to-r from-[#f5f0f8] to-[#ebe2f0] rounded-2xl p-10 border border-[#d5c4e0]"
+          className="text-center rounded-2xl p-10"
+          style={{ 
+            background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+            border: `1px solid ${theme.metallicBorder}`
+          }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-3">
+          <h3 className="text-3xl font-bold mb-3" style={{ color: theme.metallicText }}>
             Ready to Join Our Success Stories?
           </h3>
-          <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: theme.metallicText, opacity: 0.8 }}>
             Let's create measurable results for your brand together
           </p>
           
           <motion.button 
             onClick={() => scrollToSection('contact', 80)}
-            className="px-8 py-4 bg-gradient-to-r from-[#8a6aa9] to-[#6a4a89] text-white font-semibold text-base rounded-lg shadow-md hover:shadow-lg hover:shadow-[#8a6aa9]/50 transition-all inline-flex items-center gap-2"
+            className="px-8 py-4 font-semibold text-base rounded-lg shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2"
+            style={{ 
+              background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`,
+              color: 'white'
+            }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -441,6 +652,7 @@ const Testimonials = () => {
           </motion.button>
         </motion.div>
       </motion.div>
+
     </section>
   );
 };
