@@ -1,0 +1,207 @@
+═══════════════════════════════════════════════════════════════
+   PLESK DEPLOYMENT GUIDE - PR SPARKZ WEBSITE
+═══════════════════════════════════════════════════════════════
+
+📁 FOLDER TO UPLOAD: PLESK-UPLOAD/
+
+═══════════════════════════════════════════════════════════════
+STEP 1: ACCESS YOUR PLESK PANEL
+═══════════════════════════════════════════════════════════════
+
+1. Log into your Plesk control panel
+2. Navigate to "Websites & Domains"
+3. Select your domain (e.g., prsparkz.com)
+
+═══════════════════════════════════════════════════════════════
+STEP 2: LOCATE THE CORRECT UPLOAD DIRECTORY
+═══════════════════════════════════════════════════════════════
+
+In Plesk, you need to upload to the PUBLIC WEB DIRECTORY:
+
+✅ CORRECT PATH: httpdocs/
+   OR
+✅ CORRECT PATH: public_html/
+
+❌ DO NOT UPLOAD TO:
+   - Root directory
+   - private/
+   - cgi-bin/
+   - logs/
+
+═══════════════════════════════════════════════════════════════
+STEP 3: CLEAR EXISTING FILES (IMPORTANT!)
+═══════════════════════════════════════════════════════════════
+
+Before uploading:
+
+1. Go to File Manager in Plesk
+2. Navigate to httpdocs/ (or public_html/)
+3. DELETE all existing files and folders EXCEPT:
+   - .htaccess (if you have custom rules - backup first)
+   - Any databases folders (usually keep them)
+   
+OR simply:
+   - Delete everything and upload fresh
+
+═══════════════════════════════════════════════════════════════
+STEP 4: UPLOAD FILES
+═══════════════════════════════════════════════════════════════
+
+METHOD A: Using Plesk File Manager (Recommended)
+------------------------------------------------
+1. Click "File Manager" in Plesk
+2. Navigate to httpdocs/ directory
+3. Click "Upload" button
+4. Upload ALL files and folders from PLESK-UPLOAD/ folder
+5. If uploading a ZIP:
+   - Zip the contents of PLESK-UPLOAD folder
+   - Upload the ZIP file
+   - Right-click and select "Extract"
+
+METHOD B: Using FTP Client (FileZilla, Cyberduck)
+------------------------------------------------
+1. Get FTP credentials from Plesk:
+   - Go to "FTP Access"
+   - Note: hostname, username, password
+   
+2. Connect via FTP client:
+   - Host: Your domain or server IP
+   - Username: From Plesk
+   - Password: From Plesk
+   - Port: 21 (or 22 for SFTP)
+   
+3. Navigate to httpdocs/ folder
+4. Upload ALL contents from PLESK-UPLOAD/ folder
+
+═══════════════════════════════════════════════════════════════
+STEP 5: VERIFY UPLOAD
+═══════════════════════════════════════════════════════════════
+
+After uploading, your httpdocs/ should contain:
+
+✅ index.html (MUST be in root of httpdocs/)
+✅ .htaccess
+✅ assets/ (folder with CSS and JS files)
+✅ images/ (folder with images)
+✅ videos/ (folder with video files)
+✅ logo.png
+✅ favicon.svg
+✅ robots.txt
+✅ sitemap.xml
+✅ All video files (.mp4 files)
+
+═══════════════════════════════════════════════════════════════
+STEP 6: SET CORRECT PERMISSIONS
+═══════════════════════════════════════════════════════════════
+
+In Plesk File Manager:
+
+1. Select all files and folders
+2. Right-click → "Change Permissions"
+3. Set:
+   - Files: 644 (read/write for owner, read for others)
+   - Folders: 755 (read/write/execute for owner, read/execute for others)
+   - .htaccess: 644
+
+═══════════════════════════════════════════════════════════════
+STEP 7: CONFIGURE DOMAIN SETTINGS
+═══════════════════════════════════════════════════════════════
+
+1. In Plesk, go to "Hosting Settings" for your domain
+2. Ensure these settings:
+   ✅ Document root: /httpdocs (or /public_html)
+   ✅ PHP support: Disabled (this is a static React site)
+   ✅ SSL/TLS: Enable if you have a certificate
+
+═══════════════════════════════════════════════════════════════
+STEP 8: TEST YOUR WEBSITE
+═══════════════════════════════════════════════════════════════
+
+1. Open your domain in browser: https://yourdomain.com
+2. Check if:
+   ✅ Homepage loads correctly
+   ✅ Images display properly
+   ✅ Videos play
+   ✅ Navigation works
+   ✅ All pages are accessible
+   ✅ No console errors (F12 → Console)
+
+═══════════════════════════════════════════════════════════════
+IMPORTANT FILES EXPLANATION
+═══════════════════════════════════════════════════════════════
+
+📄 index.html
+   - Main entry point of your website
+   - MUST be in the root of httpdocs/
+
+📁 assets/
+   - Contains compiled CSS and JavaScript files
+   - DO NOT modify these files
+
+📁 images/
+   - Contains all website images
+   
+📁 videos/
+   - Contains video files
+
+📄 .htaccess
+   - Handles URL rewrites for React Router
+   - Ensures all routes work correctly
+   - Enables caching and optimization
+
+📄 robots.txt
+   - Controls search engine crawling
+   
+📄 sitemap.xml
+   - Helps search engines index your site
+
+═══════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+❌ Problem: "404 Not Found" on page refresh
+✅ Solution: Check .htaccess is uploaded and working
+
+❌ Problem: CSS/JS not loading
+✅ Solution: Check file permissions (644) and paths
+
+❌ Problem: Videos not playing
+✅ Solution: Check video file permissions and MIME types in Plesk
+
+❌ Problem: "Index of /" directory listing shows
+✅ Solution: Ensure index.html is in httpdocs/ root
+
+❌ Problem: Some routes give 404 errors
+✅ Solution: Check .htaccess file is present and correct
+
+═══════════════════════════════════════════════════════════════
+QUICK CHECKLIST
+═══════════════════════════════════════════════════════════════
+
+□ Backed up old files (if any)
+□ Cleared httpdocs/ directory
+□ Uploaded all files from PLESK-UPLOAD/
+□ Verified index.html is in root of httpdocs/
+□ Set correct permissions (644 for files, 755 for folders)
+□ Checked .htaccess is present
+□ Tested website in browser
+□ Checked all pages and routes work
+□ Verified images and videos load
+□ Checked mobile responsiveness
+
+═══════════════════════════════════════════════════════════════
+SUPPORT
+═══════════════════════════════════════════════════════════════
+
+If you encounter issues:
+1. Check Plesk error logs: Tools & Settings → Logs
+2. Check browser console: F12 → Console tab
+3. Verify file paths and permissions
+4. Contact your hosting provider if needed
+
+═══════════════════════════════════════════════════════════════
+
+✅ YOUR FILES ARE READY IN: PLESK-UPLOAD/
+   Upload everything from this folder to httpdocs/ in Plesk
+
+═══════════════════════════════════════════════════════════════

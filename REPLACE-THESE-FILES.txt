@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════════╗
+║          📝 FILES TO REPLACE ON PLESK - UPDATED!            ║
+╚══════════════════════════════════════════════════════════════╝
+
+✅ REBUILT WITH YOUR LATEST CHANGES!
+
+══════════════════════════════════════════════════════════════
+
+🔄 REPLACE THESE FILES ON PLESK:
+
+1️⃣  index.html
+   Location: httpdocs/index.html
+   Status: UPDATED (your source changes included)
+
+2️⃣  assets/index-CbzPqVNH.js
+   Location: httpdocs/assets/index-CbzPqVNH.js
+   Status: UPDATED (921 KB - contains your Hero.jsx changes)
+
+3️⃣  assets/index-CLsYSpeN.css
+   Location: httpdocs/assets/index-CLsYSpeN.css
+   Status: SAME (no CSS changes needed)
+
+══════════════════════════════════════════════════════════════
+
+📦 EASIEST METHOD - REPLACE ALL 4 ITEMS:
+
+Just replace everything in httpdocs with:
+✓ .htaccess
+✓ index.html
+✓ logo.png
+✓ assets/ (entire folder)
+
+══════════════════════════════════════════════════════════════
+
+🎯 QUICK REPLACE STEPS:
+
+1. Open PLESK-UPLOAD folder
+2. Press Cmd+Shift+. to show .htaccess
+3. Select all 4 items
+4. Drag to Plesk httpdocs (will overwrite old files)
+5. Done!
+
+══════════════════════════════════════════════════════════════
+
+⚡ WHAT CHANGED:
+   • Hero.jsx changes included
+   • All your src/ updates compiled
+   • JavaScript file: index-CbzPqVNH.js (921 KB)
+
+══════════════════════════════════════════════════════════════
+
+✨ Your latest changes are ready to upload!
