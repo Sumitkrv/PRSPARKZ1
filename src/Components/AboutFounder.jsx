@@ -31,7 +31,7 @@ const cardGradient = `
 const AboutFounder = ({ isVisible }) => {
   return (
     <motion.div
-      className="mb-32 relative -mx-[100vw] px-[100vw]"
+      className="mb-16 sm:mb-24 md:mb-32 relative -mx-[100vw] px-[100vw]"
       style={{
         background: '#FFFFFF'
       }}
@@ -39,18 +39,18 @@ const AboutFounder = ({ isVisible }) => {
       animate={isVisible ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.8, delay: 0.5 }}
     >
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div 
           className="relative"
           style={{
             background: theme.white
           }}>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
             {/* Left: Founder Image */}
             <div className="relative max-w-sm mx-auto lg:mx-0">
               <div 
-                className="relative aspect-square rounded-2xl overflow-hidden"
+                className="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden"
                 style={{
                   border: `2px solid rgba(139,95,191,0.2)`,
                   background: `rgba(139,95,191,0.05)`,
@@ -87,13 +87,13 @@ const AboutFounder = ({ isVisible }) => {
                 </div>
                 
                 {/* Bottom Info */}
-                <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end p-4"
+                <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 flex items-end p-3 sm:p-4"
                      style={{
                        background: `linear-gradient(to top, rgba(255,255,255,0.95), transparent)`
                      }}>
                   <div>
-                    <div className="font-bold text-lg" style={{ color: '#111827' }}>Priyanka Rawat</div>
-                    <div className="text-sm" style={{ color: '#6B7280' }}>Founder & Owner, PR Sparkz</div>
+                    <div className="font-bold text-base sm:text-lg" style={{ color: '#111827' }}>Priyanka Rawat</div>
+                    <div className="text-xs sm:text-sm" style={{ color: '#6B7280' }}>Founder & Owner, PR Sparkz</div>
                   </div>
                 </div>
               </div>
@@ -101,33 +101,33 @@ const AboutFounder = ({ isVisible }) => {
 
             {/* Right: Content */}
             <div>
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-12" style={{ background: 'rgba(139,95,191,0.4)' }}></div>
+            <div className="mb-6 sm:mb-8">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="h-px w-8 sm:w-12" style={{ background: 'rgba(139,95,191,0.4)' }}></div>
                 <span className="text-sm font-semibold tracking-wider uppercase"
                       style={{ color: theme.amethyst }}>
                   The Journey
                 </span>
               </div>
               
-              <h2 className="text-4xl font-bold mb-4"
+              <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4"
                   style={{ color: '#111827' }}>
                 Priyanka Rawat
               </h2>
               
-              <p className="text-xl mb-6 font-light"
+              <p className="text-lg sm:text-xl mb-4 sm:mb-6 font-light"
                  style={{ color: '#6B7280' }}>
                 Founder & Owner, PR Sparkz
               </p>
             </div>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
               <blockquote className="relative">
-                <div className="absolute -left-6 top-0 text-4xl opacity-20"
+                <div className="absolute -left-4 sm:-left-6 top-0 text-3xl sm:text-4xl opacity-20"
                      style={{ color: theme.amethyst }}>
                   "
                 </div>
-                <p className="text-xl italic border-l-4 pl-6 py-2 ml-4"
+                <p className="text-lg sm:text-xl italic border-l-4 pl-4 sm:pl-6 py-2 ml-3 sm:ml-4"
                    style={{ 
                      borderColor: theme.wisteria,
                      color: '#374151'
@@ -137,7 +137,7 @@ const AboutFounder = ({ isVisible }) => {
               </blockquote>
               
               <div className="space-y-4">
-                <p className="leading-relaxed text-lg" style={{ color: '#4B5563' }}>
+                <p className="leading-relaxed text-base sm:text-lg" style={{ color: '#4B5563' }}>
                   A <strong style={{ color: '#111827' }}>15-year journey</strong> from fashion design to entrepreneurship, Priyanka has 
                   mastered the art of turning challenges into opportunities. Her diverse experience across 
                   <strong style={{ color: '#111827' }}> fashion, events, politics, digital marketing, and brand strategy</strong> gives her 

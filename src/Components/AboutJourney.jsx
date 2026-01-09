@@ -101,37 +101,37 @@ const AboutJourney = ({ isVisible }) => {
   ];
 
   return (
-    <div className="mb-32 relative -mx-[100vw] px-[100vw]" style={{
+    <div className="mb-16 sm:mb-24 md:mb-32 relative -mx-[100vw] px-[100vw]" style={{
       background: `linear-gradient(135deg, #5B3A8F 0%, #6B4FA0 25%, #7B5FB5 50%, #6B4FA0 75%, #5B3A8F 100%)`
     }}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
     <motion.div
       className="relative"
       initial={{ opacity: 0, y: 40 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.7 }}
     >
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6"
+      <div className="text-center mb-10 sm:mb-12 md:mb-16">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
              style={{
                border: `1px solid rgba(255,255,255,0.2)`,
                background: cardGradient,
                boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
              }}>
-          <Calendar className="w-4 h-4" style={{ color: '#FFFFFF' }} />
-          <span className="text-sm font-semibold tracking-wider uppercase text-white">
+          <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: '#FFFFFF' }} />
+          <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-white">
             The Journey
           </span>
         </div>
         
-        <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-4 sm:px-0">
           <span className="text-white">From Fashion to </span>
           <span className="text-white" style={{ textShadow: `0 2px 20px ${theme.wisteria}60` }}>
             Digital Entrepreneurship
           </span>
         </h2>
         
-        <p className="text-white text-lg max-w-2xl mx-auto font-light" style={{ opacity: 0.9 }}>
+        <p className="text-white text-base sm:text-lg max-w-2xl mx-auto font-light px-4 sm:px-0" style={{ opacity: 0.9 }}>
           A 15-year evolution of skills, experiences, and entrepreneurial spirit
         </p>
       </div>
@@ -145,7 +145,7 @@ const AboutJourney = ({ isVisible }) => {
                boxShadow: `0 0 20px ${theme.wisteria}20`
              }} />
         
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-10 md:space-y-12">
           {journeyMilestones.map((milestone, index) => {
             const Icon = milestone.icon;
             const isEven = index % 2 === 0;
@@ -162,7 +162,7 @@ const AboutJourney = ({ isVisible }) => {
                   {/* Content */}
                   <div className={`flex-1 ${isEven ? 'text-right pr-8' : 'text-left pl-8'}`}>
                     <motion.div
-                      className="inline-block p-6 rounded-2xl w-full max-w-md relative overflow-hidden"
+                      className="inline-block p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl w-full max-w-md relative overflow-hidden"
                       style={{
                         border: `1px solid rgba(255,255,255,0.4)`,
                         borderTop: `2px solid rgba(255,255,255,0.65)`,
@@ -194,9 +194,9 @@ const AboutJourney = ({ isVisible }) => {
                         `
                       }}
                     >
-                      <div className="flex items-center gap-4 mb-4">
+                      <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                         <motion.div 
-                          className="w-12 h-12 rounded-xl flex items-center justify-center"
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
                           style={{ 
                             background: milestone.color,
                             border: `1px solid rgba(255,255,255,0.2)`,
@@ -208,29 +208,29 @@ const AboutJourney = ({ isVisible }) => {
                             boxShadow: `0 6px 30px rgba(0,0,0,0.4)`
                           }}
                         >
-                          <Icon className="w-6 h-6 text-white" />
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </motion.div>
                         <div>
-                          <div className="text-2xl font-bold text-white">
+                          <div className="text-xl sm:text-2xl font-bold text-white">
                             {milestone.year}
                           </div>
-                          <h4 className="text-lg font-bold text-white">{milestone.title}</h4>
+                          <h4 className="text-base sm:text-lg font-bold text-white">{milestone.title}</h4>
                         </div>
                       </div>
-                      <p className="text-white relative z-10" style={{ opacity: 0.9 }}>{milestone.description}</p>
+                      <p className="text-white relative z-10 text-sm sm:text-base" style={{ opacity: 0.9 }}>{milestone.description}</p>
                       
                       {/* Special highlight for PR Sparkz launch */}
                       {milestone.year === "Sept 2023" && (
                         <div 
-                          className="mt-4 p-3 rounded-lg"
+                          className="mt-3 sm:mt-4 p-2.5 sm:p-3 rounded-lg"
                           style={{
                             border: `1px solid rgba(255,255,255,0.2)`,
                             background: cardGradient,
                             boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
                           }}>
-                          <div className="flex items-center gap-2">
-                            <Rocket className="w-4 h-4" style={{ color: '#FFFFFF' }} />
-                            <span className="text-sm font-medium text-white">
+                          <div className="flex items-center gap-1.5 sm:gap-2">
+                            <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: '#FFFFFF' }} />
+                            <span className="text-xs sm:text-sm font-medium text-white">
                               First Client: Vortex • Branding, Strategy & Execution
                             </span>
                           </div>
@@ -242,7 +242,7 @@ const AboutJourney = ({ isVisible }) => {
                   {/* Center Dot */}
                   <div className="relative z-10">
                     <motion.div
-                      className="w-6 h-6 rounded-full border-2"
+                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2"
                       style={{ 
                         background: milestone.color,
                         borderColor: theme.midnightPurple,

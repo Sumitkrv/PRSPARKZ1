@@ -64,8 +64,8 @@ const AboutCTA = ({ isVisible, scrollToSection }) => {
   };
 
   return (
-    <div className="mb-20 relative -mx-[100vw] px-[100vw]" style={{ background: '#FFFFFF' }}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
+    <div className="mb-12 sm:mb-16 md:mb-20 relative -mx-[100vw] px-[100vw]" style={{ background: '#FFFFFF' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ const AboutCTA = ({ isVisible, scrollToSection }) => {
           transition={{ duration: 0.8, delay: 1.8 }}
         >
           <motion.div 
-            className="relative rounded-3xl overflow-hidden p-12"
+            className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12"
             style={{ 
               border: `1px solid rgba(255,255,255,0.4)`,
               borderTop: `3px solid rgba(255,255,255,0.7)`,
@@ -121,22 +121,22 @@ const AboutCTA = ({ isVisible, scrollToSection }) => {
               }}
             />
             <div className="relative text-center">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
                 Ready to Shine Brighter?
               </h2>
               
-              <p className="text-white text-lg sm:text-xl mb-12 max-w-2xl mx-auto font-light" style={{ opacity: 0.9 }}>
+              <p className="text-white text-base sm:text-lg md:text-xl mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto font-light px-4 sm:px-0" style={{ opacity: 0.9 }}>
                 Let's transform your brand challenges into visible growth and lasting impact. 
                 Partner with PR Sparkz for end-to-end solutions that make your brand shine.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-6">
                 {/* Start Your Transformation Button - Contact Us */}
                 <motion.button 
                   type="button"
                   onClick={handleTransformClick}
                   aria-label="Start your transformation - Contact us"
-                  className="group px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 relative overflow-hidden cursor-pointer w-full sm:w-auto"
                   style={{ 
                     border: `1px solid rgba(255,255,255,0.2)`,
                     background: cardGradient,
@@ -162,7 +162,7 @@ const AboutCTA = ({ isVisible, scrollToSection }) => {
                   type="button"
                   onClick={handleSuccessStoriesClick}
                   aria-label="View our success stories - Client portfolio"
-                  className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 relative overflow-hidden cursor-pointer"
+                  className="px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 relative overflow-hidden cursor-pointer w-full sm:w-auto"
                   style={{ 
                     border: `1px solid rgba(255,255,255,0.2)`,
                     color: '#FFFFFF',

@@ -52,28 +52,28 @@ const AboutUs = () => {
         }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center py-24 relative"
+          className="text-center py-12 sm:py-16 md:py-20 lg:py-24 relative"
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           {/* Wisteria Top Accent */}
-          <div className="flex items-center justify-center gap-4 mb-12 relative">
-            <div className="h-px w-20" style={{ background: `linear-gradient(90deg, transparent, ${theme.wisteria}80, transparent)` }}></div>
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12 relative">
+            <div className="h-px w-12 sm:w-16 md:w-20" style={{ background: `linear-gradient(90deg, transparent, ${theme.wisteria}80, transparent)` }}></div>
             <motion.div 
               className="relative"
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <Diamond className="w-6 h-6" style={{ color: theme.wisteria }} />
+              <Diamond className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: theme.wisteria }} />
             </motion.div>
-            <div className="h-px w-20" style={{ background: `linear-gradient(90deg, transparent, ${theme.wisteria}80, transparent)` }}></div>
+            <div className="h-px w-12 sm:w-16 md:w-20" style={{ background: `linear-gradient(90deg, transparent, ${theme.wisteria}80, transparent)` }}></div>
           </div>
 
           {/* Main Headline */}
-          <div className="relative mb-12">
+          <div className="relative mb-8 sm:mb-10 md:mb-12">
             <motion.h1 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tight text-white"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8 tracking-tight text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -82,7 +82,7 @@ const AboutUs = () => {
             </motion.h1>
             
             {/* Animated Metallic Underline */}
-            <div className="relative h-1 w-64 mx-auto overflow-hidden rounded-full">
+            <div className="relative h-1 w-48 sm:w-56 md:w-64 mx-auto overflow-hidden rounded-full">
               <motion.div 
                 className="absolute inset-0"
                 style={{
@@ -125,7 +125,7 @@ const AboutUs = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="max-w-4xl mx-auto relative"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight px-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight px-6 sm:px-8 md:px-12">
               <span className="text-white">From Challenges to </span>
               <span className="relative">
                 <span 
@@ -137,12 +137,12 @@ const AboutUs = () => {
                 </span>
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-white leading-relaxed font-light px-12" style={{ opacity: 0.9 }}>
+            <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed font-light px-6 sm:px-8 md:px-12\" style={{ opacity: 0.9 }}>
               We transform brand problems into visibility, growth, and lasting impact through 
               comprehensive digital solutions and strategic execution.
             </p>
             <motion.div 
-              className="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-full relative overflow-hidden group"
+              className="mt-6 sm:mt-8 inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full relative overflow-hidden group"
               style={{
                 border: `1px solid rgba(255,255,255,0.2)`,
                 background: cardGradient,
@@ -154,8 +154,8 @@ const AboutUs = () => {
                 boxShadow: `0 8px 32px rgba(0,0,0,0.4)`
               }}
             >
-              <Quote className="w-5 h-5 relative z-10" style={{ color: '#FFFFFF' }} />
-              <span className="font-medium relative z-10 text-white">
+              <Quote className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" style={{ color: '#FFFFFF' }} />
+              <span className="font-medium relative z-10 text-white text-sm sm:text-base">
                 "Brands come to us with problems. They leave with momentum."
               </span>
             </motion.div>
