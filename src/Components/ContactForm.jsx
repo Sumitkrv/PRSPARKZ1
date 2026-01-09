@@ -4,7 +4,7 @@ import {
   User, Mail, FileText, CheckCircle, Phone, Send, 
   Loader2, AlertCircle, Clock,
   MessageSquare, Building, Map,
-  Linkedin, Twitter, Instagram
+  Linkedin, Instagram
 } from "lucide-react";
 
 const ContactForm = () => {
@@ -64,13 +64,12 @@ const ContactForm = () => {
   // Company information
   const companyInfo = {
     email: "Info@prsparkz.com",
-    phone: "+91 910525684",
+    phone: "+91 77387 15711",
     address: "402, RG Trade Tower, Netaji Subhash Palace, Pitampura, Delhi, 110034",
     workingHours: "Monday - Friday: 9:00 AM - 6:00 PM",
     social: {
-      linkedin: "https://linkedin.com/company/prsparkz",
-      twitter: "https://twitter.com/prsparkz",
-      instagram: "https://instagram.com/prsparkz"
+      linkedin: "https://www.linkedin.com/company/prsparkz/",
+      instagram: "https://www.instagram.com/pr_sparkz?igsh=MTZtbm01cnZ6a3V0Zw%3D%3D"
     }
   };
 
@@ -313,20 +312,7 @@ const ContactForm = () => {
                   >
                     <Linkedin size={20} />
                   </a>
-                  <a
-                    href={companyInfo.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
-                      color: theme.metallicText,
-                      border: `1px solid ${theme.metallicBorder}`
-                    }}
-                    aria-label="Follow us on Twitter"
-                  >
-                    <Twitter size={20} />
-                  </a>
+                 
                   <a
                     href={companyInfo.social.instagram}
                     target="_blank"
@@ -488,7 +474,7 @@ const ContactForm = () => {
                                   ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
                                   : `border-[${theme.metallicBorder}] focus:border-[${theme.amethyst}] focus:ring-[${theme.amethyst}]/20`
                               }`}
-                              placeholder="+91 12345 67890"
+                              placeholder="+91 77387 15711"
                               disabled={isSubmitting}
                               style={{ color: theme.metallicText }}
                             />

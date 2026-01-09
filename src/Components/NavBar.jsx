@@ -490,14 +490,6 @@ const ModernNavbar = () => {
                                 {item.label}
                               </span>
                             </div>
-                            {/* Triangle pointer */}
-                            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-2 h-2"
-                                 style={{ 
-                                   background: `linear-gradient(135deg, rgba(232, 213, 255, 0.95), white)`,
-                                   borderLeft: `2px solid ${theme.amethyst}`,
-                                   borderBottom: `2px solid ${theme.amethyst}`,
-                                   transform: 'rotate(45deg)'
-                                 }}></div>
                           </div>
                         </div>
                       </button>

@@ -9,7 +9,9 @@ import {
   Users,
   Sparkles,
   TrendingUp,
-  Zap
+  Zap,
+  Menu,
+  X
 } from "lucide-react";
 import { scrollToSection } from '../utils/navigation.js';
 
@@ -18,12 +20,25 @@ const Testimonials = () => {
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showMobileNavigation, setShowMobileNavigation] = useState(false);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   
+  // Check for mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Purple Color Palette
   const theme = {
-    wisteria: "#E8D5FF",        // Lightest purple
+    wisteria: "#E8D5FF",
     lavender: "#D4BDFF",
     orchid: "#C19EFF",
     mauve: "#AD85FF",
@@ -31,7 +46,7 @@ const Testimonials = () => {
     plum: "#8659D9",
     aubergine: "#7343C0",
     violet: "#5E2FA8",
-    midnightPurple: "#4A1F8F",  // Darkest purple
+    midnightPurple: "#4A1F8F",
     headerGradient1: "#5B3A8F",
     headerGradient2: "#6B4FA0",
     headerGradient3: "#7B5FB5",
@@ -39,13 +54,13 @@ const Testimonials = () => {
     metallicBorder: "#C0C0C0"
   };
 
-  // Parallax scroll effect
+  // Parallax scroll effect - adjust for mobile
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [50, -50] : [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
 
@@ -185,7 +200,7 @@ const Testimonials = () => {
   ];
 
   useEffect(() => {
-    if (!isAutoPlaying || isHovered) return;
+    if (!isAutoPlaying || isHovered || isMobile) return;
     
     const interval = setInterval(() => {
       setDirection(1);
@@ -193,7 +208,7 @@ const Testimonials = () => {
     }, 8000);
     
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isHovered, testimonials.length]);
+  }, [isAutoPlaying, isHovered, testimonials.length, isMobile]);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -222,47 +237,63 @@ const Testimonials = () => {
     }
   };
 
-  // Split testimonials into left, center, and right columns
-  const leftTestimonials = testimonials.filter((_, i) => i % 3 === 0);
-  const centerTestimonials = testimonials.filter((_, i) => i % 3 === 1);
-  const rightTestimonials = testimonials.filter((_, i) => i % 3 === 2);
+  // Responsive column splitting
+  const getColumnsForCurrentView = () => {
+    if (isMobile) {
+      return {
+        left: [],
+        center: testimonials,
+        right: []
+      };
+    } else if (window.innerWidth < 1280) {
+      // For tablets and smaller laptops
+      const left = testimonials.filter((_, i) => i % 2 === 0);
+      const center = [];
+      const right = testimonials.filter((_, i) => i % 2 === 1);
+      return { left, center, right };
+    } else {
+      // For desktop
+      const left = testimonials.filter((_, i) => i % 3 === 0);
+      const center = testimonials.filter((_, i) => i % 3 === 1);
+      const right = testimonials.filter((_, i) => i % 3 === 2);
+      return { left, center, right };
+    }
+  };
 
-  // Duplicate arrays for infinite scroll effect
-  const duplicatedLeft = [...leftTestimonials, ...leftTestimonials];
-  const duplicatedRight = [...rightTestimonials, ...rightTestimonials];
+  const columns = getColumnsForCurrentView();
 
   return (
     <section 
       id="testimonials" 
       ref={containerRef}
-      className="relative py-20 overflow-hidden bg-gradient-to-b from-[#FAFAFA] to-white"
+      className="relative py-8 md:py-12 lg:py-20 overflow-hidden bg-gradient-to-b from-[#FAFAFA] to-white"
       style={{ 
         fontFamily: "'Montserrat', sans-serif"
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
     >
       {/* Subtle metallic background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl"
+        <div className="absolute top-10 right-10 sm:top-20 sm:right-20 w-48 h-48 sm:w-96 sm:h-96 rounded-full blur-2xl sm:blur-3xl"
              style={{ background: theme.orchid }} />
-        <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl"
+        <div className="absolute bottom-10 left-10 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-96 sm:h-96 rounded-full blur-2xl sm:blur-3xl"
              style={{ background: theme.lavender }} />
       </div>
 
       <motion.div 
-        className="container mx-auto px-4 sm:px-6 relative z-10"
+        className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10"
         style={{ y, opacity, scale }}
       >
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-3 md:px-4 lg:px-5 py-1 md:py-2 rounded-full mb-4 md:mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
@@ -271,15 +302,15 @@ const Testimonials = () => {
               border: `1px solid ${theme.metallicBorder}`
             }}
           >
-            <Sparkles className="w-4 h-4" style={{ color: theme.amethyst }} />
-            <span className="font-semibold text-sm tracking-wide"
+            <Sparkles className="w-3 h-3 md:w-4 md:h-4" style={{ color: theme.amethyst }} />
+            <span className="font-semibold text-xs md:text-sm tracking-wide"
                   style={{ color: theme.metallicText }}>
               CLIENT SUCCESS STORIES
             </span>
           </motion.div>
 
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4 px-2"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.3 }}
@@ -295,7 +326,7 @@ const Testimonials = () => {
           </motion.h2>
 
           <motion.p 
-            className="text-lg md:text-xl max-w-2xl mx-auto"
+            className="text-sm md:text-base lg:text-lg max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto px-4"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4 }}
@@ -305,136 +336,164 @@ const Testimonials = () => {
           </motion.p>
         </motion.div>
 
-        {/* 3-Column Layout with Different Animations */}
-        <div className="max-w-7xl mx-auto mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* LEFT COLUMN - Infinite Scroll UP */}
-            <div className="relative h-[800px] overflow-hidden">
-              <motion.div 
-                className="space-y-6 absolute"
-                animate={{ 
-                  y: [0, -50 * leftTestimonials.length] 
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                {duplicatedLeft.map((testimonial, index) => {
-                  const Icon = getPlatformIcon(testimonial.platform);
-                  return (
-                    <motion.div
-                      key={`left-${testimonial.id}-${index}`}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
-                        duration: 0.6,
-                        ease: "easeOut"
-                      }}
-                      className="rounded-xl p-6 shadow-lg transition-all group relative"
-                      style={{ 
-                        background: `linear-gradient(135deg, white, ${theme.wisteria})`,
-                        border: `1px solid ${theme.metallicBorder}`
-                      }}
-                      whileHover={{ scale: 1.02, zIndex: 10 }}
-                    >
-                      <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
-                      
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-xl font-bold`}>
-                          {testimonial.name.charAt(0)}
-                        </div>
-                        <div>
-                          <h4 className="font-bold" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
-                          <p className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.role}, {testimonial.company}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-1 mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" style={{ color: theme.amethyst }} />
-                        ))}
-                      </div>
-                      
-                      <p className="mb-4 line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
-                        "{testimonial.text}"
-                      </p>
-                      
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
-                        <div className="flex items-center gap-2">
-                          <Icon className="w-4 h-4" style={{ color: theme.amethyst }} />
-                          <span className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
-                        </div>
-                        <div className={`px-3 py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold`}>
-                          {testimonial.stats}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-              {/* Gradient overlays for smooth fade */}
-              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
-            </div>
+        {/* Mobile Navigation Toggle */}
+        {isMobile && (
+          <div className="flex justify-center mb-6">
+            <button
+              onClick={() => setShowMobileNavigation(!showMobileNavigation)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg"
+              style={{ 
+                background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`,
+                color: 'white'
+              }}
+            >
+              {showMobileNavigation ? (
+                <>
+                  <X className="w-4 h-4" />
+                  Hide Navigation
+                </>
+              ) : (
+                <>
+                  <Menu className="w-4 h-4" />
+                  Show Navigation
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
-            {/* CENTER COLUMN - STABLE Feature Showcase */}
-            <div className="flex flex-col justify-center h-[800px]">
+        {/* 3-Column Layout with Different Animations */}
+        <div className="max-w-7xl mx-auto mb-8 md:mb-12 lg:mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            {/* LEFT COLUMN - Only show on medium screens and up */}
+            {columns.left.length > 0 && (
+              <div className="hidden md:block relative h-[400px] md:h-[600px] lg:h-[800px] overflow-hidden">
+                <motion.div 
+                  className="space-y-4 md:space-y-6 absolute"
+                  animate={{ 
+                    y: [0, -40 * columns.left.length] 
+                  }}
+                  transition={{
+                    duration: isMobile ? 40 : 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  {[...columns.left, ...columns.left].map((testimonial, index) => {
+                    const Icon = getPlatformIcon(testimonial.platform);
+                    return (
+                      <motion.div
+                        key={`left-${testimonial.id}-${index}`}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ 
+                          duration: 0.6,
+                          ease: "easeOut"
+                        }}
+                        className="rounded-xl p-4 md:p-6 shadow-lg transition-all group relative"
+                        style={{ 
+                          background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                          border: `1px solid ${theme.metallicBorder}`
+                        }}
+                        whileHover={{ scale: 1.02, zIndex: 10 }}
+                      >
+                        <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
+                        
+                        <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                          <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-lg md:text-xl lg:text-2xl font-bold flex-shrink-0`}>
+                            {testimonial.name.charAt(0)}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="font-bold text-sm md:text-base truncate" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
+                            <p className="text-xs md:text-sm text-gray-600 truncate">{testimonial.role}, {testimonial.company}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-1 mb-2 md:mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" style={{ color: theme.amethyst }} />
+                          ))}
+                        </div>
+                        
+                        <p className="text-xs md:text-sm mb-3 md:mb-4 line-clamp-3 md:line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                          "{testimonial.text}"
+                        </p>
+                        
+                        <div className="flex items-center justify-between pt-2 md:pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
+                          <div className="flex items-center gap-2">
+                            <Icon className="w-3 h-3 md:w-4 md:h-4" style={{ color: theme.amethyst }} />
+                            <span className="text-xs md:text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
+                          </div>
+                          <div className={`px-2 py-1 md:px-3 md:py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold whitespace-nowrap`}>
+                            {testimonial.stats}
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+                {/* Gradient overlays for smooth fade */}
+                <div className="absolute top-0 left-0 right-0 h-10 md:h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 md:h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+              </div>
+            )}
+
+            {/* CENTER COLUMN - Main carousel */}
+            <div className={`flex flex-col justify-center ${isMobile ? 'h-auto min-h-[500px]' : 'h-[400px] md:h-[600px] lg:h-[800px]'}`}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-2xl p-8 shadow-xl relative"
+                className="rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-xl relative mx-2 sm:mx-0"
                 style={{ 
                   background: `linear-gradient(135deg, white, ${theme.wisteria})`,
                   border: `1px solid ${theme.metallicBorder}`
                 }}
               >
                 {/* Header Badge */}
-                <div className="flex items-center justify-center mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                <div className="flex items-center justify-center mb-4 md:mb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full"
                        style={{ 
                          background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`
                        }}>
-                    <Sparkles className="w-4 h-4 text-white" />
-                    <span className="text-white font-semibold text-sm">FEATURED CLIENT</span>
+                    <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-white" />
+                    <span className="text-white font-semibold text-xs md:text-sm">FEATURED CLIENT</span>
                   </div>
                 </div>
 
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+                    initial={{ opacity: 0, scale: 0.9, rotateY: isMobile ? 0 : 10 }}
                     animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+                    exit={{ opacity: 0, scale: 0.9, rotateY: isMobile ? 0 : -10 }}
                     transition={{ duration: 0.7, ease: "easeInOut" }}
                   >
                     {/* Profile Section */}
                     <motion.div 
-                      className="flex items-start gap-4 mb-6"
+                      className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6"
                       initial={{ x: -30, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.5 }}
                     >
                       <motion.div 
-                        className={`w-20 h-20 rounded-xl bg-gradient-to-br ${testimonials[activeIndex].gradient} flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}
+                        className={`w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br ${testimonials[activeIndex].gradient} flex items-center justify-center text-white text-xl md:text-2xl font-bold flex-shrink-0`}
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 15 }}
                       >
                         {testimonials[activeIndex].name.charAt(0)}
                       </motion.div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold mb-1" style={{ color: theme.metallicText }}>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-lg md:text-xl font-bold mb-1 truncate" style={{ color: theme.metallicText }}>
                           {testimonials[activeIndex].name}
                         </h4>
-                        <p className="text-sm font-medium mb-1" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                        <p className="text-xs md:text-sm font-medium mb-1 truncate" style={{ color: theme.metallicText, opacity: 0.8 }}>
                           {testimonials[activeIndex].role}
                         </p>
-                        <p className="text-xs" style={{ color: theme.metallicText, opacity: 0.6 }}>
+                        <p className="text-xs truncate" style={{ color: theme.metallicText, opacity: 0.6 }}>
                           {testimonials[activeIndex].company}
                         </p>
                       </div>
@@ -442,7 +501,7 @@ const Testimonials = () => {
 
                     {/* Stars */}
                     <motion.div 
-                      className="flex gap-1 mb-4"
+                      className="flex gap-1 mb-3 md:mb-4"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
@@ -454,14 +513,14 @@ const Testimonials = () => {
                           animate={{ opacity: 1, scale: 1, rotate: 0 }}
                           transition={{ delay: 0.4 + (i * 0.1), type: "spring", stiffness: 300 }}
                         >
-                          <Star className="w-5 h-5 fill-current" style={{ color: theme.amethyst }} />
+                          <Star className="w-4 h-4 md:w-5 md:h-5 fill-current" style={{ color: theme.amethyst }} />
                         </motion.div>
                       ))}
                     </motion.div>
 
                     {/* Testimonial Text */}
                     <motion.div 
-                      className={`p-5 rounded-xl mb-5`}
+                      className={`p-3 md:p-4 lg:p-5 rounded-xl mb-4 md:mb-5`}
                       style={{ 
                         background: `linear-gradient(135deg, ${theme.wisteria}/20, white)`,
                         borderLeft: `4px solid ${theme.amethyst}`
@@ -471,7 +530,7 @@ const Testimonials = () => {
                       transition={{ delay: 0.5, duration: 0.6 }}
                     >
                       <motion.p 
-                        className="text-base leading-relaxed italic"
+                        className="text-sm md:text-base leading-relaxed italic"
                         style={{ color: theme.metallicText }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -483,7 +542,7 @@ const Testimonials = () => {
 
                     {/* Stats & Platform */}
                     <motion.div 
-                      className="flex items-center justify-between p-4 rounded-xl"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 md:p-4 rounded-xl"
                       style={{ 
                         background: `linear-gradient(135deg, ${theme.wisteria}/10, white)`
                       }}
@@ -499,14 +558,14 @@ const Testimonials = () => {
                       >
                         {(() => {
                           const Icon = getPlatformIcon(testimonials[activeIndex].platform);
-                          return <Icon className="w-5 h-5" style={{ color: theme.amethyst }} />;
+                          return <Icon className="w-4 h-4 md:w-5 md:h-5" style={{ color: theme.amethyst }} />;
                         })()}
-                        <span className="text-sm font-medium" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                        <span className="text-xs md:text-sm font-medium" style={{ color: theme.metallicText, opacity: 0.8 }}>
                           {testimonials[activeIndex].platform}
                         </span>
                       </motion.div>
                       <motion.div 
-                        className={`px-4 py-2 rounded-lg bg-gradient-to-r ${testimonials[activeIndex].gradient} text-white font-bold text-sm flex items-center gap-2`}
+                        className={`px-3 py-1 md:px-4 md:py-2 rounded-lg bg-gradient-to-r ${testimonials[activeIndex].gradient} text-white font-bold text-xs md:text-sm flex items-center gap-2 whitespace-nowrap`}
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 1, type: "spring", stiffness: 200 }}
@@ -515,7 +574,7 @@ const Testimonials = () => {
                           animate={{ y: [0, -3, 0] }}
                           transition={{ delay: 1.2, duration: 1.5, repeat: Infinity }}
                         >
-                          <TrendingUp className="w-4 h-4" />
+                          <TrendingUp className="w-3 h-3 md:w-4 md:h-4" />
                         </motion.div>
                         {testimonials[activeIndex].stats}
                       </motion.div>
@@ -523,105 +582,185 @@ const Testimonials = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Navigation Dots */}
-                <div className="flex justify-center gap-2 mt-6">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`h-2 rounded-full transition-all ${
-                        index === activeIndex 
-                          ? 'w-8' 
-                          : 'w-2'
-                      }`}
-                      style={{ 
-                        background: index === activeIndex 
-                          ? theme.amethyst 
-                          : theme.metallicBorder 
-                      }}
-                    />
-                  ))}
+                {/* Navigation Controls */}
+                <div className="mt-6">
+                  {/* Navigation Dots - Show on all screens */}
+                  <div className="flex flex-wrap justify-center gap-1 md:gap-2 mb-4">
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`h-2 rounded-full transition-all ${
+                          index === activeIndex 
+                            ? 'w-6 md:w-8' 
+                            : 'w-2'
+                        }`}
+                        style={{ 
+                          background: index === activeIndex 
+                            ? theme.amethyst 
+                            : theme.metallicBorder 
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Arrow Navigation - Only show on mobile */}
+                  {isMobile && (
+                    <div className="flex justify-center gap-4">
+                      <button
+                        onClick={handlePrev}
+                        className="p-2 rounded-full shadow-md"
+                        style={{ 
+                          background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+                          border: `1px solid ${theme.metallicBorder}`
+                        }}
+                      >
+                        <ChevronLeft className="w-5 h-5" style={{ color: theme.amethyst }} />
+                      </button>
+                      <button
+                        onClick={handleNext}
+                        className="p-2 rounded-full shadow-md"
+                        style={{ 
+                          background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
+                          border: `1px solid ${theme.metallicBorder}`
+                        }}
+                      >
+                        <ChevronRight className="w-5 h-5" style={{ color: theme.amethyst }} />
+                      </button>
+                    </div>
+                  )}
                 </div>
+
+                {/* Mobile Navigation Grid */}
+                {isMobile && showMobileNavigation && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-6 grid grid-cols-2 gap-3 overflow-y-auto max-h-[300px] p-2"
+                    style={{ 
+                      borderTop: `1px solid ${theme.metallicBorder}`
+                    }}
+                  >
+                    {testimonials.map((testimonial, index) => {
+                      const Icon = getPlatformIcon(testimonial.platform);
+                      return (
+                        <button
+                          key={testimonial.id}
+                          onClick={() => {
+                            goToSlide(index);
+                            setShowMobileNavigation(false);
+                          }}
+                          className={`p-3 rounded-lg text-left transition-all ${activeIndex === index ? 'ring-2 ring-offset-1' : ''}`}
+                          style={{ 
+                            background: activeIndex === index 
+                              ? `linear-gradient(135deg, ${theme.wisteria}, white)`
+                              : 'white',
+                            border: `1px solid ${theme.metallicBorder}`,
+                            ringColor: theme.amethyst
+                          }}
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className={`w-6 h-6 rounded-md bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
+                              {testimonial.name.charAt(0)}
+                            </div>
+                            <span className="text-xs font-semibold truncate" style={{ color: theme.metallicText }}>
+                              {testimonial.name.split(' ')[0]}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <Icon className="w-3 h-3" style={{ color: theme.amethyst }} />
+                            <span className="text-xs px-2 py-1 rounded bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800">
+                              {testimonial.stats}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
               </motion.div>
             </div>
 
-            {/* RIGHT COLUMN - Infinite Scroll DOWN */}
-            <div className="relative h-[800px] overflow-hidden">
-              <motion.div 
-                className="space-y-6 absolute"
-                animate={{ 
-                  y: [-50 * rightTestimonials.length, 0] 
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                {duplicatedRight.map((testimonial, index) => {
-                  const Icon = getPlatformIcon(testimonial.platform);
-                  return (
-                    <motion.div
-                      key={`right-${testimonial.id}-${index}`}
-                      initial={{ opacity: 0, y: -50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
-                        duration: 0.6,
-                        ease: "easeOut"
-                      }}
-                      className="rounded-xl p-6 shadow-lg transition-all group relative"
-                      style={{ 
-                        background: `linear-gradient(135deg, white, ${theme.wisteria})`,
-                        border: `1px solid ${theme.metallicBorder}`
-                      }}
-                      whileHover={{ scale: 1.02, zIndex: 10 }}
-                    >
-                      <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
-                      
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-xl font-bold`}>
-                          {testimonial.name.charAt(0)}
+            {/* RIGHT COLUMN - Only show on medium screens and up */}
+            {columns.right.length > 0 && (
+              <div className="hidden md:block relative h-[400px] md:h-[600px] lg:h-[800px] overflow-hidden">
+                <motion.div 
+                  className="space-y-4 md:space-y-6 absolute"
+                  animate={{ 
+                    y: [-40 * columns.right.length, 0] 
+                  }}
+                  transition={{
+                    duration: isMobile ? 40 : 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  {[...columns.right, ...columns.right].map((testimonial, index) => {
+                    const Icon = getPlatformIcon(testimonial.platform);
+                    return (
+                      <motion.div
+                        key={`right-${testimonial.id}-${index}`}
+                        initial={{ opacity: 0, y: -50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ 
+                          duration: 0.6,
+                          ease: "easeOut"
+                        }}
+                        className="rounded-xl p-4 md:p-6 shadow-lg transition-all group relative"
+                        style={{ 
+                          background: `linear-gradient(135deg, white, ${theme.wisteria})`,
+                          border: `1px solid ${theme.metallicBorder}`
+                        }}
+                        whileHover={{ scale: 1.02, zIndex: 10 }}
+                      >
+                        <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-gradient-to-r ${testimonial.gradient}`} />
+                        
+                        <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                          <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white text-lg md:text-xl lg:text-2xl font-bold flex-shrink-0`}>
+                            {testimonial.name.charAt(0)}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="font-bold text-sm md:text-base truncate" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
+                            <p className="text-xs md:text-sm text-gray-600 truncate">{testimonial.role}, {testimonial.company}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-bold" style={{ color: theme.metallicText }}>{testimonial.name}</h4>
-                          <p className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.role}, {testimonial.company}</p>
+                        
+                        <div className="flex gap-1 mb-2 md:mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" style={{ color: theme.amethyst }} />
+                          ))}
                         </div>
-                      </div>
-                      
-                      <div className="flex gap-1 mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" style={{ color: theme.amethyst }} />
-                        ))}
-                      </div>
-                      
-                      <p className="mb-4 line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
-                        "{testimonial.text}"
-                      </p>
-                      
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
-                        <div className="flex items-center gap-2">
-                          <Icon className="w-4 h-4" style={{ color: theme.amethyst }} />
-                          <span className="text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
+                        
+                        <p className="text-xs md:text-sm mb-3 md:mb-4 line-clamp-3 md:line-clamp-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
+                          "{testimonial.text}"
+                        </p>
+                        
+                        <div className="flex items-center justify-between pt-2 md:pt-3" style={{ borderTop: `1px solid ${theme.metallicBorder}` }}>
+                          <div className="flex items-center gap-2">
+                            <Icon className="w-3 h-3 md:w-4 md:h-4" style={{ color: theme.amethyst }} />
+                            <span className="text-xs md:text-sm" style={{ color: theme.metallicText, opacity: 0.8 }}>{testimonial.platform}</span>
+                          </div>
+                          <div className={`px-2 py-1 md:px-3 md:py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold whitespace-nowrap`}>
+                            {testimonial.stats}
+                          </div>
                         </div>
-                        <div className={`px-3 py-1 rounded-lg bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold`}>
-                          {testimonial.stats}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-              {/* Gradient overlays for smooth fade */}
-              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
-            </div>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+                {/* Gradient overlays for smooth fade */}
+                <div className="absolute top-0 left-0 right-0 h-10 md:h-20 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 md:h-20 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+              </div>
+            )}
           </div>
         </div>
 
         {/* CTA Section */}
         <motion.div 
-          className="text-center rounded-2xl p-10"
+          className="text-center rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 mx-2 sm:mx-0"
           style={{ 
             background: `linear-gradient(135deg, ${theme.wisteria}, white)`,
             border: `1px solid ${theme.metallicBorder}`
@@ -630,16 +769,16 @@ const Testimonials = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
         >
-          <h3 className="text-3xl font-bold mb-3" style={{ color: theme.metallicText }}>
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 px-2" style={{ color: theme.metallicText }}>
             Ready to Join Our Success Stories?
           </h3>
-          <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: theme.metallicText, opacity: 0.8 }}>
+          <p className="text-sm md:text-base lg:text-lg mb-4 md:mb-6 max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto px-4" style={{ color: theme.metallicText, opacity: 0.8 }}>
             Let's create measurable results for your brand together
           </p>
           
           <motion.button 
             onClick={() => scrollToSection('contact', 80)}
-            className="px-8 py-4 font-semibold text-base rounded-lg shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2"
+            className="px-6 py-3 md:px-8 md:py-4 font-semibold text-sm md:text-base rounded-lg shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2 w-full sm:w-auto justify-center"
             style={{ 
               background: `linear-gradient(135deg, ${theme.amethyst}, ${theme.plum})`,
               color: 'white'
@@ -648,11 +787,10 @@ const Testimonials = () => {
             whileTap={{ scale: 0.98 }}
           >
             Start Your Journey
-            <Zap className="w-5 h-5" />
+            <Zap className="w-4 h-4 md:w-5 md:h-5" />
           </motion.button>
         </motion.div>
       </motion.div>
-
     </section>
   );
 };

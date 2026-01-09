@@ -3,14 +3,28 @@ import { motion } from 'framer-motion';
 
 const Clients = () => {
   const [hoveredLogo, setHoveredLogo] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
-  const logosRef = useRef(null);
+  const videoRef = useRef(null);
 
-  // Scroll to top on component mount
+  // Check if mobile
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setIsVisible(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle video loading
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true);
+      });
+    }
   }, []);
 
   const logoBrands = [
@@ -22,66 +36,85 @@ const Clients = () => {
     { name: "Vibhu Kitchen Equipments", logo: "/images/Logos/vibhu.png" }
   ];
 
-  // Duplicate logos for seamless loop
+  // Adjust marquee speed and duplication based on screen size
+  const getMarqueeSpeed = () => {
+    if (isMobile) return 40;
+    if (window.innerWidth < 1024) return 35;
+    return 30;
+  };
+
+  const getMarqueeDistance = () => {
+    if (isMobile) return -1200;
+    if (window.innerWidth < 1024) return -1400;
+    return -1600;
+  };
+
   const allLogos = [...logoBrands, ...logoBrands, ...logoBrands];
 
   return (
     <div ref={containerRef} id="clients" className="relative w-full overflow-hidden">
       {/* Video Hero Section */}
-      <section className="relative w-full min-h-[90vh] overflow-hidden mt-20">
+      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] overflow-hidden pt-16">
+        {/* Video Loading Skeleton */}
+        {!isVideoLoaded && (
+          <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
+            <div className="w-12 h-12 border-3 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
+
         {/* HERO VIDEO */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
-          className="
+          preload="auto"
+          className={`
             absolute inset-0 w-full h-full
-            object-contain
-            md:object-cover
-            object-center
-            bg-black
-          "
+            object-contain md:object-cover
+            object-center bg-black
+            transition-opacity duration-500
+            ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}
+          `}
         >
           <source src="/sumit4.mp4" type="video/mp4" />
         </video>
       </section>
 
       {/* Logo Marquee Section */}
-      <div className="relative py-16 overflow-hidden bg-white">
+      <div className="relative py-12 md:py-16 overflow-hidden bg-white">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center px-8"
+          transition={{ duration: 0.5 }}
+          className="mb-8 md:mb-12 text-center px-4"
         >
           <h3 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#8666A5] mb-4" 
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#8666A5] mb-3 md:mb-4" 
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Trusted By Leading Brands
           </h3>
-          <p className="text-lg md:text-xl text-[#6b4d7a] max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-[#6b4d7a] max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
             Partnering with industry leaders to create exceptional results
           </p>
         </motion.div>
 
         {/* Infinite Logo Marquee */}
-        <div className="relative py-8">
-          {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 z-20 pointer-events-none bg-gradient-to-r from-white to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 z-20 pointer-events-none bg-gradient-to-l from-white to-transparent" />
+        <div className="relative py-6 md:py-8">
+          {/* Gradient overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 lg:w-32 z-20 pointer-events-none bg-gradient-to-r from-white to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 lg:w-32 z-20 pointer-events-none bg-gradient-to-l from-white to-transparent" />
           
           <motion.div
-            ref={logosRef}
-            className="flex space-x-8 md:space-x-12"
+            className="flex space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12"
             animate={{
-              x: [0, -1600],
+              x: [0, getMarqueeDistance()],
             }}
             transition={{
-              duration: 30,
+              duration: getMarqueeSpeed(),
               repeat: Infinity,
               ease: "linear",
             }}
@@ -89,13 +122,13 @@ const Clients = () => {
             {allLogos.map((brand, index) => (
               <motion.div
                 key={`${brand.name}-${index}`}
-                className="group relative flex-shrink-0 w-40 h-32 md:w-48 md:h-36 rounded-xl backdrop-blur-sm flex items-center justify-center p-6 cursor-pointer bg-white"
+                className="group relative flex-shrink-0 w-24 h-16 sm:w-28 sm:h-20 md:w-32 md:h-24 lg:w-40 lg:h-28 xl:w-48 xl:h-32 rounded-lg md:rounded-xl backdrop-blur-sm flex items-center justify-center p-2 sm:p-3 md:p-4 lg:p-6 cursor-pointer bg-white"
                 style={{
-                  border: '1px solid #8666A5', // Thin purple outline
-                  boxShadow: '0 2px 12px rgba(134, 102, 165, 0.1)',
+                  border: '1px solid #8666A5',
+                  boxShadow: '0 2px 8px rgba(134, 102, 165, 0.1)',
                 }}
                 whileHover={{ 
-                  scale: 1.05, // Reduced scale for subtle effect
+                  scale: 1.05,
                   y: -4,
                   boxShadow: '0 6px 20px rgba(134, 102, 165, 0.15)',
                   transition: { duration: 0.2 }
@@ -103,18 +136,15 @@ const Clients = () => {
                 onMouseEnter={() => setHoveredLogo(brand.name)}
                 onMouseLeave={() => setHoveredLogo(null)}
               >
-                {/* Logo Container */}
                 <div className="relative w-full h-full flex items-center justify-center">
-                  {/* Actual Logo Image */}
                   <img 
                     src={brand.logo} 
                     alt={brand.name}
                     className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                   
-                  {/* Subtle Hover Effect Overlay */}
                   <motion.div
-                    className="absolute inset-0 rounded-xl"
+                    className="absolute inset-0 rounded-lg md:rounded-xl"
                     style={{
                       border: '1px solid transparent',
                     }}

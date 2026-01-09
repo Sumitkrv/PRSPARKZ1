@@ -137,13 +137,13 @@ const Footer = () => {
                     <span className="ml-3">Info@prsparkz.com</span>
                   </a>
                   <a 
-                    href="tel:+91910525684" 
+                    href="tel:+91 77387 15711" 
                     className="flex items-center text-sm text-gray-600 hover:text-[#7B68EE] transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-[#7B68EE]/10 transition-colors">
                       <Phone className="w-4 h-4 text-gray-700 group-hover:text-[#7B68EE]" />
                     </div>
-                    <span className="ml-3">+91 910525684</span>
+                    <span className="ml-3">+91 77387 15711</span>
                   </a>
                 </div>
               </div>
@@ -198,25 +198,57 @@ const Footer = () => {
                   <li>
                     <button
                       onClick={handleServiceClick}
-                      className="text-sm text-gray-300 hover:text-[#d4b3ff] transition-colors hover:translate-x-1 inline-block"
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
                     >
-                      Social Media Management
+                      Campaign Strategy
                     </button>
                   </li>
                   <li>
                     <button
                       onClick={handleServiceClick}
-                      className="text-sm text-gray-300 hover:text-[#d4b3ff] transition-colors hover:translate-x-1 inline-block"
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
                     >
-                      Brand Strategy
+                      Ai-Growth Solutions
                     </button>
                   </li>
                   <li>
                     <button
                       onClick={handleServiceClick}
-                      className="text-sm text-gray-300 hover:text-[#d4b3ff] transition-colors hover:translate-x-1 inline-block"
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
                     >
-                      Content Creation
+                      Social Media
+                    </button>
+                  </li>
+                   <li>
+                    <button
+                      onClick={handleServiceClick}
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
+                    >
+                      Influence Marketing
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleServiceClick}
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
+                    >
+                      Brand Identity
+                    </button>
+                  </li>
+                   <li>
+                    <button
+                      onClick={handleServiceClick}
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
+                    >
+                      Web Development
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleServiceClick}
+                      className="text-sm text-gray-600 hover:text-[#7B68EE] transition-colors hover:translate-x-1 inline-block"
+                    >
+                      On-Ground Events
                     </button>
                   </li>
                 </ul>
