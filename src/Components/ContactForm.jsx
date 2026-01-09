@@ -4,7 +4,7 @@ import {
   User, Mail, FileText, CheckCircle, Phone, Send, 
   Loader2, AlertCircle, Clock,
   MessageSquare, Building, Map,
-  Linkedin, Instagram
+  Linkedin,  Instagram
 } from "lucide-react";
 
 const ContactForm = () => {
@@ -53,10 +53,10 @@ const ContactForm = () => {
 
   // Contact options with subjects
   const contactSubjects = [
-    { value: "General Inquiry", label: "General Inquiry" },
-    { value: "Project Proposal", label: "Project Proposal" },
-    { value: "Partnership", label: "Partnership Opportunity" },
-    { value: "Career", label: "Career Opportunity" },
+    { value: "Influence Marketing", label: "Influence Marketing" },
+    { value: "Brand Identity", label: "Brand Identity" },
+    { value: "Web Development", label: "Web Development" },
+    { value: "On-Ground Events", label: "On-Ground Events" },
     { value: "Support", label: "Technical Support" },
     { value: "Other", label: "Other" }
   ];
@@ -64,11 +64,12 @@ const ContactForm = () => {
   // Company information
   const companyInfo = {
     email: "Info@prsparkz.com",
-    phone: "+91 77387 15711",
+    phone: "++91 77387 15711",
     address: "402, RG Trade Tower, Netaji Subhash Palace, Pitampura, Delhi, 110034",
     workingHours: "Monday - Friday: 9:00 AM - 6:00 PM",
     social: {
-      linkedin: "https://www.linkedin.com/company/prsparkz/",
+      linkedin: "https://www.linkedin.com/in/priyanka-khandelwal-08370b240/",
+     
       instagram: "https://www.instagram.com/pr_sparkz?igsh=MTZtbm01cnZ6a3V0Zw%3D%3D"
     }
   };

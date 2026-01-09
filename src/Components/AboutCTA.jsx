@@ -19,114 +19,169 @@ const cardGradient = `
   linear-gradient(135deg, ${theme.midnightPurple}FA 0%, ${theme.violet}F2 20%, ${theme.amethyst}ED 40%, ${theme.plum}E8 60%, ${theme.violet}EC 80%, ${theme.midnightPurple}F2 100%)
 `;
 
-const AboutCTA = ({ isVisible }) => {
+const AboutCTA = ({ isVisible, scrollToSection }) => {
+  // Enhanced scroll function with better error handling
+  const handleScrollTo = (section, offset = 80) => {
+    console.log(`Attempting to scroll to: ${section}`);
+    
+    if (typeof scrollToSection === 'function') {
+      // Use parent's scroll function if provided
+      scrollToSection(section, offset);
+    } else {
+      // Fallback: scroll to element by ID
+      const element = document.getElementById(section);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        console.log(`Scrolled to ${section} element`);
+      } else {
+        console.warn(`Element with id "${section}" not found. Scrolling to top.`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleTransformClick = () => {
+    console.log("Start Your Transformation clicked - navigating to contact section");
+    handleScrollTo('contact', 80);
+  };
+
+  const handleSuccessStoriesClick = () => {
+    console.log("View Our Success Stories clicked - navigating to client portfolio");
+    // Note: You might need to change this to match your actual section ID
+    // The comment says "client portfolio route" but your function uses 'clients'
+    handleScrollTo('clients', 80);
+    // Alternatively, if you have a different ID, use:
+    // handleScrollTo('portfolio', 80);
+    // OR
+    // handleScrollTo('success-stories', 80);
+  };
+
   return (
     <div className="mb-20 relative -mx-[100vw] px-[100vw]" style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
-      <motion.div
-        className="relative"
-        initial={{ opacity: 0, y: 30 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 1.8 }}
-      >
-      <motion.div 
-        className="relative rounded-3xl overflow-hidden p-12"
-        style={{ 
-          border: `1px solid rgba(255,255,255,0.4)`,
-          borderTop: `3px solid rgba(255,255,255,0.7)`,
-          borderLeft: `2px solid rgba(255,255,255,0.55)`,
-          background: `
-            linear-gradient(145deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.18) 70%, rgba(255,255,255,0.28) 100%),
-            linear-gradient(135deg, ${theme.midnightPurple}FC 0%, ${theme.violet}F4 15%, ${theme.amethyst}EE 35%, ${theme.plum}E8 50%, ${theme.amethyst}EC 65%, ${theme.violet}F0 85%, ${theme.midnightPurple}F8 100%)
-          `,
-          boxShadow: `
-            0 35px 100px rgba(0,0,0,0.9),
-            0 15px 40px rgba(0,0,0,0.7),
-            0 0 0 1px rgba(255,255,255,0.38),
-            inset 0 5px 10px rgba(255,255,255,0.65),
-            inset 0 -5px 15px rgba(0,0,0,0.5),
-            inset 0 0 50px rgba(255,255,255,0.15)
-          `
-        }}
-        animate={{
-          boxShadow: [
-            '0 35px 100px rgba(0,0,0,0.9), 0 15px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.38), inset 0 5px 10px rgba(255,255,255,0.65), inset 0 -5px 15px rgba(0,0,0,0.5), inset 0 0 50px rgba(255,255,255,0.15)',
-            '0 40px 110px rgba(154,111,255,0.5), 0 20px 50px rgba(154,111,255,0.3), 0 0 0 1px rgba(255,255,255,0.5), inset 0 6px 12px rgba(255,255,255,0.75), inset 0 -6px 18px rgba(0,0,0,0.6), inset 0 0 60px rgba(255,255,255,0.2)',
-            '0 35px 100px rgba(0,0,0,0.9), 0 15px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.38), inset 0 5px 10px rgba(255,255,255,0.65), inset 0 -5px 15px rgba(0,0,0,0.5), inset 0 0 50px rgba(255,255,255,0.15)'
-          ]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        {/* Animated metallic shine sweep */}
         <motion.div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.3) 50%, transparent 75%)'
-          }}
-          animate={{
-            x: ['-100%', '200%']
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            repeatDelay: 2,
-            ease: "easeInOut"
-          }}
-        />
-        <div className="relative text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Ready to Shine Brighter?
-          </h2>
-          
-          <p className="text-white text-lg sm:text-xl mb-12 max-w-2xl mx-auto font-light" style={{ opacity: 0.9 }}>
-            Let's transform your brand challenges into visible growth and lasting impact. 
-            Partner with PR Sparkz for end-to-end solutions that make your brand shine.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <motion.button 
-              className="group px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 flex items-center gap-3 relative overflow-hidden"
-              style={{ 
-                border: `1px solid rgba(255,255,255,0.2)`,
-                background: cardGradient,
-                boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
+          className="relative"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.8 }}
+        >
+          <motion.div 
+            className="relative rounded-3xl overflow-hidden p-12"
+            style={{ 
+              border: `1px solid rgba(255,255,255,0.4)`,
+              borderTop: `3px solid rgba(255,255,255,0.7)`,
+              borderLeft: `2px solid rgba(255,255,255,0.55)`,
+              background: `
+                linear-gradient(145deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.18) 70%, rgba(255,255,255,0.28) 100%),
+                linear-gradient(135deg, ${theme.midnightPurple}FC 0%, ${theme.violet}F4 15%, ${theme.amethyst}EE 35%, ${theme.plum}E8 50%, ${theme.amethyst}EC 65%, ${theme.violet}F0 85%, ${theme.midnightPurple}F8 100%)
+              `,
+              boxShadow: `
+                0 35px 100px rgba(0,0,0,0.9),
+                0 15px 40px rgba(0,0,0,0.7),
+                0 0 0 1px rgba(255,255,255,0.38),
+                inset 0 5px 10px rgba(255,255,255,0.65),
+                inset 0 -5px 15px rgba(0,0,0,0.5),
+                inset 0 0 50px rgba(255,255,255,0.15)
+              `
+            }}
+            animate={{
+              boxShadow: [
+                '0 35px 100px rgba(0,0,0,0.9), 0 15px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.38), inset 0 5px 10px rgba(255,255,255,0.65), inset 0 -5px 15px rgba(0,0,0,0.5), inset 0 0 50px rgba(255,255,255,0.15)',
+                '0 40px 110px rgba(154,111,255,0.5), 0 20px 50px rgba(154,111,255,0.3), 0 0 0 1px rgba(255,255,255,0.5), inset 0 6px 12px rgba(255,255,255,0.75), inset 0 -6px 18px rgba(0,0,0,0.6), inset 0 0 60px rgba(255,255,255,0.2)',
+                '0 35px 100px rgba(0,0,0,0.9), 0 15px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.38), inset 0 5px 10px rgba(255,255,255,0.65), inset 0 -5px 15px rgba(0,0,0,0.5), inset 0 0 50px rgba(255,255,255,0.15)'
+              ]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* Animated metallic shine sweep */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.3) 50%, transparent 75%)'
               }}
-              whileHover={{ 
-                scale: 1.05,
-                borderColor: 'rgba(255,255,255,0.4)',
-                boxShadow: `0 8px 32px rgba(0,0,0,0.4)`
+              animate={{
+                x: ['-100%', '200%']
               }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10 text-white">Start Your Transformation</span>
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2 relative z-10" style={{ color: '#FFFFFF' }} />
-            </motion.button>
-            
-            <motion.button 
-              className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 relative overflow-hidden"
-              style={{ 
-                border: `1px solid rgba(255,255,255,0.2)`,
-                color: '#FFFFFF',
-                background: cardGradient,
-                boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                repeatDelay: 2,
+                ease: "easeInOut"
               }}
-              whileHover={{ 
-                scale: 1.05, 
-                borderColor: 'rgba(255,255,255,0.4)',
-                boxShadow: `0 8px 32px rgba(0,0,0,0.4)`
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10">View Our Success Stories</span>
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
-      </motion.div>
+            />
+            <div className="relative text-center">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                Ready to Shine Brighter?
+              </h2>
+              
+              <p className="text-white text-lg sm:text-xl mb-12 max-w-2xl mx-auto font-light" style={{ opacity: 0.9 }}>
+                Let's transform your brand challenges into visible growth and lasting impact. 
+                Partner with PR Sparkz for end-to-end solutions that make your brand shine.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                {/* Start Your Transformation Button - Contact Us */}
+                <motion.button 
+                  type="button"
+                  onClick={handleTransformClick}
+                  aria-label="Start your transformation - Contact us"
+                  className="group px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
+                  style={{ 
+                    border: `1px solid rgba(255,255,255,0.2)`,
+                    background: cardGradient,
+                    boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    borderColor: 'rgba(255,255,255,0.4)',
+                    boxShadow: `0 8px 32px rgba(0,0,0,0.4)`
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10 text-white">Start Your Transformation</span>
+                  <ArrowRight 
+                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2 relative z-10" 
+                    style={{ color: '#FFFFFF' }} 
+                    aria-hidden="true"
+                  />
+                </motion.button>
+                
+                {/* View Our Success Stories Button - Client Portfolio */}
+                <motion.button 
+                  type="button"
+                  onClick={handleSuccessStoriesClick}
+                  aria-label="View our success stories - Client portfolio"
+                  className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 relative overflow-hidden cursor-pointer"
+                  style={{ 
+                    border: `1px solid rgba(255,255,255,0.2)`,
+                    color: '#FFFFFF',
+                    background: cardGradient,
+                    boxShadow: `0 4px 24px rgba(0,0,0,0.3)`
+                  }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    borderColor: 'rgba(255,255,255,0.4)',
+                    boxShadow: `0 8px 32px rgba(0,0,0,0.4)`
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10">View Our Success Stories</span>
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -3,10 +3,8 @@ import { motion } from 'framer-motion';
 
 const Clients = () => {
   const [hoveredLogo, setHoveredLogo] = useState(null);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
-  const videoRef = useRef(null);
 
   // Check if mobile
   useEffect(() => {
@@ -16,15 +14,6 @@ const Clients = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Handle video loading
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', () => {
-        setIsVideoLoaded(true);
-      });
-    }
   }, []);
 
   const logoBrands = [
@@ -54,32 +43,28 @@ const Clients = () => {
   return (
     <div ref={containerRef} id="clients" className="relative w-full overflow-hidden">
       {/* Video Hero Section */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] overflow-hidden pt-16">
-        {/* Video Loading Skeleton */}
-        {!isVideoLoaded && (
-          <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
-            <div className="w-12 h-12 border-3 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
-
+      <section className="relative w-full h-screen overflow-hidden">
         {/* HERO VIDEO */}
         <video
-          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          preload="auto"
-          className={`
+          preload="metadata"
+          className="
             absolute inset-0 w-full h-full
-            object-contain md:object-cover
-            object-center bg-black
-            transition-opacity duration-500
-            ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}
-          `}
+            object-contain
+            md:object-cover
+            object-center
+            bg-black
+          "
         >
           <source src="/sumit4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
+
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-black/40" />
       </section>
 
       {/* Logo Marquee Section */}
